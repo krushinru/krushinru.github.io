@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alexander Krushin's personal page - media manager and marketer">
+    <meta name="keywords" content="media, marketing, startups, Alexander Krushin">
+    <title>Alexander Krushin | Media Manager and Marketer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 14px;
+        }
+        .lang-switch a {
+            color: #777;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .lang-switch a:hover {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="lang-switch">
+            <a href="index.html">RU</a>
+        </div>
+        <div class="profile">
+            <div class="profile-image">
+                <img src="ava.jpeg" alt="Profile Picture">
+            </div>
+            <div class="profile-content">
+                <h1>Hello! 👋🏻 My name is Alexander&nbsp;Krushin.</h1>
+                <p class="experience">I work in media and marketing, and occasionally launch my own <a href="#projects" class="wavy-link">projects</a>.</p>
+                <p class="experience">I worked as Marketing Director at <span class="nowrap"><a href="https://rambler.ru" class="experience-link rambler" target="_blank"><img src="icons/rambler.ico" alt="Rambler" class="media-icon">Rambler</a>,</span> and&nbsp;before that did various things at <span class="nowrap"><a href="https://www.afisha.ru" class="experience-link afisha" target="_blank"><img src="icons/afisha.ico" alt="Afisha" class="media-icon">Afisha</a>,</span> <a href="https://cyber.sports.ru" class="experience-link sports" target="_blank"><img src="icons/sports.ico" alt="Sports.ru" class="media-icon">Sports.ru</a> and&nbsp;Forward&nbsp;Media&nbsp;Group.</p>
+                <p class="footer">For questions and proposals, please contact me<br>via <a href="mailto:akrushin@gmail.com" class="footer-link">email</a> or <a href="tg://resolve?domain=krushin_ru" class="footer-link">Telegram</a>.</p>
+            </div>
+        </div>
+        <div class="projects">
+            <h2 class="projects-title">Projects</h2>
+            <div class="projects-list" id="projects">
+                <div class="project-item" data-status="archive">
+                    <p class="experience"><a href="https://clubstat.org/about/" class="experience-link" target="_blank"><img src="icons/clubhouse.svg" alt="Clubhouse" class="media-icon"> ClubStat</a> — the world's first Clubhouse analytics service. It collected data on the popularity of rooms and users. Helped content creators and advertisers analyze their audience.</p>
+                    <div class="project-media">
+                        <div class="project-quote">
+                            <span>Best Clubhouse rooms and popular speakers</span>
+                            <a href="https://kanobu.ru/news/luchshie-komnatyi-v-klabhause-i-populyarnyie-spikeryi-poyavilsya-servis-statistiki-novoj-sotsseti-433172/" target="_blank">
+                                <img src="icons/kanobu.ico" alt="Kanobu" class="quote-icon">
+                                Kanobu
+                            </a>
+                        </div>
+                        <div class="project-quote">
+                            <span>How Russian hackers hacked Clubhouse</span>
+                            <a href="https://thecode.media/clubhouse-2/" target="_blank">
+                                <img src="icons/thecode.ico" alt="Код" class="quote-icon">
+                                The Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <p class="experience"><a href="https://t-do.ru" class="experience-link" target="_blank"><img src="icons/telegram.ico" alt="Telegram" class="media-icon"> T-do</a> — a smart link service for Telegram. From 2018-2021, it allowed users to bypass blocks, with peak traffic reaching <span class="stat-value">6M+</span> MAU. Actively used by leading media outlets and bloggers.</p>
+                    <div class="project-media">
+                        <div class="project-quote">
+                            <span>"Vasily Utkin uses the service": who and how saved Telegram for the outside world</span>
+                            <a href="https://click-or-die.ru/2018/06/servisom-polzuetsya-vasilij-utkin-kto-i-kak-spas-telegram-dlya-vneshnego-mira/" target="_blank">
+                                <img src="icons/clickordie.ico" alt="Click or Die" class="quote-icon">
+                                Palach
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="small-projects">
+                <h3 class="small-projects-title">Small things:</h3>
+                <p class="experience">I run one of the first Russian-language <a href="https://t.me/gamer" class="experience-link telegram" target="_blank"><img src="icons/telegram.ico" alt="Telegram" class="media-icon">Telegram channels</a> about&nbsp;video games.</p>
+                <p class="experience">My Russian translation of the GameShell console became part of the <a href="https://github.com/clockworkpi/launcher/tree/master" class="experience-link github" target="_blank"><img src="icons/github.ico" alt="GitHub" class="media-icon">official firmware</a>.</p>
+                <p class="experience">I recorded a lesson about podcasts for the "Sports Journalism" course at <a href="https://skillbox.ru" class="experience-link skillbox" target="_blank"><img src="icons/skillbox.ico" alt="Skillbox" class="media-icon">Skillbox</a>.</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

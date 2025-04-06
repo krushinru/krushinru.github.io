@@ -1,22 +1,90 @@
-<!doctype html>
-<html lang="en" class="h-100">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Alexander Krushin">
-    <title>Александр Крушин · медиа-менеджер и маркетолог</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>.container {width: auto;max-width: 680px;padding: 0 15px;}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Личная страница Александра Крушина - медиа-менеджера и маркетолога">
+    <meta name="keywords" content="медиа, маркетинг, стартапы, Александр Крушин">
+    <title>Александр Крушин | Медиа-менеджер и маркетолог</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 14px;
+        }
+        .lang-switch a {
+            color: #777;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .lang-switch a:hover {
+            color: #333;
+        }
     </style>
-  </head>
-  <body class="d-flex flex-column h-100">
-  <main role="main" class="flex-shrink-0">
+</head>
+<body>
     <div class="container">
-      <h2 class="mt-5">👋 Привет,</h2>
-      <p class="lead">Меня зовут <img style="max-height: 30px; border-radius: 50%" src="https://www.gravatar.com/avatar/173303ff8da78411c197beb08a15626f" alt="My face"> <strong>Александр Крушин</strong>.</p>
-      <p>Занимаюсь медиа и маркетингом, иногда запускаю собственные проекты. По всем вопросам — пишите на <a href="mailto:alex@krushin.ru" alt="My tweets">почту</a> или в <a href="tg://resolve?domain=krushin_ru">Telegram</a>.</p>
+        <div class="lang-switch">
+            <a href="en.html">EN</a>
+        </div>
+        <div class="profile">
+            <div class="profile-image">
+                <img src="ava.jpeg" alt="Profile Picture">
+            </div>
+            <div class="profile-content">
+                <h1>Привет! 👋🏻 Меня зовут Александр&nbsp;Крушин.</h1>
+                <p class="experience">Я занимаюсь медиа и маркетингом, иногда запускаю собственные <a href="#projects" class="wavy-link">проекты</a>.</p>
+                <p class="experience">Работал директором по маркетингу портала <span class="nowrap"><a href="https://rambler.ru" class="experience-link rambler" target="_blank"><img src="icons/rambler.ico" alt="Rambler" class="media-icon">Рамблер</a>,</span> а&nbsp;до этого занимался всяким разным в <span class="nowrap"><a href="https://www.afisha.ru" class="experience-link afisha" target="_blank"><img src="icons/afisha.ico" alt="Afisha" class="media-icon">«Афише»</a>,</span> <a href="https://cyber.sports.ru" class="experience-link sports" target="_blank"><img src="icons/sports.ico" alt="Sports.ru" class="media-icon">Sports.ru</a> и&nbsp;Forward&nbsp;Media&nbsp;Group.</p>
+                <p class="footer">По вопросам и предложениям — пишите<br>на <a href="mailto:akrushin@gmail.com" class="footer-link">почту</a> или в <a href="tg://resolve?domain=krushin_ru" class="footer-link">Telegram</a>.</p>
+            </div>
+        </div>
+        <div class="projects">
+            <h2 class="projects-title">Проекты</h2>
+            <div class="projects-list" id="projects">
+                <div class="project-item" data-status="archive">
+                    <p class="experience"><a href="https://clubstat.org/about/" class="experience-link" target="_blank"><img src="icons/clubhouse.svg" alt="Clubhouse" class="media-icon"> ClubStat</a> — первый в мире сервис аналитики Clubhouse. Собирал данные о популярности комнат и пользователей. Помогал создателям контента и рекламодателям анализировать аудиторию.</p>
+                    <div class="project-media">
+                        <div class="project-quote">
+                            <span>Лучшие комнаты в Клабхаусе и популярные спикеры</span>
+                            <a href="https://kanobu.ru/news/luchshie-komnatyi-v-klabhause-i-populyarnyie-spikeryi-poyavilsya-servis-statistiki-novoj-sotsseti-433172/" target="_blank">
+                                <img src="icons/kanobu.ico" alt="Kanobu" class="quote-icon">
+                                Канобу
+                            </a>
+                        </div>
+                        <div class="project-quote">
+                            <span>Как русские хакеры взломали Clubhouse</span>
+                            <a href="https://thecode.media/clubhouse-2/" target="_blank">
+                                <img src="icons/thecode.ico" alt="Код" class="quote-icon">
+                                Код
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <p class="experience"><a href="https://t-do.ru" class="experience-link" target="_blank"><img src="icons/telegram.ico" alt="Telegram" class="media-icon"> Ти-ду</a> — сервис умных ссылок для Telegram. В 2018-2021 годах позволял пользователям обходить блокировки, пиковая посещаемость достигала <span class="stat-value">6M+</span> MAU. Активно использовался ведущими СМИ и блогерами</p>
+                    <div class="project-media">
+                        <div class="project-quote">
+                            <span>«Сервисом пользуется Василий Уткин»: кто и как спас Telegram для внешнего мира</span>
+                            <a href="https://click-or-die.ru/2018/06/servisom-polzuetsya-vasilij-utkin-kto-i-kak-spas-telegram-dlya-vneshnego-mira/" target="_blank">
+                                <img src="icons/clickordie.ico" alt="Click or Die" class="quote-icon">
+                                Палач
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="small-projects">
+                <h3 class="small-projects-title">По-мелочи:</h3>
+                <p class="experience">Веду один из первых русскоязычных <a href="https://t.me/gamer" class="experience-link telegram" target="_blank"><img src="icons/telegram.ico" alt="Telegram" class="media-icon">телеграм-каналов</a> про&nbsp;видеоигры.</p>
+                <p class="experience">Мой перевод на русский язык консоли GameShell стал частью <a href="https://github.com/clockworkpi/launcher/tree/master" class="experience-link github" target="_blank"><img src="icons/github.ico" alt="GitHub" class="media-icon">официальной прошивки</a>.</p>
+                <p class="experience">Записал урок про подкасты для курса «Спортивная журналистика» на <a href="https://skillbox.ru" class="experience-link skillbox" target="_blank"><img src="icons/skillbox.ico" alt="Skillbox" class="media-icon">Skillbox</a>.</p>
+            </div>
+        </div>
     </div>
-  </main>
-  </body>
-</html>
+    <script src="script.js"></script>
+</body>
+</html> 

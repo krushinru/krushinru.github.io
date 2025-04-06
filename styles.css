@@ -1,0 +1,498 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #ffffff;
+    color: #513938;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+
+.profile {
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.profile-image {
+    flex-shrink: 0;
+}
+
+.profile-image img {
+    width: 260px;
+    height: 260px;
+    border-radius: 24px;
+    object-fit: cover;
+}
+
+.profile-content {
+    flex-grow: 1;
+    padding-top: 8px;
+}
+
+h1 {
+    font-size: 42px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    line-height: 1.2;
+    color: #513938;
+    letter-spacing: -0.01em;
+}
+
+h2 {
+    font-size: 42px;
+    font-weight: 500;
+    margin-bottom: 32px;
+    line-height: 1.2;
+    color: #513938;
+    letter-spacing: -0.01em;
+}
+
+.underline {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    color: #513938;
+    border-bottom: 2px solid #513938;
+    text-decoration: none;
+    display: inline-block;
+    padding-bottom: 2px;
+}
+
+.experience {
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 32px;
+    line-height: 1.5;
+    color: #513938;
+    max-width: 92%;
+    letter-spacing: 0.01em;
+}
+
+.tagline {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 64px;
+    color: #513938;
+    letter-spacing: 0.01em;
+}
+
+.footer {
+    font-size: 22px;
+    color: #513938;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+.footer br {
+    display: block;
+    content: "";
+    margin-top: 8px;
+}
+
+.instagram-link {
+    color: #513938;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.instagram-link:hover {
+    text-decoration: underline;
+}
+
+.media-icon,
+.quote-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+}
+
+.experience-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+    padding-bottom: 2px;
+}
+
+.experience-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.experience-link:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.experience-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Brand colors with hover states */
+.experience-link.rambler {
+    color: #0054B9;
+}
+
+.experience-link.rambler:hover {
+    color: #0066D4;
+}
+
+.experience-link.afisha {
+    color: #E31E24;
+}
+
+.experience-link.afisha:hover {
+    color: #FF2A2A;
+}
+
+.experience-link.sports {
+    color: #1A1A1A;
+}
+
+.experience-link.sports:hover {
+    color: #333333;
+}
+
+.experience-link.github {
+    color: #24292e;
+}
+
+.experience-link.github:hover {
+    color: #0366d6;
+}
+
+.experience-link.skillbox {
+    color: #00A2FF;
+}
+
+.experience-link.skillbox:hover {
+    color: #0085CC;
+}
+
+/* Project brand colors */
+.experience-link[href*="clubstat"] {
+    color: #1A1A1A;
+}
+
+.experience-link[href*="clubstat"]:hover {
+    color: #333333;
+}
+
+.experience-link[href*="clubstat"] img.media-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.experience-link[href*="t.me"], .experience-link[href*="t-do"] {
+    color: #229ED9;
+}
+
+.experience-link[href*="t.me"]:hover, .experience-link[href*="t-do"]:hover {
+    color: #1E8DC4;
+}
+
+/* Improve footer links */
+.footer-link {
+    color: #513938;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: opacity 0.2s ease;
+}
+
+.footer-link:hover {
+    opacity: 0.7;
+}
+
+/* Projects section */
+.projects {
+    max-width: 960px;
+    margin: 60px auto 0;
+}
+
+.projects-title {
+    font-size: 42px;
+    font-weight: 500;
+    margin-bottom: 32px;
+    line-height: 1.2;
+    color: #513938;
+    letter-spacing: -0.01em;
+}
+
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.project-item {
+    position: relative;
+    padding-bottom: 48px;
+}
+
+.project-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(81, 57, 56, 0.1);
+}
+
+.project-icon {
+    font-size: 16px;
+    opacity: 0.9;
+    margin-right: 8px;
+}
+
+.project-stats {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 24px 0;
+    padding: 8px 16px;
+    background: rgba(34, 158, 217, 0.05);
+    border-radius: 32px;
+}
+
+.stat-value {
+    font-size: 28px;
+    font-weight: 500;
+    color: #229ED9;
+    line-height: 1;
+    display: inline-block;
+
+}
+
+.stat-label {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.project-media {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.project-quote {
+    font-size: 20px;
+    line-height: 1.5;
+    color: #666;
+    padding: 16px 24px;
+    background: rgba(81, 57, 56, 0.03);
+    border-radius: 16px;
+    font-style: normal;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    transition: all 0.2s ease;
+    max-width: 800px;
+}
+
+.project-quote:hover {
+    background: rgba(81, 57, 56, 0.06);
+}
+
+.project-quote span {
+    flex-grow: 1;
+}
+
+.project-quote a {
+    color: #513938;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 12px;
+    background: rgba(81, 57, 56, 0.06);
+    border-radius: 32px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+}
+
+.project-quote a:hover {
+    background: rgba(81, 57, 56, 0.1);
+}
+
+.project-item[data-status="archive"] {
+    opacity: 0.8;
+}
+
+/* Game banner */
+.game-banner {
+    grid-column: 1 / -1;
+    height: 180px;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 0;
+}
+
+.game-banner-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #fff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(81, 57, 56, 0.1);
+}
+
+/* Small projects section */
+.small-projects {
+    max-width: 960px;
+    margin: 60px auto 0;
+}
+
+.small-projects-title {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 32px;
+    line-height: 1.2;
+    color: #513938;
+    letter-spacing: -0.01em;
+}
+
+.wavy-link {
+    color: #229ED9;
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    transition: opacity 0.2s ease;
+}
+
+.wavy-link:hover {
+    opacity: 0.8;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 20px;
+    }
+    
+    .profile {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 32px;
+    }
+
+    .profile-image img {
+        width: 220px;
+        height: 220px;
+    }
+
+    .profile-content {
+        padding-top: 0;
+    }
+
+    h1, .projects-title {
+        font-size: 32px;
+        margin-bottom: 24px;
+    }
+
+    h2 {
+        font-size: 32px;
+        margin-bottom: 24px;
+    }
+
+    .experience {
+        font-size: 24px;
+        max-width: 100%;
+        margin-bottom: 24px;
+    }
+
+    .tagline {
+        font-size: 24px;
+        margin-bottom: 48px;
+    }
+
+    .footer {
+        font-size: 20px;
+    }
+    
+    .projects,
+    .small-projects {
+        margin-top: 40px;
+    }
+    
+    .projects-list {
+        gap: 40px;
+    }
+    
+    .project-item {
+        padding-bottom: 40px;
+    }
+    
+    .project-quote {
+        font-size: 18px;
+        padding: 16px;
+    }
+    
+    .project-quote a {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+    
+    .stat-value {
+        font-size: 24px;
+    }
+    
+    .stat-label {
+        font-size: 14px;
+    }
+    
+    .small-projects-title {
+        font-size: 24px;
+        margin-bottom: 24px;
+    }
+    
+    .media-icon,
+    .quote-icon {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .wavy-link {
+        text-underline-offset: 3px;
+    }
+} 
