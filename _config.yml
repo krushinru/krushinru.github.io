@@ -6,8 +6,6 @@ baseurl: ""
 url: "https://krushin.me"
 permalink: /notes/:title
 
-# Настройки темы
-theme: jekyll-theme-personal
 
 navigation:
   - title: Проекты
