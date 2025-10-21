@@ -1,0 +1,45 @@
+.main-block {
+  padding: 84px 0 18px 0;
+}
+
+.main-block h1 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.1rem, 9vw, 6rem);
+  color: var(--white);
+  margin: 0 0 18px 0;
+  line-height: 1.03;
+  letter-spacing: -0.04em;
+  word-break: break-word;
+}
+
+.main-block .lead {
+  margin: 28px 0 10px 0;
+  font-size: 1.09rem;
+  font-weight: 300;
+  color: var(--white);
+  max-width: 720px;
+}
+
+.main-links {
+  margin: 26px 0 12px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  font-size: 1.09rem;
+  font-weight: 500;
+}
+
+.main-contact {
+  margin-top: 22px;
+  font-size: 1.10rem;
+  color: #ededed;
+  font-weight: 400;
+}
+
+.main-contact a {
+  color: var(--white);
+  font-weight: 500;
+  padding: 1px 2px;
+  transition: 0.1s;
+}

@@ -1,0 +1,98 @@
+---
+layout: default
+---
+
+<article class="project-page">
+  <header class="project-header">
+    {% if page.screenshot %}
+    <div class="project-screenshot">
+      <img src="{{ page.screenshot | relative_url }}" 
+           alt="{{ page.title }}" 
+           loading="lazy">
+    </div>
+    {% endif %}
+
+    <div class="project-header-content">
+      <div class="project-header-top">
+        <h1 class="project-title-page">{{ page.title }}</h1>
+        
+        {% if page.launch_year or page.close_year %}
+        <div class="project-years">
+          {% if page.launch_year %}
+            {{ page.launch_year }}
+            {% if page.close_year and page.close_year != page.launch_year %}
+              &nbsp;–&nbsp;{{ page.close_year }}
+            {% elsif page.close_year == nil or page.close_year == "" %}
+              &nbsp;–&nbsp;∞
+            {% endif %}
+          {% endif %}
+        </div>
+        {% endif %}
+      </div>
+      
+      {% if page.subtitle %}
+      <p class="project-subtitle">{{ page.subtitle }}</p>
+      {% endif %}
+
+      {% if page.url_link %}
+      <a href="{{ page.url_link }}" target="_blank" class="project-link-inline">
+        Перейти на сайт →
+      </a>
+      {% endif %}
+    </div>
+  </header>
+
+  {% if page.stats or page.roles %}
+  <aside class="project-meta-section">
+    {% if page.stats %}
+    <div class="project-stats-block">
+      <h3 class="stats-title">СТАТИСТИКА</h3>
+      <div class="stats-grid">
+        {% for stat in page.stats %}
+        <div class="stat-item">
+          <div class="stat-value">{{ stat.value }}</div>
+          <div class="stat-label">{{ stat.label }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if page.roles %}
+    <div class="project-details-block">
+      <div class="detail-row">
+        <span class="detail-label">ЧТО ДЕЛАЛ</span>
+        <div class="role-tags">
+          {% for role in page.roles %}
+          <span class="role-tag">{{ role }}</span>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </aside>
+  {% endif %}
+
+  <div class="project-body">
+    {{ content }}
+  </div>
+
+  {% if page.media %}
+  <aside class="project-media">
+    <h3 class="media-title">Медиа о проекте</h3>
+    <ul class="media-list">
+      {% for item in page.media %}
+      <li class="media-item">
+        <a href="{{ item.url }}" target="_blank" class="media-link">
+          <img src="https://www.google.com/s2/favicons?domain={{ item.url }}&sz=32" 
+               alt="{{ item.source }}" 
+               class="media-favicon"
+               loading="lazy">
+          <span class="media-text">{{ item.title }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </aside>
+  {% endif %}
+</article>

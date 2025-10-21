@@ -2,16 +2,49 @@
 layout: default
 ---
 
-<article class="post">
-  <h1>{{ page.title }}</h1>
+<article class="post-content">
+  <header class="post-header">
+    <h1 class="post-title-page">{{ page.title }}</h1>
+    <div class="post-meta">
+      {% if page.lead %}<p>{{ page.lead | markdownify }}</p>{% endif %}
+      {% if page.author %}
+      <span class="post-author">{{ page.author }}</span>
+      {% endif %}
+    </div>
+  </header>
+  <div class="post-body">
+    {% if page.cover %}
+    <div class="post-image">
+      <img src="{{ page.cover.image | relative_url }}" 
+          alt="{{ page.cover.alt | default: page.title }}" 
+          loading="lazy">
+      {% if page.cover.caption %}
+      <p class="post-image-caption">{{ page.cover.caption | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+      {% endif %}
+    </div>
+    {% endif %}
 
-  <div class="entry">
     {{ content }}
   </div>
-
-  <div class="date">
-    Written on {{ page.date | date: "%B %e, %Y" }}
+  <div class="post-tags">
+    {% assign now_sec     = site.time       | date: '%s' %}
+    {% assign post_sec    = page.date      | date: '%s' %}
+    {% assign diff_sec    = now_sec        | minus: post_sec %}
+    {% assign diff_days   = diff_sec       | divided_by: 86400 %}
+    {% if diff_days == 0 %}
+      <time datetime="{{ page.date | date_to_xmlschema }}">сегодня</time>
+    {% elsif diff_days < 30 %}
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ diff_days }} дн</time>
+    {% elsif diff_days < 365 %}
+      {% assign diff_months = diff_days | divided_by: 30 %}
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ diff_months }} мес</time>
+    {% else %}
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y' }}</time>
+    {% endif %}
+    {% if page.tags.size > 0 %}
+    {% for tag in page.tags %}
+    <a href="{{ tag }}" class="tag">{{ tag }}</a>
+    {% endfor %}
+    {% endif %}
   </div>
-
-  {% include disqus.html %}
 </article>

@@ -1,0 +1,90 @@
+---
+layout: page
+title: Проекты
+permalink: /projects/
+---
+
+<section class="section">
+  <div class="projects-filter-sentence">
+    <span class="sentence-text">Здесь собраны</span>
+    <div class="filter-dropdown">
+      <button class="dropdown-btn" id="statusDropdown">
+        <span class="dropdown-value">все</span>
+        <span class="dropdown-arrow">▼</span>
+      </button>
+      <div class="dropdown-menu" id="statusMenu">
+        <button class="dropdown-item active" data-status="all">все</button>
+        <button class="dropdown-item" data-status="active">текущие</button>
+        <button class="dropdown-item" data-status="closed">закрытые</button>
+      </div>
+    </div>
+    <span class="sentence-text">проекты, которые я</span>
+    {% assign all_roles = "" | split: "" %}
+    {% for project in site.projects %}
+      {% for role in project.roles %}
+        {% unless all_roles contains role %}
+          {% assign all_roles = all_roles | push: role %}
+        {% endunless %}
+      {% endfor %}
+    {% endfor %}
+    {% for role in all_roles %}
+      <span class="sentence-role" data-role="{{ role | downcase }}">{{ role | downcase }}</span>{% if forloop.last == false %}{% if forloop.rindex == 2 %} или {% else %}, {% endif %}{% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="container-fluid px-0">
+    {% assign projects = site.projects | sort: 'launch_year' | reverse %}
+    {% assign skip = false %}
+    {% for project in projects %}
+      {% if skip %}
+        {% assign skip = false %}
+        {% continue %}
+      {% endif %}
+      {% assign has_pic = project.screenshot or project.icon %}
+      {% assign next_project = projects[forloop.index] %}
+      {% assign has_next = next_project != nil %}
+      {% assign next_has_pic = has_next and (next_project.screenshot or next_project.icon) %}
+      {% assign one_in_row = has_next == false %}
+      
+      <div class="row project-row flex-nowrap">
+        {% if one_in_row %}
+          <div class="col-lg-12 col-12 px-0">
+            {% include_relative _project_card.html project=project feature=true wide=true %}
+          </div>
+        {% elsif has_pic and next_has_pic %}
+          <div class="col-lg-6 col-12 px-0 border-end border-2">
+            {% include_relative _project_card.html project=project feature=true %}
+          </div>
+          <div class="col-lg-6 col-12 px-0">
+            {% include_relative _project_card.html project=next_project feature=true %}
+          </div>
+          {% assign skip = true %}
+        {% elsif has_pic %}
+          <div class="col-lg-8 col-12 px-0 border-end border-2">
+            {% include_relative _project_card.html project=project feature=true %}
+          </div>
+          <div class="col-lg-4 col-12 px-0">
+            {% include_relative _project_card.html project=next_project %}
+          </div>
+          {% assign skip = true %}
+        {% elsif next_has_pic %}
+          <div class="col-lg-4 col-12 px-0 border-end border-2">
+            {% include_relative _project_card.html project=project %}
+          </div>
+          <div class="col-lg-8 col-12 px-0">
+            {% include_relative _project_card.html project=next_project feature=true %}
+          </div>
+          {% assign skip = true %}
+        {% else %}
+          <div class="col-lg-6 col-12 px-0 border-end border-2">
+            {% include_relative _project_card.html project=project %}
+          </div>
+          <div class="col-lg-6 col-12 px-0">
+            {% include_relative _project_card.html project=next_project %}
+          </div>
+          {% assign skip = true %}
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</section>

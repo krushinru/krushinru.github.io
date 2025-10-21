@@ -1,0 +1,115 @@
+---
+layout: default
+title: Страница не найдена
+permalink: /404.html
+---
+<style>
+/* 404 Error Page */
+.error-page {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.error-content {
+  max-width: 600px;
+  text-align: center;
+}
+
+.error-code {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 8rem;
+  font-weight: 700;
+  color: var(--white);
+  margin: 0 0 16px 0;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  opacity: 0.3;
+}
+
+.error-title {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--white);
+  margin: 0 0 16px 0;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.error-desc {
+  font-size: 1rem;
+  color: var(--gray-4);
+  line-height: 1.6;
+  margin: 0 0 32px 0;
+}
+
+.error-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.error-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--white);
+  border: 1px solid var(--gray-2);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.error-link:hover {
+  border-color: var(--gray-3);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+
+
+/* Mobile */
+@media (max-width: 768px) {
+  .error-code {
+    font-size: 6rem;
+  }
+  
+  .error-title {
+    font-size: 1.5rem;
+  }
+  
+  .error-desc {
+    font-size: 0.9rem;
+  }
+  
+  .error-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .error-link {
+    width: 100%;
+    justify-content: center;
+  }
+}
+</style>
+<section class="error-page">
+  <div class="error-content">
+    <h1 class="error-code">404</h1>
+    <h2 class="error-title">Страница не найдена</h2>
+    <p class="error-desc">
+      Возможно, вы перешли по устаревшей ссылке или страница была удалена.
+    </p>
+    <div class="error-actions">
+      <a href="/" class="error-link">На главную</a>
+      <a href="/projects/" class="error-link">Проекты</a>
+      <a href="/notes/" class="error-link">Заметки</a>
+    </div>
+  </div>
+</section>
+
