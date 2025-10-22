@@ -514,7 +514,8 @@ footer {
 
 .dropdown-btn {
   font-family: inherit;
-  font-size: inherit;
+  font-size: 0.95rem; /* Добавить, как у sentence-role */
+  line-height: 1.4; /* Добавить для консистентности */
   font-weight: 500;
   color: var(--white);
   background: transparent;
@@ -526,6 +527,7 @@ footer {
   position: relative;
   transition: all 0.2s ease;
 }
+
 
 .dropdown-btn:hover {
   background: var(--gray-1);
@@ -592,7 +594,8 @@ footer {
   margin: 0 2px;
   border: 1px solid var(--gray-2);
   border-radius: 4px;
-  font-size: 0.95rem;
+  font-size: 0.95rem; /* Добавить, как у sentence-role */
+  line-height: 1.4; /* Добавить для консистентности */
   color: var(--white);
   cursor: pointer;
   transition: all 0.2s ease;
@@ -607,39 +610,35 @@ footer {
 
 
 /* ================================
-   PROJECTS EDITORIAL GRID
+   PROJECTS EDITORIAL GRID (ШЕСТИКОЛОНОЧНЫЙ)
    ================================ */
 
-/* ================================
-   PROJECTS EDITORIAL GRID
-   ================================ */
-
-/* Газетный grid */
 .projects-editorial-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 0;
   border-top: 1px solid var(--gray-2);
+  border-left: 1px solid var(--gray-2);
   margin-top: 32px;
   grid-auto-flow: dense;
-  border-left: 1px solid var(--gray-2);
 }
 
 .project-editorial-card {
   border-right: 1px solid var(--gray-2);
   border-bottom: 1px solid var(--gray-2);
-}
-
-.project-editorial-card:nth-child(3n) {
-  border-right: none;
+  display: block;
 }
 
 .project-editorial-link {
-  display: block;
+  display: flex;
+  flex-direction: column;
   padding: 40px 32px;
   transition: background 0.2s ease;
   border-bottom: none !important;
   height: 100%;
+  text-decoration: none;
+  gap: 16px;
+  min-height: 400px;
 }
 
 .project-editorial-link:hover {
@@ -647,385 +646,101 @@ footer {
 }
 
 /* ================================
-   HERO CARD (Full Width)
+   ЭЛЕМЕНТЫ КАРТОЧКИ
    ================================ */
 
-.project-hero {
-  grid-column: span 3;
-  border-right: none;
+.project-editorial-image {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--gray-2);
+  margin: 0 0 8px 0;
+  order: -1;
 }
 
-.project-hero-header {
+.project-editorial-app-icon {
+ width: 80px;
+ height: 80px;
+ border-radius: 26.67%;
+ overflow: hidden;
+ border: 1px solid var(--gray-2);
+ margin: 0 0 8px 0;
+ order: -1;
+}
+
+.project-editorial-image img, .project-editorial-app-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-editorial-header {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  gap: 24px;
-  margin-bottom: 24px;
+  gap: 16px;
   flex-wrap: wrap;
 }
 
-.project-hero-title {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 2.8rem;
-  font-weight: 700;
-  color: var(--white);
-  margin: 0;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  flex: 1;
-  min-width: 200px;
-}
-
-.project-hero-years {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 1.1rem;
-  font-weight: 300;
-  color: var(--gray-4);
-  white-space: nowrap;
-  align-self: flex-start;
-}
-
-.project-hero-image {
-  width: 100%;
-  height: 400px;
-  overflow: hidden;
-  margin-bottom: 24px;
-  border: 1px solid var(--gray-2);
-  border-radius: 8px;
-}
-
-.project-hero-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.project-hero-subtitle {
-  font-size: 1.1rem;
-  color: var(--white);
-  line-height: 1.7;
-  margin-bottom: 0;
-  column-count: 2;
-  column-gap: 40px;
-}
-
-/* ================================
-   FEATURE CARD (2 Columns)
-   ================================ */
-
-.project-feature {
-  grid-column: span 2;
-}
-
-.project-feature-inner {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.project-feature-icon,
-.project-feature-screenshot {
-  flex-shrink: 0;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid var(--gray-2);
-  margin-bottom: 20px;
-}
-
-.project-feature-icon {
-  width: 100px;
-  height: 100px;
-}
-
-.project-feature-screenshot {
-  width: 100%;
-  height: 200px;
-}
-
-.project-feature-icon img,
-.project-feature-screenshot img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.project-feature-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.project-feature-header {
-  margin: 0;
-}
-
-.project-feature-title {
+.project-editorial-title {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 2rem;
   font-weight: 700;
   color: var(--white);
-  margin: 0 0 8px 0;
+  margin: 0;
   line-height: 1.1;
   letter-spacing: -0.02em;
+  flex: 1;
+  min-width: 150px;
 }
 
-.project-feature-years {
+.project-editorial-years {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1rem;
   font-weight: 300;
   color: var(--gray-4);
-  display: block;
+  white-space: nowrap;
 }
 
-.project-feature-stats {
-  display: flex;
-  gap: 48px;
-  flex-wrap: wrap;
+.project-editorial-desc {
   margin: 0;
 }
 
-.feature-stat {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.feature-stat-value {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 2.8rem;
-  font-weight: 700;
-  color: var(--white);
-  line-height: 1;
-  letter-spacing: -0.03em;
-}
-
-.feature-stat-label {
-  font-size: 0.85rem;
-  color: var(--gray-4);
-  font-weight: 400;
-  line-height: 1.4;
-  max-width: 200px;
-}
-
-.project-feature-quote {
-  margin: 0;
-}
-
-.project-feature-quote p {
-  font-size: 1.15rem;
-  font-style: italic;
-  color: var(--white);
-  line-height: 1.6;
-  margin: 0 0 8px 0;
-}
-
-.project-feature-quote cite {
-  font-size: 0.85rem;
-  color: var(--gray-4);
-  font-style: normal;
-  font-weight: 400;
-}
-
-.project-feature-desc {
+.project-editorial-desc p {
   font-size: 0.95rem;
   color: var(--white);
   line-height: 1.6;
   margin: 0;
 }
 
-/* ================================
-   COMPACT CARD (1 Column)
-   ================================ */
-
-.project-compact {
-  grid-column: span 1;
+.project-editorial-spacer {
+  flex: 1;
 }
 
-.project-compact-header {
-  margin-bottom: 12px;
-}
-
-.project-compact-title {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--white);
-  margin: 0 0 8px 0;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-}
-
-.project-compact-years {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: var(--gray-4);
-  display: block;
-}
-
-.project-compact-desc {
-  font-size: 0.9rem;
-  color: var(--white);
-  line-height: 1.5;
-  margin-bottom: 0;
-}
-
-/* ================================
-   RESPONSIVE
-   ================================ */
-
-@media (max-width: 1024px) {
-  .projects-editorial-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .project-hero {
-    grid-column: span 2;
-  }
-  
-  .project-feature {
-    grid-column: span 2;
-  }
-  
-  .project-compact {
-    grid-column: span 1;
-  }
-  
-  .project-editorial-card:nth-child(3n) {
-    border-right: 1px solid var(--gray-2);
-  }
-  
-  .project-editorial-card:nth-child(2n) {
-    border-right: none;
-  }
-  
-  .project-hero-subtitle {
-    column-count: 1;
-  }
-  
-  .project-feature-stats {
-    gap: 32px;
-  }
-  
-  .project-hero-title {
-    font-size: 2.4rem;
-  }
-  
-  .project-feature-title {
-    font-size: 1.8rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .projects-editorial-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .project-hero,
-  .project-feature,
-  .project-compact {
-    grid-column: span 1;
-  }
-  
-  .project-editorial-link {
-    padding: 32px 24px;
-  }
-  
-  .project-hero-title {
-    font-size: 2rem;
-  }
-  
-  .project-hero-header {
-    flex-direction: column;
-    gap: 8px;
-    align-items: flex-start;
-  }
-  
-  .project-hero-years {
-    align-self: auto;
-  }
-  
-  .project-hero-image {
-    height: 240px;
-  }
-  
-  .project-feature-screenshot {
-    height: 180px;
-  }
-  
-  .project-feature-icon {
-    width: 80px;
-    height: 80px;
-  }
-  
-  .project-feature-title {
-    font-size: 1.6rem;
-  }
-  
-  .feature-stat-value {
-    font-size: 2.2rem;
-  }
-  
-  .project-feature-stats {
-    gap: 24px;
-  }
-  
-  .project-compact-title {
-    font-size: 1.2rem;
-  }
-}
-
-/* Feature Media Link */
-.project-feature-media {
-  margin: 0;
-}
-
-.project-feature-media-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  border: 1px solid var(--gray-2);
-  border-radius: 6px;
-  transition: all 0.2s ease;
-  text-decoration: none;
-  border-bottom: 1px solid var(--gray-2) !important;
-}
-
-.project-feature-media-link:hover {
-  border-color: var(--gray-3);
-  background: rgba(255, 255, 255, 0.03);
-}
-
-.project-feature-media-favicon {
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-}
-
-.project-feature-media-text {
-  font-size: 0.9rem;
-  color: var(--white);
-  line-height: 1.4;
-}
-
-/* Compact Stat (1 факт) */
-.project-compact-content {
+.project-editorial-bottom {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  height: 100%;
-}
-
-.project-compact-stat {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  gap: 16px;
   margin-top: auto;
 }
 
-.compact-stat-value {
+.project-editorial-stats {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+
+
+.editorial-stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.editorial-stat-value {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 2.2rem;
   font-weight: 700;
@@ -1034,36 +749,198 @@ footer {
   letter-spacing: -0.02em;
 }
 
-.compact-stat-label {
+.editorial-stat-label {
   font-size: 0.8rem;
   color: var(--gray-4);
   font-weight: 400;
   line-height: 1.3;
 }
 
-/* Обновляем compact header */
-.project-compact-header {
+.project-editorial-quote {
   margin: 0;
 }
 
-.project-compact-desc {
+.project-editorial-quote blockquote {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.project-editorial-quote p {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1.6;
+  margin: 0 0 8px 0;
+}
+
+.project-editorial-quote cite {
+  font-size: 0.85rem;
+  color: var(--gray-4);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.project-editorial-media {
+  margin: 0;
+}
+
+.editorial-media-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--gray-2);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.project-editorial-link:hover .editorial-media-link {
+  border-color: var(--gray-3);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.editorial-media-favicon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.editorial-media-text {
   font-size: 0.9rem;
   color: var(--white);
-  line-height: 1.5;
-  margin: 0;
+  line-height: 1.4;
 }
 
-/* Mobile adjustments */
+/* ================================
+   ПАРНАЯ ЛОГИКА — ШИРИНА (из 6 колонок)
+   ================================ */
+
+/* 4 из 6 = 2/3 (карточка с картинкой) */
+.project-editorial-card.span-4 {
+  grid-column: span 4;
+}
+
+/* 3 из 6 = 1/2 (карточка без картинки, но равноправная) */
+.project-editorial-card.span-3 {
+  grid-column: span 3;
+}
+
+/* 2 из 6 = 1/3 (маленькая карточка) */
+.project-editorial-card.span-2 {
+  grid-column: span 2;
+}
+
+/* 6 из 6 = полная ширина */
+.project-editorial-card.span-6,
+.project-editorial-card.single {
+  grid-column: span 6;
+}
+
+/* ================================
+   ПАРНАЯ ЛОГИКА — СКРЫТИЕ ЭЛЕМЕНТОВ
+   ================================ */
+
+.project-editorial-card.hide-image .project-editorial-image {
+  display: none !important;
+}
+
+.project-editorial-card.hide-facts .project-editorial-stats {
+  display: none !important;
+}
+
+.project-editorial-card.hide-quote .project-editorial-quote {
+  display: none !important;
+}
+
+.project-editorial-card.hide-media .project-editorial-media {
+  display: none !important;
+}
+
+/* На маленькой карточке (span-2) показываем только 1 факт */
+.project-editorial-card.span-2 .project-editorial-stats .editorial-stat-item:not(:first-child) {
+  display: none;
+}
+
+/* ================================
+   МОБИЛЬНАЯ ВЕРСИЯ
+   ================================ */
+
+/* В мобильной секции заменить на: */
 @media (max-width: 768px) {
-  .compact-stat-value {
+  .projects-editorial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* На мобилке все карточки занимают полную ширину */
+  .project-editorial-card,
+  .project-editorial-card.span-2,
+  .project-editorial-card.span-3,
+  .project-editorial-card.span-4,
+  .project-editorial-card.span-6,
+  .project-editorial-card.single {
+    grid-column: span 1 !important;
+  }
+
+  /* Показываем скрытые элементы на мобилке (кроме цитат с hide-quote) */
+  .project-editorial-card.hide-image .project-editorial-image,
+  .project-editorial-card.hide-facts .project-editorial-stats,
+  .project-editorial-card.hide-media .project-editorial-media {
+    display: flex !important;
+  }
+
+  .project-editorial-image {
+    display: block !important;
+  }
+
+  /* Показываем все факты на мобилке */
+  .project-editorial-card.span-2 .project-editorial-stats .editorial-stat-item:not(:first-child) {
+    display: flex !important;
+  }
+
+  .project-editorial-link {
+    padding: 32px 24px;
+    min-height: auto;
+  }
+
+  .project-editorial-title {
+    font-size: 1.6rem;
+  }
+
+  .project-editorial-header {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .project-editorial-image {
+    height: 180px;
+  }
+
+  .editorial-stat-value {
     font-size: 1.8rem;
   }
-  
-  .project-feature-media-link {
-    padding: 6px 10px;
-  }
-  
-  .project-feature-media-text {
-    font-size: 0.85rem;
+
+  .project-editorial-quote p {
+    font-size: 1rem;
   }
 }
+
+@media (max-width: 480px) {
+  .project-editorial-link {
+    padding: 24px 20px;
+  }
+
+  .project-editorial-title {
+    font-size: 1.4rem;
+  }
+
+  .editorial-stat-value {
+    font-size: 1.5rem;
+  }
+
+  .project-editorial-stats {
+    gap: 24px;
+  }
+}
+

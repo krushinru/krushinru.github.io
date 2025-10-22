@@ -1,0 +1,271 @@
+{% comment %}
+  Параметры:
+  - show_filter: true/false (показывать фильтры)
+  - limit: число проектов (nil = все)
+{% endcomment %}
+
+{% assign projects_limit = include.limit %}
+
+{% unless include.show_filter == "false" %}
+<div class="projects-filter-sentence">
+  <span class="sentence-text">Здесь собраны</span>
+  <div class="filter-dropdown">
+    <button class="dropdown-btn" id="statusDropdown">
+      <span class="dropdown-value">все</span>
+      <span class="dropdown-arrow">▾</span>
+    </button>
+    <div class="dropdown-menu" id="statusMenu">
+      <button class="dropdown-item active" data-status="all">все</button>
+      <button class="dropdown-item" data-status="active">активные</button>
+      <button class="dropdown-item" data-status="closed">закрытые</button>
+    </div>
+  </div>
+  <span class="sentence-text"> проекты, где я</span>
+  
+  {% assign all_roles = "" | split: "" %}
+  {% for project in site.projects %}
+    {% for role in project.roles %}
+      {% unless all_roles contains role %}
+        {% assign all_roles = all_roles | push: role %}
+      {% endunless %}
+    {% endfor %}
+  {% endfor %}
+  
+  {% for role in all_roles %}
+    <span class="sentence-role" data-role="{{ role | downcase }}">{{ role | downcase }}</span>{% if forloop.last == false %}{% if forloop.rindex == 2 %} или{% else %},{% endif %}{% endif %}
+  {% endfor %}
+</div>
+{% endunless %}
+
+<div class="projects-editorial-grid">
+  {% assign projects = site.projects | sort: "launch_year" | reverse %}
+  
+  {% if projects_limit %}
+    {% assign projects = projects | slice: 0, projects_limit %}
+  {% endif %}
+  
+  {% for project in projects %}
+    {% assign has_screenshot = false %}
+    {% if project.screenshot and project.screenshot != "" %}
+      {% assign has_screenshot = true %}
+    {% endif %}
+    
+    {% assign has_icon = false %}
+    {% if project.icon and project.icon != "" %}
+      {% assign has_icon = true %}
+    {% endif %}
+    
+    {% assign has_stats = false %}
+    {% if project.stats and project.stats.size > 0 %}
+      {% assign has_stats = true %}
+    {% endif %}
+    
+    {% assign has_media = false %}
+    {% if project.media and project.media.size > 0 %}
+      {% assign has_media = true %}
+    {% endif %}
+    
+    <article class="project-editorial-card"
+             data-status="{% if project.close_year and project.close_year != "" %}closed{% else %}active{% endif %}"
+             data-roles="{{ project.roles | join: ',' | downcase }}"
+             data-has-image="{% if has_screenshot or has_icon %}true{% else %}false{% endif %}">
+      
+      <a href="{{ project.url | relative_url }}" class="project-editorial-link">
+        
+        {% if has_screenshot %}
+        <div class="project-editorial-image">
+          <img src="{{ project.screenshot | relative_url }}" 
+               alt="{{ project.title }}"
+               loading="lazy">
+        </div>
+        {% elsif has_icon %}
+        <div class="project-editorial-app-icon">
+          <img src="{{ project.icon | relative_url }}" 
+               alt="{{ project.title }}"
+               loading="lazy">
+        </div>
+        {% endif %}
+
+        <div class="project-editorial-header">
+          <h3 class="project-editorial-title">{{ project.title }}</h3>
+          {% if project.launch_year %}
+          <span class="project-editorial-years">
+            {{- project.launch_year -}}
+            {%- if project.close_year and project.close_year != project.launch_year -%}
+              &nbsp;–&nbsp;{{- project.close_year -}}
+            {%- elsif project.close_year == nil or project.close_year == "" -%}
+              &nbsp;–&nbsp;∞
+            {%- endif -%}
+          </span>
+          {% endif %}
+        </div>
+
+        {% if project.subtitle %}
+        <div class="project-editorial-desc">
+          <p>{{ project.subtitle }}</p>
+        </div>
+        {% endif %}
+
+        <div class="project-editorial-spacer"></div>
+
+        <div class="project-editorial-bottom">
+          {% if has_stats %}
+          <div class="project-editorial-stats">
+            {% for stat in project.stats limit:2 %}
+            <div class="editorial-stat-item">
+              <div class="editorial-stat-value">{{ stat.value }}</div>
+              <div class="editorial-stat-label">{{ stat.label }}</div>
+            </div>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          {% if has_media %}
+          <div class="project-editorial-media">
+            <div class="editorial-media-link">
+              <img src="https://www.google.com/s2/favicons?domain={{ project.media[0].url }}&sz=32" 
+                   alt="{{ project.media[0].source }}"
+                   class="editorial-media-favicon"
+                   loading="lazy">
+              <span class="editorial-media-text">{{ project.media[0].title }}</span>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+
+      </a>
+    </article>
+  {% endfor %}
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const statusDropdown = document.getElementById('statusDropdown');
+  const statusMenu = document.getElementById('statusMenu');
+  const projectCards = document.querySelectorAll('.project-editorial-card');
+  const roleSpans = document.querySelectorAll('.sentence-role');
+  
+  if (!projectCards.length) return;
+  
+  let currentStatus = 'all';
+  let activeRoles = new Set();
+
+  if (statusDropdown && statusMenu) {
+    statusDropdown.addEventListener('click', function(e) {
+      e.stopPropagation();
+      statusMenu.classList.toggle('active');
+    });
+
+    document.addEventListener('click', function() {
+      statusMenu.classList.remove('active');
+    });
+
+    statusMenu.querySelectorAll('.dropdown-item').forEach(item => {
+      item.addEventListener('click', function(e) {
+        e.stopPropagation();
+        currentStatus = this.dataset.status;
+        
+        statusMenu.querySelectorAll('.dropdown-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+        
+        document.querySelector('.dropdown-value').textContent = this.textContent;
+        statusMenu.classList.remove('active');
+        
+        filterProjects();
+      });
+    });
+  }
+
+  roleSpans.forEach(span => {
+    span.addEventListener('click', function() {
+      const role = this.dataset.role;
+      
+      if (activeRoles.has(role)) {
+        activeRoles.delete(role);
+        this.classList.remove('active');
+      } else {
+        activeRoles.add(role);
+        this.classList.add('active');
+      }
+      
+      filterProjects();
+    });
+  });
+
+  function filterProjects() {
+    const visibleCards = [];
+    
+    projectCards.forEach(card => {
+      const cardStatus = card.dataset.status;
+      const cardRoles = card.dataset.roles.toLowerCase().split(',');
+      
+      let matchStatus = currentStatus === 'all' || cardStatus === currentStatus;
+      let matchRoles = activeRoles.size === 0 || [...activeRoles].some(role => cardRoles.includes(role));
+      
+      if (matchStatus && matchRoles) {
+        card.style.display = '';
+        visibleCards.push(card);
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    
+    applyPairLogic(visibleCards);
+  }
+
+  function applyPairLogic(cards) {
+    cards.forEach(card => {
+      card.classList.remove(
+        'pair-left', 'pair-right', 'single',
+        'span-2', 'span-3', 'span-4', 'span-6',
+        'hide-image', 'hide-facts', 'hide-quote', 'hide-media'
+      );
+    });
+
+    for (let i = 0; i < cards.length; i += 2) {
+      const leftCard = cards[i];
+      const rightCard = cards[i + 1];
+
+      if (!rightCard) {
+        leftCard.classList.add('single', 'span-6');
+        continue;
+      }
+
+      const leftHasImage = leftCard.querySelector('.project-editorial-image') !== null;
+      const rightHasImage = rightCard.querySelector('.project-editorial-image') !== null;
+      const leftHasFacts = leftCard.querySelector('.project-editorial-stats') !== null;
+      const rightHasFacts = rightCard.querySelector('.project-editorial-stats') !== null;
+
+      leftCard.classList.add('pair-left');
+      rightCard.classList.add('pair-right');
+
+      if (leftHasImage && !rightHasImage) {
+        leftCard.classList.add('span-4', 'hide-facts');
+        rightCard.classList.add('span-2', 'hide-image', 'hide-media');
+        
+      } else if (!leftHasImage && rightHasImage) {
+        leftCard.classList.add('span-2', 'hide-media');
+        rightCard.classList.add('span-4', 'hide-facts');
+        
+      } else if (leftHasImage && rightHasImage) {
+        leftCard.classList.add('span-4', 'hide-facts');
+        rightCard.classList.add('span-2', 'hide-image', 'hide-media');
+        
+      } else {
+        leftCard.classList.add('span-3');
+        rightCard.classList.add('span-3');
+        
+        if (leftHasFacts) {
+          leftCard.classList.add('hide-media');
+        }
+        if (rightHasFacts) {
+          rightCard.classList.add('hide-media');
+        }
+      }
+    }
+  }
+
+  filterProjects();
+});
+</script>
+
