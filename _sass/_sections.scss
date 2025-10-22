@@ -514,7 +514,7 @@ footer {
 
 .dropdown-btn {
   font-family: inherit;
-  font-size: 1rem; /* Добавить, как у sentence-role */
+  font-size: 1.1rem; /* Добавить, как у sentence-role */
   line-height: 1.4; /* Добавить для консистентности */
   font-weight: 500;
   color: var(--white);
@@ -559,7 +559,7 @@ footer {
   display: block;
   width: 100%;
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   color: var(--gray-4);
   background: transparent;
   border: none;
@@ -594,7 +594,7 @@ footer {
   margin: 0 2px;
   border: 1px solid var(--gray-2);
   border-radius: 4px;
-  font-size: 1rem; /* Добавить, как у sentence-role */
+  font-size: 1.1rem; /* Добавить, как у sentence-role */
   line-height: 1.4; /* Добавить для консистентности */
   color: var(--white);
   cursor: pointer;
