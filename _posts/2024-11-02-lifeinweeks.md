@@ -3,7 +3,7 @@ layout: post
 title: Твоя жизнь в неделях
 date: 2024-11-02
 lead: 90 лет это 4680 недель. Каждая клетка ниже — одна неделя твоей жизни. Визуализация вдохновлена [статьей](https://waitbutwhy.com/2014/05/life-weeks.html) Тима Урбана
-
+hide_meta: true
 ---
 
 <html>
@@ -35,15 +35,6 @@ lead: 90 лет это 4680 недель. Каждая клетка ниже —
             width: 100%;
         }
 
-        .landing h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 600;
-            letter-spacing: -0.04em;
-            line-height: 1.05;
-            margin-bottom: 80px;
-            text-align: center;
-        }
 
         .date-picker-wrapper {
             position: relative;
@@ -84,7 +75,7 @@ lead: 90 лет это 4680 недель. Каждая клетка ниже —
             appearance: none;
             -webkit-appearance: none;
             -moz-appearance: none;
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: clamp(1.2rem, 3vw, 1.6rem);
             font-weight: 500;
             letter-spacing: -0.01em;
@@ -129,7 +120,7 @@ lead: 90 лет это 4680 недель. Каждая клетка ниже —
         }
 
         .landing button {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: sans-serif;
             font-size: 16px;
             font-weight: 500;
             letter-spacing: 0.02em;
@@ -158,33 +149,7 @@ lead: 90 лет это 4680 недель. Каждая клетка ниже —
             transform: scale(0.98);
         }
 
-        h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 600;
-            letter-spacing: -0.04em;
-            line-height: 1.1;
-            margin-bottom: 24px;
-        }
-
-        .subtitle {
-            font-size: 18px;
-            color: var(--gray-4);
-            font-weight: 300;
-            line-height: 1.7;
-            max-width: 540px;
-        }
-
-        .subtitle a {
-            color: var(--fg);
-            text-decoration: none;
-            border-bottom: 1px solid var(--gray-3);
-            transition: border-color 0.2s ease;
-        }
-
-        .subtitle a:hover {
-            border-bottom-color: var(--fg);
-        }
+ 
 
         /* Grid Section */
         .grid-section {
@@ -208,7 +173,7 @@ lead: 90 лет это 4680 недель. Каждая клетка ниже —
         }
 
         .grid-title {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: sans-serif;
             font-size: 20px;
             margin-top: 0 !important;
             font-weight: 500;
@@ -292,7 +257,7 @@ lead: 90 лет это 4680 недель. Каждая клетка ниже —
         }
 
         .stat-value {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 36px;
             font-weight: 600;
             letter-spacing: -0.02em;

@@ -26,6 +26,8 @@ layout: default
 
     {{ content }}
   </div>
+
+  {% unless page.hide_meta %}
   <div class="post-tags">
     {% assign now_sec     = site.time       | date: '%s' %}
     {% assign post_sec    = page.date      | date: '%s' %}
@@ -47,4 +49,5 @@ layout: default
     {% endfor %}
     {% endif %}
   </div>
+  {% endunless %}
 </article>
