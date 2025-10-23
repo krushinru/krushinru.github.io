@@ -13,10 +13,10 @@ permalink: /notes/
     <div class="post-lead">{{ post.lead | markdownify }}</div>
     {% endif %}
     
-    {% if post.cover %}
+    {% if post.image %}
     <div class="post-image">
-      <img src="{{ post.cover.image | relative_url }}" 
-           alt="{{ post.cover.alt | default: post.title }}" 
+      <img src="{{ post.image | relative_url }}" 
+           alt="{{ post.title }}" 
            loading="lazy">
     </div>
     {% endif %}

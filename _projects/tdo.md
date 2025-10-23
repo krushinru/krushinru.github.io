@@ -1,7 +1,7 @@
 ---
 layout: project
 title: T-Do
-subtitle: Один из крупнейших сервисов для доступа к Telegram в России
+description: Один из крупнейших сервисов для доступа к Telegram в России
 url_link: https://t-do.ru
 launch_year: 2018
 close_year: 2021

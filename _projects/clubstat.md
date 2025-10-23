@@ -1,8 +1,8 @@
 ---
 layout: project
 title: ClubStat
-subtitle: Первый в мире сервис рейтинга, статистики и аналитики Clubhouse
-screenshot: /images/projects/clubstat-screenshot.png
+description: Первый в мире сервис рейтинга, статистики и аналитики Clubhouse
+image: /images/projects/clubstat-screenshot.png
 url_link: https://clubstat.org
 launch_year: 2021
 close_year: 2021

@@ -13,13 +13,13 @@ layout: default
     </div>
   </header>
   <div class="post-body">
-    {% if page.cover %}
+    {% if page.image %}
     <div class="post-image">
-      <img src="{{ page.cover.image | relative_url }}" 
-          alt="{{ page.cover.alt | default: page.title }}" 
+      <img src="{{ page.image | relative_url }}" 
+          alt="{{ page.title }}" 
           loading="lazy">
-      {% if page.cover.caption %}
-      <p class="post-image-caption">{{ page.cover.caption | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+      {% if page.image_caption %}
+      <p class="post-image-caption">{{ page.image_caption | markdownify | remove: '<p>' | remove: '</p>' }}</p>
       {% endif %}
     </div>
     {% endif %}

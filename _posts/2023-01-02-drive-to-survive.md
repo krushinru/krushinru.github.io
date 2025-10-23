@@ -3,10 +3,9 @@ layout: post
 title: Как Drive To Survive изменил Формулу-1
 date: 2023-01-02
 lead: Выжимка из [рассылки](https://mobile.twitter.com/nathanbaugh27/status/1584176579885731841) и треда Натана Бау про то, как документальный сериал на Netflix изменил отношение к королевским гонкам в США и остальном мире
-cover:
-  image: https://static.krushin.me/uploads/1271822de276.jpg
-  alt: Как Drive To Survive изменил Формулу-1
-  caption: "Фото: [gustavo Campos](https://unsplash.com/@gustavocpo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) / [Unsplash](https://unsplash.com/s/photos/formula-one?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)"
+description: Как документальный сериал на Netflix изменил отношение к королевским гонкам в США и остальном мире
+image: https://static.krushin.me/uploads/1271822de276.jpg
+image_caption: "Фото: [gustavo Campos](https://unsplash.com/@gustavocpo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) / [Unsplash](https://unsplash.com/s/photos/formula-one?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)"
 ---
 
 Для того, чтобы оценить влияние DTS необходимо вспомнить в каком состоянии в конце 2016 года Формулу-1 приобрела Liberty Media:

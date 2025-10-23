@@ -4,9 +4,9 @@ layout: default
 
 <article class="project-page">
   <header class="project-header">
-    {% if page.screenshot %}
+    {% if page.image and page.image_type!="icon" %}
     <div class="project-screenshot">
-      <img src="{{ page.screenshot | relative_url }}" 
+      <img src="{{ page.image | relative_url }}" 
            alt="{{ page.title }}" 
            loading="lazy">
     </div>
@@ -30,8 +30,8 @@ layout: default
         {% endif %}
       </div>
       
-      {% if page.subtitle %}
-      <p class="project-subtitle">{{ page.subtitle }}</p>
+      {% if page.description %}
+      <p class="project-description">{{ page.description }}</p>
       {% endif %}
 
       {% if page.url_link %}

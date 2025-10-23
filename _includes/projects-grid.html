@@ -46,13 +46,13 @@
   
   {% for project in projects %}
     {% assign has_screenshot = false %}
-    {% if project.screenshot and project.screenshot != "" %}
-      {% assign has_screenshot = true %}
-    {% endif %}
-    
     {% assign has_icon = false %}
-    {% if project.icon and project.icon != "" %}
+    {% if project.image and project.image != "" %}
+     {% if project.image_type == "icon" %}
       {% assign has_icon = true %}
+     {% else %}
+      {% assign has_screenshot = true %}
+     {% endif %}
     {% endif %}
     
     {% assign has_stats = false %}
@@ -74,13 +74,13 @@
         
         {% if has_screenshot %}
         <div class="project-editorial-image">
-          <img src="{{ project.screenshot | relative_url }}" 
+          <img src="{{ project.image | relative_url }}" 
                alt="{{ project.title }}"
                loading="lazy">
         </div>
         {% elsif has_icon %}
         <div class="project-editorial-app-icon">
-          <img src="{{ project.icon | relative_url }}" 
+          <img src="{{ project.image | relative_url }}" 
                alt="{{ project.title }}"
                loading="lazy">
         </div>

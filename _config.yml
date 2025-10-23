@@ -5,7 +5,8 @@ email: akrushin@gmail.com
 baseurl: ""
 url: "https://krushin.me"
 permalink: /notes/:title
-
+locale: ru_RU
+logo: /images/logo.jpg
 
 navigation:
   - title: Проекты
