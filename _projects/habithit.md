@@ -2,7 +2,7 @@
 layout: project
 title: HabitHit
 description: Трекер привычек в Telegram
-image: /images/projects/habithit-screenshot.png
+image: https://habithit.org/images/logo.png
 image_type: icon
 url_link: https://habithit.org
 launch_year: 2025
