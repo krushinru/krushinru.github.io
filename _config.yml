@@ -13,20 +13,11 @@ navigation:
     url: /projects/
   - title: Заметки
     url: /notes/
-  - title: Написать мне
-    url: mailto:akrushin@gmail.com
 
 author:
   name: Александр Крушин
   bio: Запускаю собственные проекты. До этого был директором по маркетингу портала <span class="rambler">Рамблер</span> и директором по развитию <span class="afisha">«Афиши»</span>. Обожаю медиа, контент и новые технологии.
   avatar: https://www.gravatar.com/avatar/173303ff8da78411c197beb08a15626f
-  links:
-    - title: Проекты
-      url: /projects/
-    - title: Заметки
-      url: /notes/
-    - title: Телеграм-канал
-      url: https://t.me/krushin
 
 plugins:
   - jekyll-feed

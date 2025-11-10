@@ -4,13 +4,7 @@ layout: default
 
 <article class="project-page">
   <header class="project-header">
-    {% if page.image and page.image_type!="icon" %}
-    <div class="project-screenshot">
-      <img src="{{ page.image | relative_url }}" 
-           alt="{{ page.title }}" 
-           loading="lazy">
-    </div>
-    {% endif %}
+
 
     <div class="project-header-content">
       <div class="project-header-top">
@@ -19,12 +13,12 @@ layout: default
         {% if page.launch_year or page.close_year %}
         <div class="project-years">
           {% if page.launch_year %}
-            {{ page.launch_year }}
-            {% if page.close_year and page.close_year != page.launch_year %}
-              &nbsp;–&nbsp;{{ page.close_year }}
-            {% elsif page.close_year == nil or page.close_year == "" %}
+            {{- page.launch_year -}}
+            {%- if page.close_year and page.close_year != page.launch_year -%}
+              &nbsp;–&nbsp;{{- page.close_year -}}
+            {%- elsif page.close_year == nil or page.close_year == "" -%}
               &nbsp;–&nbsp;∞
-            {% endif %}
+            {%- endif -%}
           {% endif %}
         </div>
         {% endif %}
@@ -40,7 +34,18 @@ layout: default
       </a>
       {% endif %}
     </div>
+
+    {% if page.image and page.image_type!="icon" %}
+    <div class="post-image">
+      <img src="{{ page.image | relative_url }}" 
+           alt="{{ page.title }}" 
+           loading="lazy">
+    </div>
+  {% endif %}
+  
   </header>
+
+
 
   {% if page.stats or page.roles %}
   <aside class="project-meta-section">

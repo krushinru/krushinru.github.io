@@ -9,9 +9,9 @@ layout: default
       <p class="lead">
         {{ site.author.bio | default: site.description }}
       </p>
-      {% if site.author.links %}
+      {% if site.navigation %}
       <nav class="main-links">
-        {% for link in site.author.links %}
+        {% for link in site.navigation %}
         <a href="{{ link.url }}">{{ link.title }}</a>
         {% endfor %}
       </nav>
