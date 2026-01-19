@@ -1,7 +1,7 @@
 ---
 layout: project
 title: YourAgents
-description: Каталог ИИ-агентов и приложений на все случаи жизни
+description: Каталог ИИ-агентов и приложений на все случаи жизни
 image: /images/projects/youragents-screenshot.png
 url_link: https://youragents.me
 launch_year: 2025

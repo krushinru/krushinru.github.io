@@ -8,16 +8,14 @@ layout: default
 
     <div class="project-header-content">
       <div class="project-header-top">
-        <h1 class="project-title-page">{{ page.title }}</h1>
+        <h1 class="project-title-page">{{ page.title | ru_typo }}</h1>
         
         {% if page.launch_year or page.close_year %}
         <div class="project-years">
           {% if page.launch_year %}
             {{- page.launch_year -}}
-            {%- if page.close_year and page.close_year != page.launch_year -%}
+            {%- if page.close_year -%}
               &nbsp;–&nbsp;{{- page.close_year -}}
-            {%- elsif page.close_year == nil or page.close_year == "" -%}
-              &nbsp;–&nbsp;∞
             {%- endif -%}
           {% endif %}
         </div>
@@ -25,7 +23,7 @@ layout: default
       </div>
       
       {% if page.description %}
-      <p class="project-description">{{ page.description }}</p>
+      <p class="project-description">{{ page.description | ru_typo }}</p>
       {% endif %}
 
       {% if page.url_link %}
@@ -45,41 +43,21 @@ layout: default
   
   </header>
 
-
-
-  {% if page.stats or page.roles %}
-  <aside class="project-meta-section">
-    {% if page.stats %}
-    <div class="project-stats-block">
-      <h3 class="stats-title">СТАТИСТИКА</h3>
-      <div class="stats-grid">
-        {% for stat in page.stats %}
-        <div class="stat-item">
-          <div class="stat-value">{{ stat.value }}</div>
-          <div class="stat-label">{{ stat.label }}</div>
-        </div>
-        {% endfor %}
+ {% if page.stats %}
+ <div class="project-editorial-bottom" style="margin-bottom: 48px">
+    <div class="project-editorial-stats">
+    {% for stat in page.stats %}
+      <div class="editorial-stat-item">
+        <div class="editorial-stat-value">{{ stat.value }}</div>
+        <div class="editorial-stat-label">{{ stat.label }}</div>
       </div>
+    {% endfor %}
     </div>
-    {% endif %}
-
-    {% if page.roles %}
-    <div class="project-details-block">
-      <div class="detail-row">
-        <span class="detail-label">ЧТО ДЕЛАЛ</span>
-        <div class="role-tags">
-          {% for role in page.roles %}
-          <span class="role-tag">{{ role }}</span>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-    {% endif %}
-  </aside>
-  {% endif %}
+ </div>
+ {% endif %}
 
   <div class="project-body">
-    {{ content }}
+    {{ content | ru_typo }}
   </div>
 
   {% if page.media %}
@@ -93,7 +71,7 @@ layout: default
                alt="{{ item.source }}" 
                class="media-favicon"
                loading="lazy">
-          <span class="media-text">{{ item.title }}</span>
+          <span class="media-text">{{ item.title | ru_typo }}</span>
         </a>
       </li>
       {% endfor %}

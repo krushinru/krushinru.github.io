@@ -23,20 +23,21 @@ layout: default
   </div>
 </main>
 
-{{ content }}
+{{ content | ru_typo }}
 
 {% if site.projects.size > 0 %}
-<section class="section" style="margin-top: 0px;" id="projects">
-  {% include projects-grid.html show_filter="false" limit=2 %}
+<section class="section" style="margin-top: 48px" id="projects">
+  <h4 class="section-title">Запустил</h4>
+  {% include projects-grid-new.html show_filter="false" short="true" limit=2 %}
   {% if site.projects.size > 2 %}
-  <a href="/projects/" class="view-more">Смотреть все проекты →</a>
+  <a href="/projects/" class="view-more">Все проекты →</a>
   {% endif %}
 </section>
 {% endif %}
 
 {% if site.posts.size > 0 %}
 <section class="section" id="blog">
-  <h4 class="section-title">Веду заметки</h2>
+  <h4 class="section-title">Веду заметки</h4>
   {% for post in site.posts limit: 5 %}
   <div class="post-item">
     <h3 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>

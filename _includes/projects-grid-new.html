@@ -5,38 +5,8 @@
 {% endcomment %}
 
 {% assign projects_limit = include.limit %}
-{% unless include.show_filter == "false" %}
-<div class="projects-filter-sentence">
-  <span class="sentence-text">Здесь собраны</span>
-  <div class="filter-dropdown">
-    <button class="dropdown-btn" id="statusDropdown">
-      <span class="dropdown-value">все</span>
-      <span class="dropdown-arrow">▾</span>
-    </button>
-    <div class="dropdown-menu" id="statusMenu">
-      <button class="dropdown-item active" data-status="all">все</button>
-      <button class="dropdown-item" data-status="active">активные</button>
-      <button class="dropdown-item" data-status="closed">закрытые</button>
-    </div>
-  </div>
-  <span class="sentence-text"> проекты, где я</span>
-  
-  {% assign all_roles = "" | split: "" %}
-  {% for project in site.projects %}
-    {% for role in project.roles %}
-      {% unless all_roles contains role %}
-        {% assign all_roles = all_roles | push: role %}
-      {% endunless %}
-    {% endfor %}
-  {% endfor %}
-  
-  {% for role in all_roles %}
-    <span class="sentence-role" data-role="{{ role | downcase }}">{{ role | downcase }}</span>{% if forloop.last == false %}{% if forloop.rindex == 2 %} или{% else %},{% endif %}{% endif %}
-  {% endfor %}
-</div>
-{% endunless %}
 
-<div class="projects-editorial-grid">
+<div class="projects-editorial-grid" style="margin-top: 0px;">
   {% assign projects = site.projects | sort: "launch_year" | reverse %}
   
   {% if projects_limit %}
@@ -64,7 +34,7 @@
       {% assign has_media = true %}
     {% endif %}
     
-    <article class="project-editorial-card"
+    <article class="project-editorial-card" style="padding: 16px 0; border-bottom: none;"
              data-status="{% if project.close_year and project.close_year != "" %}closed{% else %}active{% endif %}"
              data-roles="{{ project.roles | join: ',' | downcase }}"
              data-has-image="{% if has_screenshot or has_icon %}true{% else %}false{% endif %}">
@@ -85,21 +55,9 @@
         </div>
         {% endif %}
 
-        <div class="project-editorial-header">
-          <h3 class="project-editorial-title">{{ project.title }}</h3>
-          {% if project.launch_year %}
-          <span class="project-editorial-years">
-            {{- project.launch_year -}}
-            {%- if project.close_year -%}
-              &nbsp;–&nbsp;{{- project.close_year -}}
-            {%- endif -%}
-          </span>
-          {% endif %}
-        </div>
-
         {% if project.description %}
         <div class="project-editorial-desc">
-          <p>{{ project.description }}</p>
+          <h5>{{ project.description }}</h5>
         </div>
         {% endif %}
         
@@ -110,7 +68,7 @@
         <div class="project-editorial-bottom">
           {% if has_stats %}
           <div class="project-editorial-stats">
-            {% for stat in project.stats limit:1 %}
+            {% for stat in project.stats limit:2 %}
             <div class="editorial-stat-item">
               <div class="editorial-stat-value">{{ stat.value }}</div>
               <div class="editorial-stat-label">{{ stat.label }}</div>
