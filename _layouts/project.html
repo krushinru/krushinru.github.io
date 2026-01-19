@@ -8,7 +8,7 @@ layout: default
 
     <div class="project-header-content">
       <div class="project-header-top">
-        <h1 class="project-title-page">{{ page.title | ru_typo }}</h1>
+        <h1 class="project-title-page">{{ page.title }}</h1>
         
         {% if page.launch_year or page.close_year %}
         <div class="project-years">
@@ -23,7 +23,7 @@ layout: default
       </div>
       
       {% if page.description %}
-      <p class="project-description">{{ page.description | ru_typo }}</p>
+      <p class="project-description">{{ page.description }}</p>
       {% endif %}
 
       {% if page.url_link %}
@@ -57,7 +57,7 @@ layout: default
  {% endif %}
 
   <div class="project-body">
-    {{ content | ru_typo }}
+    {{ content }}
   </div>
 
   {% if page.media %}
@@ -71,7 +71,7 @@ layout: default
                alt="{{ item.source }}" 
                class="media-favicon"
                loading="lazy">
-          <span class="media-text">{{ item.title | ru_typo }}</span>
+          <span class="media-text">{{ item.title }}</span>
         </a>
       </li>
       {% endfor %}
