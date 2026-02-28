@@ -6,7 +6,7 @@
 .section-title {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 700;
-  font-size: 2.2rem;
+  font-size: var(--text-2xl);
   color: var(--white);
   margin-bottom: 32px;
   letter-spacing: -0.02em;
@@ -21,7 +21,7 @@
 }
 
 .post-title {
-  font-size: 1.25rem;
+  font-size: var(--text-lg);
   font-weight: 500;
   color: var(--white);
   margin-bottom: 6px;
@@ -29,7 +29,7 @@
 }
 
 .post-date {
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   color: var(--gray-4);
   font-weight: 300;
 }
@@ -38,7 +38,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 1.05rem;
+  font-size: var(--text-md);
   font-weight: 500;
   color: var(--white);
   border-bottom: 1px solid var(--gray-3);
@@ -61,7 +61,7 @@
 .post-title-page {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 700;
-  font-size: 2.5rem;
+  font-size: var(--text-2xl);
   color: var(--white);
   margin-bottom: 16px;
   line-height: 1.2;
@@ -69,7 +69,7 @@
 }
 
 .post-meta {
-  font-size: 1.1rem;
+  font-size: var(--text-md);
   font-weight: 300;
 }
 
@@ -78,7 +78,7 @@
 }
 
 .post-body {
-  font-size: 1.05rem;
+  font-size: var(--text-md);
   line-height: 1.75;
 }
 
@@ -93,11 +93,11 @@
 }
 
 .post-body h2, .project-body h2 {
-  font-size: 1.8rem;
+  font-size: var(--text-xl);
 }
 
 .post-body h3, .project-body h3 {
-  font-size: 1.4rem;
+  font-size: var(--text-lg);
 }
 
 .post-body p, .project-body p {
@@ -126,7 +126,7 @@
 .post-tags {
 
   color: var(--gray-4);
-  font-size: 0.75rem;
+  font-size: var(--text-sm);
 
 }
 
@@ -163,7 +163,7 @@ footer {
 
 .post-image-caption {
   text-align: left;
-  font-size: 0.65rem;
+  font-size: var(--text-sm);
   color: var(--gray-4);
   margin-top: 0.75em;
   margin-bottom: 0;
@@ -171,7 +171,7 @@ footer {
 
 
 .post-lead {
-  font-size: 1.05rem;
+  font-size: var(--text-md);
   font-weight: 400;
   color: var(--white);
   line-height: 1.6;
@@ -217,7 +217,7 @@ footer {
 .project-title-page {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 700;
-  font-size: 3rem;
+  font-size: var(--text-2xl);
   color: var(--white);
   margin: 0;
   line-height: 1.1;
@@ -226,15 +226,15 @@ footer {
 
 .project-years {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 1.1rem;
+  font-size: var(--text-md);
   font-weight: 500;
   color: var(--gray-4);
   white-space: nowrap;
   flex-shrink: 0;
 }
 
-.project-subtitle {
-  font-size: 1.15rem;
+.project-description {
+  font-size: var(--text-lg);
   font-weight: 400;
   color: var(--white);
   line-height: 1.5;
@@ -245,7 +245,7 @@ footer {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.95rem;
+  font-size: var(--text-sm);
   font-weight: 500;
   color: var(--white);
   border-bottom: 1px solid var(--gray-3);
@@ -271,42 +271,18 @@ footer {
   }
 
   .project-years {
-    font-size: 0.95rem;
+    font-size: var(--text-sm);
   }
 
-  .project-subtitle {
-    font-size: 1rem;
-  }
-
-  .project-screenshot {
-    margin-left: -20px;
-    margin-right: -20px;
-  }
-
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-
-  .stat-value {
-    font-size: 1.8rem;
-  }
-
-  .detail-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-  }
-
-  .role-tags {
-    justify-content: flex-start;
+  .project-description {
+    font-size: var(--text-md);
   }
 }
 
 
 .project-media .media-title {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 1.4rem;
+  font-size: var(--text-lg);
   font-weight: 600;
   color: var(--white);
   margin-bottom: 20px;
@@ -342,7 +318,7 @@ footer {
 }
 
 .media-text {
-  font-size: 1rem;
+  font-size: var(--text-md);
   font-weight: 400;
   color: var(--white);
   line-height: 1.4;
@@ -363,7 +339,7 @@ footer {
 /* Projects Filter Sentence */
 .projects-filter-sentence {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 1.1rem;
+  font-size: var(--text-md);
   color: var(--white);
   line-height: 1.8;
 }
@@ -375,8 +351,8 @@ footer {
 
 .dropdown-btn {
   font-family: inherit;
-  font-size: 1.1rem; /* Добавить, как у sentence-role */
-  line-height: 1.4; /* Добавить для консистентности */
+  font-size: var(--text-md);
+  line-height: 1.4;
   font-weight: 500;
   color: var(--white);
   background: transparent;
@@ -420,7 +396,7 @@ footer {
   display: block;
   width: 100%;
   font-family: inherit;
-  font-size: 1.1rem;
+  font-size: var(--text-md);
   color: var(--gray-4);
   background: transparent;
   border: none;
@@ -455,8 +431,8 @@ footer {
   margin: 0 2px;
   border: 1px solid var(--gray-2);
   border-radius: 4px;
-  font-size: 1.1rem; /* Добавить, как у sentence-role */
-  line-height: 1.4; /* Добавить для консистентности */
+  font-size: var(--text-md);
+  line-height: 1.4;
   color: var(--white);
   cursor: pointer;
   transition: all 0.2s ease;
@@ -534,7 +510,7 @@ footer {
 
 .project-editorial-title {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 2rem;
+  font-size: var(--text-2xl);
   font-weight: 700;
   color: var(--white);
   margin: 0;
@@ -546,7 +522,7 @@ footer {
 
 .project-editorial-years {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 1rem;
+  font-size: var(--text-sm);
   font-weight: 300;
   color: var(--gray-4);
   white-space: nowrap;
@@ -557,7 +533,7 @@ footer {
 }
 
 .project-editorial-desc p {
-  font-size: 0.95rem;
+  font-size: var(--text-sm);
   color: var(--white);
   line-height: 1.6;
   margin: 0;
@@ -591,7 +567,7 @@ footer {
 
 .editorial-stat-value {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 2.2rem;
+  font-size: var(--text-2xl);
   font-weight: 700;
   color: var(--white);
   line-height: 1;
@@ -599,7 +575,7 @@ footer {
 }
 
 .editorial-stat-label {
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   color: var(--gray-4);
   font-weight: 400;
   line-height: 1.3;
@@ -616,7 +592,7 @@ footer {
 }
 
 .project-editorial-quote p {
-  font-size: 1.05rem;
+  font-size: var(--text-md);
   font-style: italic;
   color: var(--white);
   line-height: 1.6;
@@ -624,7 +600,7 @@ footer {
 }
 
 .project-editorial-quote cite {
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   color: var(--gray-4);
   font-style: normal;
   font-weight: 400;
@@ -653,7 +629,7 @@ footer {
 }
 
 .editorial-media-text {
-  font-size: 0.9rem;
+  font-size: var(--text-sm);
   color: var(--white);
   line-height: 1.4;
 }
@@ -789,3 +765,337 @@ footer {
   }
 }
 
+
+/* Projects Atlas v2 */
+.projects-atlas {
+  margin-top: 16px;
+}
+
+.projects-atlas-head {
+  margin-bottom: 26px;
+}
+
+.projects-atlas-kicker {
+  margin: 0 0 8px;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: var(--text-sm);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #96a0b1;
+}
+
+.projects-atlas-intro {
+  margin: 0;
+  max-width: 760px;
+  color: #c4cbd8;
+  font-size: var(--text-md);
+  line-height: 1.62;
+}
+
+.projects-atlas-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-flow: dense;
+  grid-auto-rows: 104px;
+  gap: 16px;
+}
+
+.project-fragment {
+  position: relative;
+  z-index: 0;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 22px;
+  background:
+    radial-gradient(140% 110% at 0% 0%, rgba(255, 255, 255, 0.06), transparent 58%),
+    linear-gradient(170deg, rgba(255, 255, 255, 0.02), rgba(6, 8, 13, 0.72)),
+    #0d0f14;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 28px 54px rgba(0, 0, 0, 0.32);
+  padding: 18px;
+  display: grid;
+  gap: 12px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(14px);
+  animation: project-fragment-in 480ms ease forwards;
+  animation-delay: calc(var(--fragment-index, 0) * 70ms);
+}
+
+.project-fragment:hover {
+  transform: translateY(-2px);
+  transition: transform 180ms ease;
+}
+
+.project-fragment-glow {
+  position: absolute;
+  inset: -45% auto auto -24%;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.25;
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.project-fragment.tone-0 .project-fragment-glow {
+  background: radial-gradient(circle, rgba(57, 194, 255, 0.74), rgba(57, 194, 255, 0));
+}
+
+.project-fragment.tone-1 .project-fragment-glow {
+  background: radial-gradient(circle, rgba(74, 235, 169, 0.68), rgba(74, 235, 169, 0));
+}
+
+.project-fragment.tone-2 .project-fragment-glow {
+  background: radial-gradient(circle, rgba(255, 171, 90, 0.68), rgba(255, 171, 90, 0));
+}
+
+.project-fragment.tone-3 .project-fragment-glow {
+  background: radial-gradient(circle, rgba(152, 173, 255, 0.74), rgba(152, 173, 255, 0));
+}
+
+.project-fragment.tone-4 .project-fragment-glow {
+  background: radial-gradient(circle, rgba(247, 108, 178, 0.66), rgba(247, 108, 178, 0));
+}
+
+.project-fragment-head {
+  display: grid;
+  gap: 4px;
+}
+
+.project-fragment-years {
+  margin: 0;
+  color: #afbacb;
+  font-size: var(--text-sm);
+}
+
+.project-fragment-title {
+  margin: 0;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  line-height: 1.02;
+  font-size: clamp(1.9rem, 1.28rem + 1.5vw, 3rem);
+  letter-spacing: -0.035em;
+}
+
+.project-fragment-title a {
+  border: none;
+}
+
+.project-fragment-visual {
+  margin: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  min-height: 128px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-fragment-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.92) contrast(1.05);
+}
+
+.project-fragment-icon-wrap {
+  width: 102px;
+  height: 102px;
+  border-radius: 24%;
+  overflow: hidden;
+}
+
+.project-fragment-icon-wrap img {
+  border-radius: 24%;
+}
+
+.project-fragment-desc {
+  margin: 0;
+  color: #f1f3f7;
+  font-size: var(--text-lg);
+  line-height: 1.4;
+  max-width: 30ch;
+}
+
+.project-fragment-metrics {
+  margin: 0;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.project-fragment-metric {
+  margin: 0;
+}
+
+.project-fragment-metric dt {
+  font-size: clamp(2rem, 1.5rem + 1.15vw, 2.85rem);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.project-fragment-metric dd {
+  margin: 4px 0 0;
+  color: #a7b1c3;
+  font-size: var(--text-sm);
+  line-height: 1.34;
+}
+
+.project-fragment-note {
+  margin: 0;
+  color: #d0d6e2;
+  font-size: var(--text-md);
+  line-height: 1.5;
+  max-width: 36ch;
+}
+
+.project-fragment-links {
+  margin-top: auto;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.project-fragment-links a {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.42);
+  font-size: var(--text-md);
+}
+
+.project-fragment-links a:hover {
+  border-bottom-color: var(--white);
+}
+
+.shape-panorama {
+  grid-column: span 8;
+  grid-row: span 4;
+}
+
+.shape-wide {
+  grid-column: span 7;
+  grid-row: span 4;
+}
+
+.shape-tall {
+  grid-column: span 5;
+  grid-row: span 5;
+}
+
+.shape-metric {
+  grid-column: span 5;
+  grid-row: span 4;
+}
+
+.shape-compact {
+  grid-column: span 4;
+  grid-row: span 3;
+}
+
+.shape-note {
+  grid-column: span 6;
+  grid-row: span 4;
+}
+
+.shape-compact .project-fragment-desc {
+  max-width: 20ch;
+}
+
+.shape-compact .project-fragment-title {
+  font-size: clamp(1.8rem, 1.4rem + 1vw, 2.4rem);
+}
+
+.shape-panorama .project-fragment-visual,
+.shape-wide .project-fragment-visual {
+  min-height: 188px;
+}
+
+.shape-panorama .project-fragment-desc {
+  font-size: clamp(1.3rem, 1.02rem + 0.6vw, 1.7rem);
+}
+
+@keyframes project-fragment-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-fragment {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 980px) {
+  .projects-atlas-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-auto-rows: 110px;
+  }
+
+  .shape-panorama,
+  .shape-wide,
+  .shape-note {
+    grid-column: span 6;
+  }
+
+  .shape-tall,
+  .shape-metric {
+    grid-column: span 3;
+  }
+
+  .shape-compact {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-atlas-head {
+    margin-bottom: 20px;
+  }
+
+  .projects-atlas-intro {
+    font-size: var(--text-sm);
+    max-width: 100%;
+  }
+
+  .projects-atlas-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+
+  .project-fragment,
+  .shape-panorama,
+  .shape-wide,
+  .shape-tall,
+  .shape-metric,
+  .shape-compact,
+  .shape-note {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .project-fragment {
+    border-radius: 18px;
+    padding: 16px;
+  }
+
+  .project-fragment-title {
+    font-size: clamp(1.8rem, 1.5rem + 1vw, 2.4rem);
+  }
+
+  .project-fragment-desc {
+    font-size: var(--text-md);
+  }
+
+  .project-fragment-metrics {
+    grid-template-columns: 1fr;
+  }
+}

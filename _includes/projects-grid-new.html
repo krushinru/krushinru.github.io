@@ -1,230 +1,141 @@
 {% comment %}
-  Параметры:
-  - show_filter: true/false (показывать фильтры)
-  - limit: число проектов (nil = все)
+  Parameters:
+  - limit: number of projects (nil = all)
+  - section_id: unique block id
+  - show_intro: true/false
 {% endcomment %}
 
 {% assign projects_limit = include.limit %}
+{% assign section_id = include.section_id | default: "projects-atlas" %}
+{% assign show_intro = include.show_intro | default: "true" %}
 
-<div class="projects-editorial-grid" style="margin-top: 0px;">
-  {% assign projects = site.projects | sort: "launch_year" | reverse %}
-  
-  {% if projects_limit %}
-    {% assign projects = projects | slice: 0, projects_limit %}
-  {% endif %}
-  
-  {% for project in projects %}
-    {% assign has_screenshot = false %}
-    {% assign has_icon = false %}
-    {% if project.image and project.image != "" %}
-     {% if project.image_type == "icon" %}
-      {% assign has_icon = true %}
-     {% else %}
-      {% assign has_screenshot = true %}
-     {% endif %}
-    {% endif %}
-    
-    {% assign has_stats = false %}
-    {% if project.stats and project.stats.size > 0 %}
-      {% assign has_stats = true %}
-    {% endif %}
-    
-    {% assign has_media = false %}
-    {% if project.media and project.media.size > 0 %}
-      {% assign has_media = true %}
-    {% endif %}
-    
-    <article class="project-editorial-card" style="padding: 16px 0; border-bottom: none;"
-             data-status="{% if project.close_year and project.close_year != "" %}closed{% else %}active{% endif %}"
-             data-roles="{{ project.roles | join: ',' | downcase }}"
-             data-has-image="{% if has_screenshot or has_icon %}true{% else %}false{% endif %}">
-      
-      <a href="{{ project.url | relative_url }}" class="project-editorial-link">
-        
-        {% if has_screenshot %}
-        <div class="project-editorial-image">
-          <img src="{{ project.image | relative_url }}" 
-               alt="{{ project.title }}"
-               loading="lazy">
-        </div>
-        {% elsif has_icon %}
-        <div class="project-editorial-app-icon">
-          <img src="{{ project.image | relative_url }}" 
-               alt="{{ project.title }}"
-               loading="lazy">
-        </div>
+{% assign featured_projects = site.projects | where: "featured", true | sort: "launch_year" | reverse %}
+{% assign regular_projects = site.projects | where_exp: "project", "project.featured != true" | sort: "launch_year" | reverse %}
+{% assign projects = featured_projects | concat: regular_projects %}
+
+{% if projects_limit %}
+  {% assign projects = projects | slice: 0, projects_limit %}
+{% endif %}
+
+<section class="projects-atlas" id="{{ section_id }}">
+  {% unless show_intro == "false" %}
+  <header class="projects-atlas-head">
+    <p class="projects-atlas-kicker">Атлас запусков</p>
+    <p class="projects-atlas-intro">
+      Разные проекты требуют разной формы: где-то важнее метрики,
+      где-то визуальный контекст, где-то сама идея. Поэтому сетка
+      подстраивается под содержание каждого кейса.
+    </p>
+  </header>
+  {% endunless %}
+
+  <div class="projects-atlas-grid">
+    {% for project in projects %}
+      {% assign has_screenshot = false %}
+      {% assign has_icon = false %}
+      {% if project.image and project.image != "" %}
+        {% if project.image_type == "icon" %}
+          {% assign has_icon = true %}
+        {% else %}
+          {% assign has_screenshot = true %}
+        {% endif %}
+      {% endif %}
+
+      {% assign has_visual = false %}
+      {% if has_screenshot or has_icon %}
+        {% assign has_visual = true %}
+      {% endif %}
+
+      {% assign has_stats = false %}
+      {% if project.stats and project.stats.size > 0 %}
+        {% assign has_stats = true %}
+      {% endif %}
+
+      {% assign has_note = false %}
+      {% if project.quote %}
+        {% assign has_note = true %}
+      {% elsif project.media and project.media.size > 0 %}
+        {% assign has_note = true %}
+      {% endif %}
+
+      {% assign timeline = project.launch_year %}
+      {% if project.launch_year and project.close_year %}
+        {% assign timeline = project.launch_year | append: " - " | append: project.close_year %}
+      {% endif %}
+
+      {% assign card_shape = "shape-note" %}
+      {% if project.featured or project.layout_hint == "hero" %}
+        {% assign card_shape = "shape-panorama" %}
+      {% elsif has_screenshot and has_stats %}
+        {% assign card_shape = "shape-wide" %}
+      {% elsif has_stats and has_note %}
+        {% assign card_shape = "shape-tall" %}
+      {% elsif has_stats %}
+        {% assign card_shape = "shape-metric" %}
+      {% elsif has_icon %}
+        {% assign card_shape = "shape-compact" %}
+      {% elsif has_screenshot %}
+        {% assign card_shape = "shape-wide" %}
+      {% endif %}
+
+      {% assign tone = forloop.index0 | modulo: 5 %}
+
+      <article class="project-fragment {{ card_shape }} tone-{{ tone }}" style="--fragment-index: {{ forloop.index0 }};">
+        <div class="project-fragment-glow" aria-hidden="true"></div>
+
+        <header class="project-fragment-head">
+          {% if timeline %}
+          <p class="project-fragment-years">{{ timeline }}</p>
+          {% endif %}
+          <h3 class="project-fragment-title">
+            <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
+          </h3>
+        </header>
+
+        {% if has_visual %}
+        <figure class="project-fragment-visual">
+          {% if has_screenshot %}
+          <img src="{{ project.image | relative_url }}" alt="{{ project.title }}" loading="lazy">
+          {% else %}
+          <div class="project-fragment-icon-wrap">
+            <img src="{{ project.image | relative_url }}" alt="{{ project.title }}" loading="lazy">
+          </div>
+          {% endif %}
+        </figure>
         {% endif %}
 
         {% if project.description %}
-        <div class="project-editorial-desc">
-          <h5>{{ project.description }}</h5>
-        </div>
+        <p class="project-fragment-desc">{{ project.description }}</p>
         {% endif %}
-        
-        {% if include.short == "false" %}
-        {% if (has_stats or has_media) %}
-        <div class="project-editorial-spacer"></div>
 
-        <div class="project-editorial-bottom">
-          {% if has_stats %}
-          <div class="project-editorial-stats">
-            {% for stat in project.stats limit:2 %}
-            <div class="editorial-stat-item">
-              <div class="editorial-stat-value">{{ stat.value }}</div>
-              <div class="editorial-stat-label">{{ stat.label }}</div>
-            </div>
-            {% endfor %}
+        {% if has_stats %}
+        <dl class="project-fragment-metrics">
+          {% for stat in project.stats limit: 2 %}
+          <div class="project-fragment-metric">
+            <dt>{{ stat.value }}</dt>
+            <dd>{{ stat.label }}</dd>
           </div>
-          {% endif %}
-
-          {% if has_media %}
-          <div class="project-editorial-media">
-            <div class="editorial-media-link">
-              <img src="https://www.google.com/s2/favicons?domain={{ project.media[0].url }}&sz=32" 
-                   alt="{{ project.media[0].source }}"
-                   class="editorial-media-favicon"
-                   loading="lazy">
-              <span class="editorial-media-text">{{ project.media[0].title }}</span>
-            </div>
-          </div>
-          {% endif %}
-        </div>
-        {% endif %}
+          {% endfor %}
+        </dl>
         {% endif %}
 
-      </a>
-    </article>
-  {% endfor %}
-</div>
+        {% if has_note %}
+        <p class="project-fragment-note">
+          {% if project.quote %}
+            {{ project.quote }}
+          {% else %}
+            {{ project.media[0].title }}
+          {% endif %}
+        </p>
+        {% endif %}
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const statusDropdown = document.getElementById('statusDropdown');
-  const statusMenu = document.getElementById('statusMenu');
-  const projectCards = document.querySelectorAll('.project-editorial-card');
-  const roleSpans = document.querySelectorAll('.sentence-role');
-  
-  if (!projectCards.length) return;
-  
-  let currentStatus = 'all';
-  let activeRoles = new Set();
-
-  if (statusDropdown && statusMenu) {
-    statusDropdown.addEventListener('click', function(e) {
-      e.stopPropagation();
-      statusMenu.classList.toggle('active');
-    });
-
-    document.addEventListener('click', function() {
-      statusMenu.classList.remove('active');
-    });
-
-    statusMenu.querySelectorAll('.dropdown-item').forEach(item => {
-      item.addEventListener('click', function(e) {
-        e.stopPropagation();
-        currentStatus = this.dataset.status;
-        
-        statusMenu.querySelectorAll('.dropdown-item').forEach(i => i.classList.remove('active'));
-        this.classList.add('active');
-        
-        document.querySelector('.dropdown-value').textContent = this.textContent;
-        statusMenu.classList.remove('active');
-        
-        filterProjects();
-      });
-    });
-  }
-
-  roleSpans.forEach(span => {
-    span.addEventListener('click', function() {
-      const role = this.dataset.role;
-      
-      if (activeRoles.has(role)) {
-        activeRoles.delete(role);
-        this.classList.remove('active');
-      } else {
-        activeRoles.add(role);
-        this.classList.add('active');
-      }
-      
-      filterProjects();
-    });
-  });
-
-  function filterProjects() {
-    const visibleCards = [];
-    
-    projectCards.forEach(card => {
-      const cardStatus = card.dataset.status;
-      const cardRoles = card.dataset.roles.toLowerCase().split(',');
-      
-      let matchStatus = currentStatus === 'all' || cardStatus === currentStatus;
-      let matchRoles = activeRoles.size === 0 || [...activeRoles].some(role => cardRoles.includes(role));
-      
-      if (matchStatus && matchRoles) {
-        card.style.display = '';
-        visibleCards.push(card);
-      } else {
-        card.style.display = 'none';
-      }
-    });
-    
-    applyPairLogic(visibleCards);
-  }
-
-  function applyPairLogic(cards) {
-    cards.forEach(card => {
-      card.classList.remove(
-        'pair-left', 'pair-right', 'single',
-        'span-2', 'span-3', 'span-4', 'span-6',
-        'hide-image', 'hide-facts', 'hide-quote', 'hide-media'
-      );
-    });
-
-    for (let i = 0; i < cards.length; i += 2) {
-      const leftCard = cards[i];
-      const rightCard = cards[i + 1];
-
-      if (!rightCard) {
-        leftCard.classList.add('single', 'span-6');
-        continue;
-      }
-
-      const leftHasImage = leftCard.querySelector('.project-editorial-image') !== null;
-      const rightHasImage = rightCard.querySelector('.project-editorial-image') !== null;
-      const leftHasFacts = leftCard.querySelector('.project-editorial-stats') !== null;
-      const rightHasFacts = rightCard.querySelector('.project-editorial-stats') !== null;
-
-      leftCard.classList.add('pair-left');
-      rightCard.classList.add('pair-right');
-
-      if (leftHasImage && !rightHasImage) {
-        leftCard.classList.add('span-4', 'hide-facts');
-        rightCard.classList.add('span-2', 'hide-image', 'hide-media');
-        
-      } else if (!leftHasImage && rightHasImage) {
-        leftCard.classList.add('span-2', 'hide-media');
-        rightCard.classList.add('span-4', 'hide-facts');
-        
-      } else if (leftHasImage && rightHasImage) {
-        leftCard.classList.add('span-4', 'hide-facts');
-        rightCard.classList.add('span-2', 'hide-image', 'hide-media');
-        
-      } else {
-        leftCard.classList.add('span-3');
-        rightCard.classList.add('span-3');
-        
-        if (leftHasFacts) {
-          leftCard.classList.add('hide-media');
-        }
-        if (rightHasFacts) {
-          rightCard.classList.add('hide-media');
-        }
-      }
-    }
-  }
-
-  filterProjects();
-});
-</script>
-
+        <footer class="project-fragment-links">
+          <a href="{{ project.url | relative_url }}">Кейс</a>
+          {% if project.url_link %}
+          <a href="{{ project.url_link }}" target="_blank" rel="noopener noreferrer">Сайт ↗</a>
+          {% endif %}
+        </footer>
+      </article>
+    {% endfor %}
+  </div>
+</section>

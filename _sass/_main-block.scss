@@ -5,7 +5,7 @@
 .main-block h1 {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 700;
-  font-size: clamp(2.1rem, 9vw, 6rem);
+  font-size: var(--text-display);
   color: var(--white);
   margin: 0 0 18px 0;
   line-height: 1.03;
@@ -15,7 +15,7 @@
 
 .main-block .lead {
   margin: 28px 0 10px 0;
-  font-size: 1.09rem;
+  font-size: var(--text-lg);
   font-weight: 300;
   color: var(--white);
   max-width: 720px;
@@ -26,13 +26,13 @@
   display: flex;
   flex-wrap: wrap;
   gap: 28px;
-  font-size: 1.09rem;
+  font-size: var(--text-lg);
   font-weight: 500;
 }
 
 .main-contact {
   margin-top: 22px;
-  font-size: 1.10rem;
+  font-size: var(--text-lg);
   color: #ededed;
   font-weight: 400;
 }

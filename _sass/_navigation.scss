@@ -35,7 +35,7 @@
 .navbar-nav .nav-link {
   color: var(--white) !important;
   font-weight: 300;
-  font-size: 17px;
+  font-size: var(--nav-font-size);
   font-family: 'Inter';
   padding: 0.5rem 1rem;
   transition: color 0.12s;
