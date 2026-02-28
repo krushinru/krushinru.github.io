@@ -50,6 +50,59 @@
   border-bottom-color: var(--white);
 }
 
+.projects-collab-cta {
+  margin-top: 20px;
+}
+
+.projects-collab-panel {
+  position: relative;
+  overflow: hidden;
+  padding: 10px 0;
+}
+
+
+
+
+
+.projects-collab-kicker {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 4px 10px;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #061319;
+  background: #5ee4ff;
+  border: 1px solid rgba(8, 22, 30, 0.35);
+  transform: rotate(-1.35deg);
+  border-radius: 9px;
+}
+
+.projects-collab-title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(1.5rem, 2.9vw, 2.05rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  max-width: 760px;
+}
+
+.projects-collab-actions {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+
+
+
 .post-content {
   padding: 40px 0;
 }
@@ -464,6 +517,67 @@ footer {
   padding: 32px 0;
 }
 
+.projects-side-marquee {
+  grid-column: 1 / -1;
+  margin: 8px 0 12px;
+}
+
+.projects-side-marquee-fullbleed {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  background: #f3d94d;
+  border-top: 1px solid rgba(0, 0, 0, 0.18);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+}
+
+.projects-side-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: max-content;
+  white-space: nowrap;
+  padding: 10px 0;
+  animation: projects-side-marquee-scroll 38s linear infinite;
+}
+
+.projects-side-marquee-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  color: #111;
+  text-decoration: none;
+  border-bottom: none !important;
+}
+
+.projects-side-marquee-item::after {
+  content: "•";
+  opacity: 0.65;
+  margin-left: 8px;
+}
+
+.projects-side-marquee-name {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700;
+  font-size: var(--text-md);
+  letter-spacing: -0.01em;
+}
+
+.projects-side-marquee-desc {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+@keyframes projects-side-marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 .project-editorial-link {
   display: flex;
   flex-direction: column;
@@ -758,6 +872,28 @@ footer {
     margin: 0;
   }
 
+  .projects-side-marquee {
+    margin: 6px 0 10px;
+  }
+
+  .projects-side-marquee-track {
+    gap: 18px;
+    padding: 9px 0;
+    animation-duration: 44s;
+  }
+
+  .projects-side-marquee-item {
+    gap: 6px;
+  }
+
+  .projects-side-marquee-name {
+    font-size: var(--text-sm);
+  }
+
+  .projects-side-marquee-desc {
+    font-size: var(--text-xs);
+  }
+
   /* На мобилке все карточки занимают полную ширину */
   .project-editorial-card,
   .project-editorial-card.span-2,
@@ -952,5 +1088,9 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   .project-editorial-rotator .project-rotator-item {
     transition: none;
+  }
+
+  .projects-side-marquee-track {
+    animation: none;
   }
 }

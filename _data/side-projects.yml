@@ -1,0 +1,20 @@
+# Дополнительные проекты для акцентной бегущей строки.
+# Формат:
+# - name: Название
+#   description: Короткое описание
+#   url: https://example.com (необязательно)
+
+- name: Геймер
+  description: старейший телеграм-канал про видеоигры
+  url: https://t.me/gamer
+
+- name: GeoConsent
+  description: js-библиотека для куки-уведомлений
+
+- name: Медиаменеджер
+  description: шуточная игра про будни владельца СМИ
+  url: https://krushin.me/mediagame/
+
+- name: Конспекто
+  description: онлайн-блокнот с автотаймингом
+  url: https://konspekto.ru
