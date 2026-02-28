@@ -63,11 +63,13 @@
     {% if project.media and project.media.size > 0 %}
       {% assign has_media = true %}
     {% endif %}
-    
+
     <article class="project-editorial-card"
              data-status="{% if project.close_year and project.close_year != "" %}closed{% else %}active{% endif %}"
              data-roles="{{ project.roles | join: ',' | downcase }}"
-             data-has-image="{% if has_screenshot or has_icon %}true{% else %}false{% endif %}">
+             data-has-image="{% if has_screenshot or has_icon %}true{% else %}false{% endif %}"
+             data-has-icon="{% if has_icon %}true{% else %}false{% endif %}"
+             data-has-screenshot="{% if has_screenshot %}true{% else %}false{% endif %}">
       
       <a href="{{ project.url | relative_url }}" class="project-editorial-link">
         
@@ -110,7 +112,7 @@
         <div class="project-editorial-bottom">
           {% if has_stats %}
           <div class="project-editorial-stats">
-            {% for stat in project.stats limit:1 %}
+            {% for stat in project.stats %}
             <div class="editorial-stat-item">
               <div class="editorial-stat-value">{{ stat.value }}</div>
               <div class="editorial-stat-label">{{ stat.label }}</div>
@@ -121,15 +123,43 @@
 
           {% if has_media %}
           <div class="project-editorial-media">
-            <div class="editorial-media-link">
-              <img src="https://www.google.com/s2/favicons?domain={{ project.media[0].url }}&sz=32" 
-                   alt="{{ project.media[0].source }}"
-                   class="editorial-media-favicon"
-                   loading="lazy">
-              <span class="editorial-media-text">{{ project.media[0].title }}</span>
+            {% for media_item in project.media %}
+            <div class="editorial-media-item">
+              <div class="editorial-media-link">
+                <img src="https://www.google.com/s2/favicons?domain={{ media_item.url }}&sz=32" 
+                     alt="{{ media_item.source }}"
+                     class="editorial-media-favicon"
+                     loading="lazy">
+                <span class="editorial-media-text">{{ media_item.title }}</span>
+              </div>
             </div>
+            {% endfor %}
           </div>
           {% endif %}
+        </div>
+
+        <div class="project-editorial-rotator" aria-hidden="true">
+          {% if has_stats %}
+          {% for stat in project.stats %}
+          <div class="project-rotator-item project-rotator-item--stat">
+            <span class="project-rotator-value">{{ stat.value }}</span>
+            <span class="project-rotator-text">{{ stat.label | strip_html }}</span>
+          </div>
+          {% endfor %}
+          {% endif %}
+
+          {% if has_media %}
+          {% for media_item in project.media %}
+          <div class="project-rotator-item project-rotator-item--media">
+            <img src="https://www.google.com/s2/favicons?domain={{ media_item.url }}&sz=32" 
+                 alt="{{ media_item.source }}"
+                 class="project-rotator-favicon"
+                 loading="lazy">
+            <span class="project-rotator-text">{{ media_item.title }}</span>
+          </div>
+          {% endfor %}
+          {% endif %}
+
         </div>
         {% endif %}
         {% endif %}

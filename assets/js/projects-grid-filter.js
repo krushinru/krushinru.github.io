@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const statusValue = document.querySelector('.dropdown-value');
   const projectCards = document.querySelectorAll('.project-editorial-card');
   const roleSpans = document.querySelectorAll('.sentence-role');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (!projectCards.length) return;
 
@@ -134,5 +135,79 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  function initProjectRotators() {
+    const rotators = document.querySelectorAll('.project-editorial-rotator');
+
+    rotators.forEach((rotator) => {
+      if (rotator.dataset.initialized === 'true') return;
+
+      const items = rotator.querySelectorAll('.project-rotator-item');
+      if (!items.length) return;
+
+      let currentIndex = 0;
+      items[currentIndex].classList.add('is-active');
+
+      if (items.length > 1 && !prefersReducedMotion) {
+        window.setInterval(() => {
+          items[currentIndex].classList.remove('is-active');
+          currentIndex = (currentIndex + 1) % items.length;
+          items[currentIndex].classList.add('is-active');
+        }, 6000);
+      }
+
+      rotator.dataset.initialized = 'true';
+    });
+  }
+
+  function initDesktopRotatingGroup(container, itemSelector, datasetFlag) {
+    if (container.dataset[datasetFlag] === 'true') return;
+
+    const items = Array.from(container.querySelectorAll(itemSelector));
+    if (!items.length) return;
+
+    items.forEach((item) => item.classList.remove('is-active'));
+    items[0].classList.add('is-active');
+
+    if (items.length > 1 && !prefersReducedMotion) {
+      let maxHeight = 0;
+      items.forEach((item) => {
+        const itemHeight = Math.ceil(item.getBoundingClientRect().height);
+        if (itemHeight > maxHeight) maxHeight = itemHeight;
+      });
+
+      if (maxHeight > 0) {
+        container.style.minHeight = `${maxHeight}px`;
+      }
+
+      container.classList.add('rotator-enabled');
+
+      let currentIndex = 0;
+      window.setInterval(() => {
+        items[currentIndex].classList.remove('is-active');
+        currentIndex = (currentIndex + 1) % items.length;
+        items[currentIndex].classList.add('is-active');
+      }, 6000);
+    }
+
+    container.dataset[datasetFlag] = 'true';
+  }
+
+  function initDesktopEditorialRotators() {
+    if (!window.matchMedia('(min-width: 769px)').matches) return;
+
+    const statsGroups = document.querySelectorAll('.project-editorial-stats');
+    statsGroups.forEach((statsGroup) => {
+      initDesktopRotatingGroup(statsGroup, '.editorial-stat-item', 'desktopStatsRotator');
+    });
+
+    const mediaGroups = document.querySelectorAll('.project-editorial-media');
+    mediaGroups.forEach((mediaGroup) => {
+      initDesktopRotatingGroup(mediaGroup, '.editorial-media-item', 'desktopMediaRotator');
+    });
+  }
+
   filterProjects();
+  initProjectRotators();
+  initDesktopEditorialRotators();
+  window.addEventListener('resize', initDesktopEditorialRotators);
 });
