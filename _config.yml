@@ -2,19 +2,22 @@
 title: Александр Крушин
 description: Запускаю собственные проекты. До этого был директором по маркетингу портала Рамблер и директором по развитию «Афиши». Обожаю медиа, контент и новые технологии.
 email: akrushin@gmail.com
-telegram_url: https://t.me/akrushin
+telegram_url: https://t.me/krushin
 baseurl: ""
 url: "https://krushin.me"
 permalink: /notes/:title
 locale: ru_RU
 logo: /images/logo.jpg
-asset_version: "5"
+asset_version: "7"
 
 navigation:
   - title: Проекты
     url: /projects/
   - title: Заметки
     url: /notes/
+
+footer_navigation:
+
 
 author:
   name: Александр Крушин

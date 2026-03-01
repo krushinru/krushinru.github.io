@@ -2,6 +2,7 @@
   Параметры:
   - show_filter: true/false (показывать фильтры)
   - limit: число проектов (nil = все)
+  - marquee_theme: тема для бегущей строки (solar|cyan|mint|coral|berry|slate)
 {% endcomment %}
 
 {% assign projects_limit = include.limit %}
@@ -169,27 +170,12 @@
     </article>
 
     {% if include.short == "false" and forloop.index == 2 and side_projects and side_projects.size > 0 %}
-    <div class="projects-side-marquee" aria-label="Дополнительные проекты">
-      <div class="projects-side-marquee-fullbleed">
-        <div class="projects-side-marquee-track">
-          {% for run in (1..2) %}
-            {% for side_project in side_projects %}
-              {% if side_project.url and side_project.url != "" %}
-              <a href="{{ side_project.url }}" class="projects-side-marquee-item" target="_blank" rel="noopener noreferrer">
-                <span class="projects-side-marquee-name">{{ side_project.name }}</span>
-                <span class="projects-side-marquee-desc">{{ side_project.description }}</span>
-              </a>
-              {% else %}
-              <span class="projects-side-marquee-item">
-                <span class="projects-side-marquee-name">{{ side_project.name }}</span>
-                <span class="projects-side-marquee-desc">{{ side_project.description }}</span>
-              </span>
-              {% endif %}
-            {% endfor %}
-          {% endfor %}
-        </div>
-      </div>
-    </div>
+    {% include ui-marquee.html
+      class_name="projects-side-marquee"
+      aria_label="Дополнительные проекты"
+      items=side_projects
+      theme=include.marquee_theme
+    %}
     {% endif %}
   {% endfor %}
 </div>

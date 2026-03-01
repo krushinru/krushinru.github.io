@@ -26,7 +26,7 @@ layout: default
 {{ content }}
 
 {% if site.projects.size > 0 %}
-<section class="section" style="margin-top: 48px" id="projects">
+<section class="section section--compact-top" id="projects">
   <h4 class="section-title">Запустил</h4>
   {% include projects-grid.html show_filter="false" short="true" limit=2 %}
   {% if site.projects.size > 2 %}
@@ -72,4 +72,14 @@ layout: default
   <a href="/blog/" class="view-more">Все записи →</a>
   {% endif %}
 </section>
+{% endif %}
+
+{% assign socials = site.data["socials"] %}
+{% if socials and socials.size > 0 %}
+{% include ui-marquee.html
+  class_name="projects-side-marquee"
+  aria_label="Я в соцсетях"
+  items=socials
+  theme="slate"
+%}
 {% endif %}

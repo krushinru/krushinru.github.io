@@ -1,0 +1,28 @@
+# Дополнительные проекты для акцентной бегущей строки.
+# Формат:
+# - name: Название
+#   description: Короткое описание
+#   url: https://example.com (необязательно)
+
+- name: Я в соцсетях
+- name: Телеграм
+  url: https://t.me/krushin
+- name: ТГ про игры
+  url: https://t.me/gamer
+- name: Инстаграм*
+  url: https://instagram.com/krushin_ru
+- name: Линкедин
+  url: https://www.linkedin.com/in/krushin/
+- name: ФБ*
+  url: https://facebook.com/akrushin
+- name: Я в соцсетях
+- name: Телеграм
+  url: https://t.me/krushin
+- name: ТГ про игры
+  url: https://t.me/gamer
+- name: Инстаграм*
+  url: https://instagram.com/krushin_ru
+- name: Линкедин
+  url: https://www.linkedin.com/in/krushin/
+- name: ФБ*
+  url: https://facebook.com/akrushin

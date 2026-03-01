@@ -2,9 +2,20 @@
   <div class="container">
     <div class="row py-3">
       <div class="col-12">
-        <div class="d-flex align-items-center justify-content-between flex-nowrap">
-          <a href="#" class="footer-up">Наверх ↑</a>
-          <p class="mb-0">Сделано с <i class="fa-solid fa-heart" style="color: #c9302c;"></i> в {{ 'now' | date: "%Y" }} году</p>
+        <div class="footer-row">
+          <nav class="footer-menu" aria-label="Ссылки в футере">
+            {% for item in site.footer_navigation %}
+              {% assign item_url = item.url %}
+              {% unless item.external %}
+                {% assign item_url = item.url | relative_url %}
+              {% endunless %}
+              <a href="{{ item_url }}">{{ item.title }}</a>
+            {% endfor %}
+          </nav>
+          <div class="footer-bottom-line">
+            <a href="#" class="footer-up">↑</a>
+            <p class="mb-0 footer-made">Сделано с <i class="fa-solid fa-heart" style="color: #c9302c;"></i> в {{ 'now' | date: "%Y" }} году</p>
+          </div>
         </div>
       </div>
     </div>

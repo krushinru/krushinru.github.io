@@ -1,20 +1,24 @@
 @media (max-width: 768px) {
-  .main-block {
-    padding: 38px 0 9px 0;
+  :root {
+    --space-main-block-top: 2.375rem;
+    --space-main-block-bottom: 0.5625rem;
+    --space-main-title-bottom: 0.75rem;
+    --space-main-lead-top: 1.25rem;
+    --space-main-links-top: 1rem;
+    --space-main-links-gap: 1rem;
+    --space-main-contact-top: 1rem;
+    --space-section-top: var(--space-2xl);
+    --space-section-bottom: var(--space-xl);
+    --space-section-top-compact: var(--space-xl);
+    --space-section-title-bottom: var(--space-lg);
   }
 
   .main-block h1 {
     font-size: var(--text-2xl);
   }
 
-  .section {
-    margin-top: 48px;
-    margin-bottom: 32px;
-  }
-
   .section-title {
     font-size: var(--text-xl);
-    margin-bottom: 24px;
   }
 
   .main-links {
@@ -40,13 +44,85 @@
 
   footer {
     font-size: var(--text-sm);
-    padding: 10px 0;
+    padding: var(--space-10) 0;
+  }
+
+  .footer-row {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .footer-menu {
+    order: 1;
+    justify-content: flex-start;
+    margin: 0;
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-right: 40vw;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .footer-menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .footer-bottom-line {
+    order: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .footer-up {
+    order: 1;
+  }
+
+  .footer-made {
+    order: 2;
+    margin-left: 0;
+    text-align: right;
+  }
+
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .achievement-card {
+    min-height: 0;
+  }
+
+  .achievements-overview__top {
+    align-items: flex-start;
+  }
+
+  .achievements-overview__ring {
+    width: 76px;
+    height: 76px;
+  }
+
+  .achievements-overview__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .achievements-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
 @media (max-width: 576px) {
   .navbar-nav {
     flex-wrap: wrap;
+  }
+
+  .achievements-overview__stats {
+    grid-template-columns: 1fr;
   }
 }
 

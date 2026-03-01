@@ -1,0 +1,22 @@
+{% comment %}
+  Универсальный CTA-блок.
+  Параметры:
+  - theme: цветовая схема (solar|cyan|mint|coral|berry|slate)
+  - title: верхний заголовок (kicker)
+  - text: основной текст (можно HTML)
+{% endcomment %}
+
+{% assign cta_theme = include.theme | default: "cyan" %}
+<div class="accent-cta accent-theme accent-theme--{{ cta_theme }}">
+  <div class="accent-cta__panel">
+    {% if include.title %}
+      <p class="accent-cta__kicker">{{ include.title }}</p>
+    {% endif %}
+
+    {% if include.text %}
+      <h2 class="accent-cta__title">
+        {{ include.text }}
+      </h2>
+    {% endif %}
+  </div>
+</div>

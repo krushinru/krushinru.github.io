@@ -1,14 +1,25 @@
 <nav class="navbar navbar-dark">
-  <div class="container">
-    <a class="navbar-brand" href="{{ '/' | relative_url }}">
-      <img src="{{ site.author.avatar }}" alt="Аватар" class="nav-avatar">
-    </a>
-    <ul class="navbar-nav ms-auto gap-2">
-      {% for item in site.navigation %}
-      <li class="nav-item">
-        <a class="nav-link" href="{{ item.url }}">{{ item.title }}</a>
-      </li>
-      {% endfor %}
-    </ul>
+  <div class="container nav-layout">
+    <div class="nav-profile">
+      <a class="navbar-brand" href="{{ '/' | relative_url }}">
+        <img src="{{ site.author.avatar }}" alt="Аватар" class="nav-avatar">
+      </a>
+      <div class="nav-name-block">
+        <a class="nav-name-link" href="{{ '/' | relative_url }}">{{ site.author.name | default: site.title }}</a>
+        {% if site.author.subtitle %}<span class="nav-name-subtitle">{{ site.author.subtitle | default: "подпись скоро будет" }}</span>{% endif %}
+      </div>
+    </div>
+    <button class="nav-burger" type="button" aria-label="Открыть меню" aria-controls="siteNavMenu" aria-expanded="false">
+      <i class="fa-solid fa-burger nav-burger-icon" aria-hidden="true"></i>
+    </button>
+    <div class="nav-menu" id="siteNavMenu">
+      <ul class="navbar-nav ms-auto gap-2">
+        {% for item in site.navigation %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ item.url }}">{{ item.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
   </div>
 </nav>
