@@ -10,6 +10,7 @@
 
 - name: GeoConsent
   description: js-библиотека для куки-уведомлений
+  url: https://krushin.me/geoconsent/
 
 - name: Медиаменеджер
   description: шуточная игра про будни владельца СМИ
