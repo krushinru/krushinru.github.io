@@ -327,7 +327,6 @@ hide_meta: true
             }
 
             header {
-                margin-bottom: 60px;
                 padding-bottom: 32px;
             }
 

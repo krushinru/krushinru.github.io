@@ -8,7 +8,7 @@
 }
 
 .section-title {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-family-heading);
   font-weight: 700;
   font-size: var(--text-2xl);
   color: var(--white);
@@ -150,7 +150,7 @@
   position: relative;
   z-index: 1;
   margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-family-heading);
   font-size: clamp(1.5rem, 2.9vw, 2.05rem);
   line-height: 1.12;
   letter-spacing: -0.02em;
@@ -270,7 +270,7 @@
 
 .post-title-page,
 .project-title-page {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-family-heading);
   font-weight: 700;
   font-size: var(--text-2xl);
   color: var(--white);
@@ -308,7 +308,7 @@
 .editorial-body h2,
 .editorial-body h3,
 .editorial-body h4 {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-family-heading);
   color: var(--white);
   margin-top: 2em;
   margin-bottom: 0.75em;
@@ -905,7 +905,7 @@ footer {
 
 
 .project-media .media-title {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-family-heading);
   font-size: var(--text-lg);
   font-weight: 600;
   color: var(--white);
@@ -1138,7 +1138,7 @@ footer {
 }
 
 .project-editorial-title {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-family-heading);
   font-size: var(--text-2xl);
   font-weight: 700;
   color: var(--white);

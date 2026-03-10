@@ -18,6 +18,8 @@
   --text-xl: clamp(1.35rem, calc(1.16rem + 0.9vw), 1.8rem);
   --text-2xl: clamp(1.8rem, calc(1.46rem + 1.5vw), 2.6rem);
   --text-display: clamp(2.1rem, 9vw, 6rem);
+  --font-family-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --line-height-body: 1.68;
   --nav-font-size: var(--text-sm);
   --space-2xs: 0.25rem;
@@ -69,10 +71,19 @@ html, body {
   padding: 0;
   background: var(--main-bg);
   color: var(--white);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-family-body);
   font-size: var(--text-md);
   line-height: var(--line-height-body);
   min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-heading);
 }
 
 .container {
