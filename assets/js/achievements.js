@@ -17,7 +17,6 @@
       group: 'Навигация',
       rarity: 'common',
       points: 10,
-      symbol: 'ST',
       isUnlocked: (state) => state.metrics.pageViews >= 1,
       getProgress: (state) => progressValue(state.metrics.pageViews, 1)
     },
@@ -28,7 +27,6 @@
       group: 'Навигация',
       rarity: 'common',
       points: 15,
-      symbol: 'PR',
       isUnlocked: (state) => state.visitedPaths.includes('/projects/'),
       getProgress: (state) => progressValue(state.visitedPaths.includes('/projects/') ? 1 : 0, 1)
     },
@@ -39,7 +37,6 @@
       group: 'Навигация',
       rarity: 'common',
       points: 15,
-      symbol: 'NT',
       isUnlocked: (state) => state.visitedPaths.includes('/notes/'),
       getProgress: (state) => progressValue(state.visitedPaths.includes('/notes/') ? 1 : 0, 1)
     },
@@ -50,7 +47,6 @@
       group: 'Контент',
       rarity: 'rare',
       points: 25,
-      symbol: 'PD',
       isUnlocked: (state) => state.metrics.projectDetailViews >= 1,
       getProgress: (state) => progressValue(state.metrics.projectDetailViews, 1)
     },
@@ -61,7 +57,6 @@
       group: 'Контент',
       rarity: 'rare',
       points: 25,
-      symbol: 'ND',
       isUnlocked: (state) => state.metrics.noteDetailViews >= 1,
       getProgress: (state) => progressValue(state.metrics.noteDetailViews, 1)
     },
@@ -72,7 +67,6 @@
       group: 'Профиль',
       rarity: 'common',
       points: 10,
-      symbol: 'PF',
       isUnlocked: (state) => state.visitedPaths.includes('/profile/'),
       getProgress: (state) => progressValue(state.visitedPaths.includes('/profile/') ? 1 : 0, 1)
     },
@@ -83,7 +77,6 @@
       group: 'Навигация',
       rarity: 'rare',
       points: 30,
-      symbol: 'EX',
       isUnlocked: (state) => state.visitedPaths.length >= 3,
       getProgress: (state) => progressValue(state.visitedPaths.length, 3)
     },
@@ -94,7 +87,6 @@
       group: 'Лояльность',
       rarity: 'epic',
       points: 50,
-      symbol: 'RT',
       isUnlocked: (state) => state.visitedDays.length >= 3,
       getProgress: (state) => progressValue(state.visitedDays.length, 3)
     },
@@ -105,7 +97,6 @@
       group: 'Активность',
       rarity: 'epic',
       points: 60,
-      symbol: '10X',
       isUnlocked: (state) => state.metrics.pageViews >= 10,
       getProgress: (state) => progressValue(state.metrics.pageViews, 10)
     },
@@ -116,7 +107,6 @@
       group: 'Контакт',
       rarity: 'rare',
       points: 20,
-      symbol: 'TG',
       isUnlocked: (state) => state.metrics.telegramClicks >= 1,
       getProgress: (state) => progressValue(state.metrics.telegramClicks, 1)
     },
@@ -127,7 +117,6 @@
       group: 'Контакт',
       rarity: 'rare',
       points: 20,
-      symbol: 'ML',
       isUnlocked: (state) => state.metrics.emailClicks >= 1,
       getProgress: (state) => progressValue(state.metrics.emailClicks, 1)
     }
@@ -179,16 +168,12 @@
       ? achievement.group.trim()
       : 'Общее';
     const points = parseIntWithDefault(achievement.points, 10);
-    const symbol = typeof achievement.symbol === 'string' && achievement.symbol.trim().length > 0
-      ? achievement.symbol.trim().slice(0, 3).toUpperCase()
-      : 'XP';
     const rarity = KNOWN_RARITIES.includes(achievement.rarity) ? achievement.rarity : 'common';
 
     return {
       ...achievement,
       group,
       points,
-      symbol,
       rarity
     };
   }
@@ -477,14 +462,6 @@
 
       return `
         <article class="achievement-card ${status.isUnlocked ? 'is-unlocked' : 'is-locked'} rarity-${achievement.rarity}">
-          <div class="achievement-card__head">
-            <span class="achievement-card__symbol" aria-hidden="true">${escapeHtml(achievement.symbol)}</span>
-            <div class="achievement-card__chips">
-              <span class="achievement-chip">${escapeHtml(achievement.group)}</span>
-              <span class="achievement-chip achievement-chip--rarity">${escapeHtml(rarityLabel)}</span>
-            </div>
-          </div>
-
           <h3 class="achievement-card__title">${escapeHtml(achievement.title)}</h3>
           <p class="achievement-card__description">${escapeHtml(achievement.description)}</p>
 
