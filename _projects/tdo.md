@@ -3,7 +3,7 @@ layout: project
 title: T-Do
 description: Один из крупнейших сервисов для доступа к Telegram в России
 url_link: https://t-do.ru
-image: /images/projects/tdo.png
+image: /images/projects/tdo-tg.png
 image_type: icon
 launch_year: 2018
 close_year: 2021
