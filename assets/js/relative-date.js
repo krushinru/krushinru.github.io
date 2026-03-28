@@ -49,19 +49,6 @@
     return months;
   }
 
-  function getDiffInCalendarYears(from, to) {
-    let years = to.getFullYear() - from.getFullYear();
-
-    if (
-      to.getMonth() < from.getMonth() ||
-      (to.getMonth() === from.getMonth() && to.getDate() < from.getDate())
-    ) {
-      years -= 1;
-    }
-
-    return years;
-  }
-
   function pluralize(value, forms) {
     const absValue = Math.abs(value) % 100;
     const lastDigit = absValue % 10;
@@ -107,16 +94,10 @@
     }
 
     if (diffMonths < 12) {
-      return `${diffMonths} ${pluralize(diffMonths, ['месяц', 'месяца', 'месяцев'])}`;
+      return `${diffMonths} ${pluralize(diffMonths, ['мес', 'мес', 'мес'])}`;
     }
 
-    const diffYears = getDiffInCalendarYears(from, to);
-
-    if (diffYears < 1) {
-      return `${diffMonths} ${pluralize(diffMonths, ['месяц', 'месяца', 'месяцев'])}`;
-    }
-
-    return `${diffYears} ${pluralize(diffYears, ['год', 'года', 'лет'])}`;
+    return String(from.getFullYear());
   }
 
   function updateRelativeDates() {
