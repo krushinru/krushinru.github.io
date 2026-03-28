@@ -1,0 +1,6 @@
+<time
+  datetime="{{ include.date | date: '%Y-%m-%d' }}"
+  data-relative-date
+  title="{{ include.date | date: '%d.%m.%Y' }}"
+  aria-label="Опубликовано {{ include.date | date: '%d.%m.%Y' }}"
+>{{ include.date | date: '%d.%m.%Y' }}</time>

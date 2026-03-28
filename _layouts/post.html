@@ -29,20 +29,7 @@ layout: default
 
   {% unless page.hide_meta %}
   <div class="post-tags">
-    {% assign now_sec     = site.time       | date: '%s' %}
-    {% assign post_sec    = page.date      | date: '%s' %}
-    {% assign diff_sec    = now_sec        | minus: post_sec %}
-    {% assign diff_days   = diff_sec       | divided_by: 86400 %}
-    {% if diff_days == 0 %}
-      <time datetime="{{ page.date | date_to_xmlschema }}">сегодня</time>
-    {% elsif diff_days < 30 %}
-      <time datetime="{{ page.date | date_to_xmlschema }}">{{ diff_days }} дн</time>
-    {% elsif diff_days < 365 %}
-      {% assign diff_months = diff_days | divided_by: 30 %}
-      <time datetime="{{ page.date | date_to_xmlschema }}">{{ diff_months }} мес</time>
-    {% else %}
-      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y' }}</time>
-    {% endif %}
+    {% include relative-date.html date=page.date %}
     {% if page.tags.size > 0 %}
     {% for tag in page.tags %}
     <a href="{{ tag }}" class="tag">{{ tag }}</a>
