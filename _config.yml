@@ -11,6 +11,8 @@ logo: /images/logo.jpg
 navigation:
   - title: Проекты
     url: /projects/
+  - title: Игры
+    url: /games/
   - title: Заметки
     url: /notes/
 

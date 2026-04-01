@@ -1,0 +1,17 @@
+# Как добавить новую игру:
+# 1. Положить файлы игры в папку games/<slug>/
+# 2. Добавить сюда карточку с url: /games/<slug>/
+
+- slug: pong
+  title: Управленческий Пинг-Понг
+  description: Аркадная браузерная игра про дедлайны и рабочие чаты, стилизованная под Slack.
+  url: /games/pong/
+  published_at: 2026-04-01
+  status: active
+
+- slug: mediagame
+  title: Медиа-менеджер
+  description: Симулятор владельца медиа, где приходится балансировать между деньгами, доверием аудитории и редакционной совестью.
+  url: /games/mediagame/
+  published_at: 2025-04-01
+  status: active

@@ -1,0 +1,65 @@
+{% comment %}
+  Параметры:
+  - limit: число игр (nil = все)
+  - short: true/false
+{% endcomment %}
+
+{% assign games_limit = include.limit %}
+{% assign games = site.data.games | default: empty | sort: "published_at" | reverse %}
+
+{% if games_limit %}
+  {% assign games = games | slice: 0, games_limit %}
+{% endif %}
+
+<div data-editorial-grid>
+<div class="projects-editorial-grid">
+  {% for game in games %}
+    {% assign has_screenshot = false %}
+    {% assign has_icon = false %}
+    {% if game.image and game.image != "" %}
+      {% if game.image_type == "icon" %}
+        {% assign has_icon = true %}
+      {% else %}
+        {% assign has_screenshot = true %}
+      {% endif %}
+    {% endif %}
+
+    <article class="project-editorial-card"
+             data-status="{{ game.status | default: 'active' }}"
+             data-has-image="{% if has_screenshot or has_icon %}true{% else %}false{% endif %}"
+             data-has-icon="{% if has_icon %}true{% else %}false{% endif %}"
+             data-has-screenshot="{% if has_screenshot %}true{% else %}false{% endif %}">
+      <a href="{{ game.url | relative_url }}" class="project-editorial-link">
+        {% if has_screenshot %}
+        <div class="project-editorial-image">
+          <img src="{{ game.image | relative_url }}"
+               alt="{{ game.title }}"
+               loading="lazy">
+        </div>
+        {% elsif has_icon %}
+        <div class="project-editorial-app-icon">
+          <img src="{{ game.image | relative_url }}"
+               alt="{{ game.title }}"
+               loading="lazy">
+        </div>
+        {% endif %}
+
+        <div class="project-editorial-header">
+          <h3 class="project-editorial-title">{{ game.title }}</h3>
+          {% if game.published_at %}
+          <span class="project-editorial-years">{{ game.published_at | date: "%d.%m.%Y" }}</span>
+          {% endif %}
+        </div>
+
+        {% if game.description %}
+        <div class="project-editorial-desc">
+          <p>{{ game.description }}</p>
+        </div>
+        {% endif %}
+      </a>
+    </article>
+  {% endfor %}
+</div>
+
+<script src="{{ '/assets/js/projects-grid-filter.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+</div>

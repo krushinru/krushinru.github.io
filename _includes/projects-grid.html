@@ -6,15 +6,16 @@
 {% endcomment %}
 
 {% assign projects_limit = include.limit %}
+<div data-editorial-grid>
 {% unless include.show_filter == "false" %}
 <div class="projects-filter-sentence">
   <span class="sentence-text">Здесь собраны</span>
   <div class="filter-dropdown">
-    <button class="dropdown-btn" id="statusDropdown">
-      <span class="dropdown-value">все</span>
+    <button class="dropdown-btn" type="button" data-status-dropdown>
+      <span class="dropdown-value" data-status-value>все</span>
       <span class="dropdown-arrow">▾</span>
     </button>
-    <div class="dropdown-menu" id="statusMenu">
+    <div class="dropdown-menu" data-status-menu>
       <button class="dropdown-item active" data-status="all">все</button>
       <button class="dropdown-item" data-status="active">активные</button>
       <button class="dropdown-item" data-status="closed">закрытые</button>
@@ -181,3 +182,4 @@
 </div>
 
 <script src="{{ '/assets/js/projects-grid-filter.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+</div>

@@ -636,7 +636,7 @@
 }
 
 .editorial-body p {
-  margin-bottom: 1.5em;
+  margin: 0 0 1.5em;
 }
 
 .editorial-body ul,
@@ -909,8 +909,12 @@ footer {
   font-size: var(--text-lg);
   font-weight: 600;
   color: var(--white);
-  margin-bottom: var(--space-20);
+  margin: 0 0 var(--space-20);
   letter-spacing: -0.02em;
+}
+
+.project-media {
+  margin-top: var(--space-32);
 }
 
 .media-list {
