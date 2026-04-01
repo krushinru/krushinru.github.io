@@ -1,0 +1,438 @@
+/* Стили для максимально всратой темы Comic Sans */
+
+/* Импорт Comic Sans MS, если не установлен локально */
+@import url('https://fonts.cdnfonts.com/css/comic-sans-ms');
+
+/* Основные цвета и настройки всратой темы */
+:root {
+    --cs-bg-color: #ff00ff; /* Яркий розовый фон */
+    --cs-text-color: #00ff00; /* Кислотно-зеленый текст */
+    --cs-accent-color: #ffff00; /* Ядовито-желтый акцент */
+    --cs-secondary-color: #00ffff; /* Циановый вторичный цвет */
+    --cs-card-bg: #ff8800; /* Оранжевый фон карточек */
+    --cs-card-border: #ff0000; /* Красные рамки */
+    --cs-button-color: #7700ff; /* Фиолетовые кнопки */
+    --cs-button-text: #ffff00; /* Желтый текст на кнопках */
+    --cs-rotate-deg: -2deg; /* Небольшой перекос элементов */
+    --cs-font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+    --cs-shadow-color: #ff00ff80; /* Полупрозрачная розовая тень */
+}
+
+/* Применяем стили только когда активна тема */
+body.comicsans-theme {
+    background-color: var(--cs-bg-color);
+    background-image: 
+        url('https://i.gifer.com/HCWF.gif'), /* Анимированный фон с блестками */
+        repeating-linear-gradient(45deg, #ff00ff, #ff00ff 10px, #ff22ff 10px, #ff22ff 20px); /* Полосатый фон */
+    color: var(--cs-text-color);
+    font-family: var(--cs-font-family) !important;
+    font-size: 1.2em;
+    letter-spacing: 1px;
+    cursor: url('https://cur.cursors-4u.net/nature/nat-2/nat117.cur'), auto !important;
+}
+
+/* Все заголовки с разным наклоном и цветами */
+body.comicsans-theme h1, 
+body.comicsans-theme h2, 
+body.comicsans-theme h3,
+body.comicsans-theme h4,
+body.comicsans-theme h5,
+body.comicsans-theme h6,
+body.comicsans-theme .stat-label,
+body.comicsans-theme .metric-label {
+    font-family: var(--cs-font-family) !important;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 #ff0000, 4px 4px 0 #00ff00, 6px 6px 0 #0000ff;
+    font-weight: bold;
+    transform: rotate(var(--cs-rotate-deg));
+}
+
+/* Контейнер игры с анимацией пульсации */
+body.comicsans-theme .game-container {
+    max-width: 800px; /* Увеличенный размер */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    border: 5px dashed var(--cs-secondary-color);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+/* Панель статистики - каждый элемент поворачивается в свою сторону */
+body.comicsans-theme .stats-panel {
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--cs-card-bg);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 10px 10px 0 var(--cs-shadow-color);
+    border: 3px dotted var(--cs-card-border);
+}
+
+body.comicsans-theme .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: center;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 23%;
+    min-height: 80px;
+}
+
+body.comicsans-theme .stat:nth-child(1) { transform: rotate(5deg); }
+body.comicsans-theme .stat:nth-child(2) { transform: rotate(-3deg); }
+body.comicsans-theme .stat:nth-child(3) { transform: rotate(2deg); }
+body.comicsans-theme .stat:nth-child(4) { transform: rotate(-4deg); }
+
+body.comicsans-theme .stat-label {
+    font-size: 14px;
+    color: #ff0000; /* Красный цвет для меток */
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+body.comicsans-theme .stat-value {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0000ff; /* Синий цвет для значений */
+    background-color: #ffff00; /* Желтый фон */
+    padding: 3px 8px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Карточка - с кривыми краями и кричащим фоном */
+body.comicsans-theme .card {
+    background-color: var(--cs-card-bg);
+    border-radius: 25px 5px 40px 10px; /* Разные скругления с каждой стороны */
+    box-shadow: 15px 15px 0 var(--cs-shadow-color);
+    overflow: hidden;
+    position: relative;
+    transform: rotate(var(--cs-rotate-deg));
+    transition: all 0.5s ease;
+    border: 8px solid var(--cs-card-border);
+    margin: 20px 0;
+}
+
+body.comicsans-theme .card:hover {
+    transform: rotate(calc(-1 * var(--cs-rotate-deg))) scale(1.03);
+}
+
+body.comicsans-theme .card-content {
+    padding: 25px;
+    background-image: repeating-radial-gradient(circle at center, 
+        transparent, 
+        transparent 20px, 
+        rgba(255, 255, 0, 0.2) 20px, 
+        rgba(255, 255, 0, 0.2) 40px);
+}
+
+body.comicsans-theme #situation-text {
+    font-size: 20px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    color: #0000ff; /* Синий текст */
+    text-shadow: 1px 1px 0 #ffff00; /* Желтая тень */
+    font-weight: bold;
+    transform: rotate(1deg);
+}
+
+/* Стилизация каждого слова в тексте разными цветами */
+body.comicsans-theme #situation-text span {
+    display: inline-block;
+    animation: rainbow 1s infinite;
+    animation-delay: calc(var(--word-index) * 0.1s);
+}
+
+@keyframes rainbow {
+    0% { color: #ff0000; }
+    20% { color: #ffff00; }
+    40% { color: #00ff00; }
+    60% { color: #00ffff; }
+    80% { color: #0000ff; }
+    100% { color: #ff00ff; }
+}
+
+/* Кнопки выбора - неровные и яркие */
+body.comicsans-theme .choice-button {
+    display: block;
+    width: 100%;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    background: linear-gradient(45deg, var(--cs-button-color), var(--cs-secondary-color));
+    color: var(--cs-button-text);
+    border: 5px solid #000000;
+    border-radius: 20px 5px 20px 5px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--cs-font-family) !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    box-shadow: 8px 8px 0 #000000;
+    transform: rotate(calc(-1 * var(--cs-rotate-deg)));
+}
+
+body.comicsans-theme .choice-button::before {
+    content: '!!!';
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #ffffff;
+}
+
+body.comicsans-theme .choice-button::after {
+    content: '!!!';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #ffffff;
+}
+
+body.comicsans-theme .choice-button:hover {
+    transform: rotate(calc(var(--cs-rotate-deg))) scale(1.05);
+    box-shadow: -8px 8px 0 #000000;
+    animation: wiggle 0.5s infinite;
+}
+
+@keyframes wiggle {
+    0% { transform: rotate(calc(var(--cs-rotate-deg))); }
+    25% { transform: rotate(calc(var(--cs-rotate-deg) + 2deg)); }
+    50% { transform: rotate(calc(var(--cs-rotate-deg) - 2deg)); }
+    75% { transform: rotate(calc(var(--cs-rotate-deg) + 2deg)); }
+    100% { transform: rotate(calc(var(--cs-rotate-deg))); }
+}
+
+body.comicsans-theme .choice-button:active {
+    transform: scale(0.95);
+    box-shadow: 3px 3px 0 #000000;
+}
+
+/* Скрытые метрики с мигающим фоном */
+body.comicsans-theme .hidden-metrics {
+    margin-top: 25px;
+    background-color: var(--cs-secondary-color);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 10px 10px 0 var(--cs-shadow-color);
+    border: 3px dotted var(--cs-card-border);
+    transform: rotate(var(--cs-rotate-deg));
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    animation: blinky-bg 2s infinite;
+}
+
+@keyframes blinky-bg {
+    0% { background-color: var(--cs-secondary-color); }
+    50% { background-color: var(--cs-accent-color); }
+    100% { background-color: var(--cs-secondary-color); }
+}
+
+body.comicsans-theme .metric {
+    margin-bottom: 15px;
+    opacity: 1 !important;
+    visibility: visible !important;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px dashed #000000;
+}
+
+body.comicsans-theme .metric-label {
+    font-size: 16px;
+    color: #ff00ff; /* Розовый цвет для меток */
+    margin-bottom: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+body.comicsans-theme .metric-bar {
+    height: 15px;
+    background: repeating-linear-gradient(
+        45deg,
+        #ffff00,
+        #ffff00 10px,
+        #ff00ff 10px,
+        #ff00ff 20px
+    );
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    border: 3px solid #000000;
+}
+
+body.comicsans-theme .metric-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: var(--value, 50%);
+    background: repeating-linear-gradient(
+        -45deg,
+        #00ff00,
+        #00ff00 10px,
+        #00ffff 10px,
+        #00ffff 20px
+    );
+    border-radius: 7px;
+}
+
+/* Индикаторы свайпа - мигающие и вращающиеся */
+body.comicsans-theme .swipe-indicators {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: 30px;
+    color: #ff0000;
+    font-weight: bold;
+}
+
+body.comicsans-theme .swipe-indicator {
+    animation: blinky 1s infinite;
+    transform: scale(1.5);
+    text-shadow: 2px 2px 0 #000000;
+}
+
+body.comicsans-theme .swipe-left-indicator {
+    transform: rotate(-15deg) scale(1.5);
+}
+
+body.comicsans-theme .swipe-right-indicator {
+    transform: rotate(15deg) scale(1.5);
+}
+
+@keyframes blinky {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+/* Экраны победы и поражения */
+body.comicsans-theme .victory-screen,
+body.comicsans-theme .game-over-screen {
+    background: linear-gradient(45deg, #ff00ff, #00ffff);
+    border-radius: 30px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 15px 15px 0 rgba(0, 0, 0, 0.5);
+    border: 10px solid #ffff00;
+}
+
+body.comicsans-theme .victory-text,
+body.comicsans-theme .game-over-text {
+    font-size: 24px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    white-space: pre-line;
+    color: #0000ff;
+    font-weight: bold;
+    text-shadow: 2px 2px 0 #ffffff;
+}
+
+body.comicsans-theme .victory-button,
+body.comicsans-theme .restart-button {
+    display: inline-block;
+    padding: 20px 40px;
+    background: linear-gradient(to right, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff);
+    background-size: 400% 400%;
+    animation: gradient-animation 3s ease infinite;
+    color: #000000;
+    border: 6px dashed #000000;
+    border-radius: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: var(--cs-font-family) !important;
+    box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 0 #ffffff;
+}
+
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body.comicsans-theme .victory-button:hover,
+body.comicsans-theme .restart-button:hover {
+    transform: rotate(5deg) scale(1.1);
+    box-shadow: -10px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Уведомление о чите - вращающееся и мигающее */
+body.comicsans-theme .cheat-notification {
+    background: linear-gradient(to right, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff);
+    background-size: 400% 400%;
+    animation: gradient-animation 3s ease infinite, rotate-notification 2s ease infinite;
+    color: #000000;
+    border-radius: 20px;
+    border: 5px dashed #000000;
+    font-family: var(--cs-font-family);
+    padding: 15px 25px;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+    box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+@keyframes rotate-notification {
+    0% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+    100% { transform: rotate(-5deg); }
+}
+
+/* Добавляем веб-курсор для элементов с указателем */
+body.comicsans-theme a,
+body.comicsans-theme button,
+body.comicsans-theme [role="button"],
+body.comicsans-theme input[type="submit"],
+body.comicsans-theme input[type="reset"],
+body.comicsans-theme input[type="button"] {
+    cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym49.cur'), auto !important;
+}
+
+/* Специальный скрипт для раскрашивания слов */
+body.comicsans-theme.loaded #situation-text {
+    word-break: keep-all;
+}
+
+/* Анимация для текста решения при свайпе */
+body.comicsans-theme .decision-text {
+    background: linear-gradient(to right, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff);
+    background-size: 400% 400%;
+    animation: gradient-animation 3s ease infinite;
+    color: #000000;
+    font-weight: bold;
+    border: 5px dashed #000000;
+    border-radius: 20px;
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+/* Инициализация JS скрипта для раскраски текста при загрузке стилей */
+body.comicsans-theme::after {
+    content: "";
+    display: none;
+} 

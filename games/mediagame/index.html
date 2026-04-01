@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Медиа-менеджер - Купить СМИ и не разориться | Симулятор медиа-бизнеса</title>
+    <meta name="description" content="Купили интернет-издание? Отлично! Теперь ваша задача — не разориться, сохранить репутацию и не потерять рассудок. Принимайте решения, балансируйте между честной журналистикой и кликбейтом, и докажите, что медиа могут быть успешными!">
+    <meta name="keywords" content="игра про медиа, симулятор журналиста, кликбейт, медиа-игра, игра про принятие решений, симулятор издателя, игра про медиа-бизнес">
+    <meta name="author" content="Александр Крушин">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://krushin.me/games/mediagame/">
+    <meta property="og:title" content="Медиа-менеджер - Купить СМИ и не разориться">
+    <meta property="og:description" content="Купили интернет-издание? Теперь ваша задача — не разориться, сохранить репутацию и не потерять рассудок.">
+    <meta property="og:image" content="https://krushin.me/games/mediagame/images/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://krushin.me/games/mediagame/">
+    <meta property="twitter:title" content="Медиа-менеджер - Купить СМИ и не разориться">
+    <meta property="twitter:description" content="Купили интернет-издание? Теперь ваша задача — не разориться, сохранить репутацию и не потерять рассудок.">
+    <meta property="twitter:image" content="https://krushin.me/games/mediagame/images/og-image.png">
+
+    <meta name="robots" content="index, follow">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://krushin.me/games/mediagame/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://krushin.me/games/mediagame/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://krushin.me/games/mediagame/images/favicon-16x16.png">
+    <link rel="manifest" href="https://krushin.me/games/mediagame/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?ver=1.1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="stats-panel">
+            <div class="stat" id="budget">
+                <span class="stat-label">Бюджет</span>
+                <span class="stat-value">100000</span>
+            </div>
+            <div class="stat" id="trust">
+                <span class="stat-label">Доверие</span>
+                <span class="stat-value">50%</span>
+            </div>
+            <div class="stat" id="readers">
+                <span class="stat-label">Читатели</span>
+                <span class="stat-value">10000</span>
+            </div>
+            <div class="stat" id="turn-counter">
+                <span class="stat-label">День</span>
+                <span class="stat-value">0</span>
+            </div>
+        </div>
+
+        <div class="card-container">
+            <div class="card" id="current-card">
+                <div class="card-content">
+                    <p id="situation-text">Готовы стать владельцем собственного медиа? Каждое ваше решение будет влиять на будущее издания. Докажите, что журналистическая может быть успешной и прибыльной!</p>
+                    <div id="choices-container">
+                        <button id="start-game" class="choice-button">Издание</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden-metrics">
+            <div class="metric" id="advertiser-relations">
+                <div class="metric-label">Рекламодатели</div>
+                <div class="metric-bar"></div>
+            </div>
+            <div class="metric" id="staff-morale">
+                <div class="metric-label">Мораль редакции</div>
+                <div class="metric-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="situations.js?ver=1.1.0"></script>
+    <script src="game.js?ver=1.1.0"></script>
+    <script src="cheats.js?ver=1.1.0"></script>
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+        ym(100814554, 'init', { clickmap: true, accurateTrackBounce: true, trackLinks: true });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/100814554" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+</body>
+</html>

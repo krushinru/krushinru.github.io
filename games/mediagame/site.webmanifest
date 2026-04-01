@@ -1,0 +1,22 @@
+{
+    "name": "Медиа-менеджер",
+    "short_name": "Медиа-менеджер",
+    "icons": [
+        {
+            "src": "images/favicon-64x64.png",
+            "sizes": "64x64",
+            "type": "image/png"
+        },
+        {
+            "src": "images/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "orientation": "portrait",
+    "start_url": "/games/mediagame/",
+    "scope": "/games/mediagame/"
+} 
