@@ -15,17 +15,21 @@
   {% for game in games %}
     <article class="game-card">
       <a href="{{ game.url | relative_url }}" class="game-card__link">
-        {% if game.published_at %}
-        <time class="game-card__date" datetime="{{ game.published_at | date_to_xmlschema }}">
-          {{ game.published_at | date: "%d.%m.%Y" }}
-        </time>
-        {% endif %}
+        <div class="game-card__meta">
+          {% if game.published_at %}
+          <time class="game-card__date" datetime="{{ game.published_at | date_to_xmlschema }}">
+            {{ game.published_at | date: "%d.%m.%Y" }}
+          </time>
+          {% endif %}
+        </div>
 
-        <h2 class="game-card__title">{{ game.title }}</h2>
+        <div class="game-card__content">
+          <h2 class="game-card__title">{{ game.title }}</h2>
 
-        {% if game.description %}
-        <p class="game-card__description">{{ game.description }}</p>
-        {% endif %}
+          {% if game.description %}
+          <p class="game-card__description">{{ game.description }}</p>
+          {% endif %}
+        </div>
       </a>
     </article>
   {% endfor %}
