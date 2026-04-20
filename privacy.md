@@ -1,11 +1,9 @@
 ---
-layout: page
+layout: redirect
 title: Политика конфиденциальности
 permalink: /privacy/
+redirect_to: /ru/privacy/
+canonical_url: https://krushin.me/ru/privacy/
+robots: noindex,follow
+sitemap: false
 ---
-
-На сайте не используется регистрация пользователей и не собираются персональные данные через формы.
-
-Сайт использует системы веб-аналитики для базовой статистики посещений. Эти данные обрабатываются в обезличенном виде.
-
-По вопросам, связанным с конфиденциальностью, можно написать на [{{ site.email }}](mailto:{{ site.email }}).

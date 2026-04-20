@@ -2,22 +2,27 @@
 layout: default
 ---
 
+{% assign current_lang = page.lang | default: site.default_lang | default: 'ru' %}
+{% assign t = site.data.i18n[current_lang] | default: site.data.i18n.ru %}
+{% assign localized_projects = site.projects | where: "lang", current_lang %}
+{% assign localized_posts = site.posts | where: "lang", current_lang %}
+
 <main class="main-block">
   <div class="row">
     <div class="col-12">
-      <h1>{{ site.author.name | default: site.title }}</h1>
+      <h1>{{ t.site.author_name | default: t.site.title }}</h1>
       <p class="lead">
-        {{ site.author.bio | default: site.description }}
+        {{ t.site.author_bio | default: t.site.description }}
       </p>
-      {% if site.navigation %}
+      {% if t.navigation %}
       <nav class="main-links">
-        {% for link in site.navigation %}
-        <a href="{{ link.url }}">{{ link.title }}</a>
+        {% for link in t.navigation %}
+        <a href="{{ link.url | relative_url }}">{{ link.title }}</a>
         {% endfor %}
       </nav>
       {% endif %}
       <div class="main-contact">
-        Связаться: <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+        {{ t.home.contact_label }}: <a href="mailto:{{ site.email }}">{{ site.email }}</a>
       </div>
     </div>
   </div>
@@ -25,20 +30,20 @@ layout: default
 
 {{ content }}
 
-{% if site.projects.size > 0 %}
+{% if localized_projects.size > 0 %}
 <section class="section section--compact-top" id="projects">
-  <h4 class="section-title">Запустил</h4>
+  <h4 class="section-title">{{ t.home.launched }}</h4>
   {% include projects-grid.html show_filter="false" short="true" limit=2 %}
-  {% if site.projects.size > 2 %}
-  <a href="/projects/" class="view-more">Все проекты →</a>
+  {% if localized_projects.size > 2 %}
+  <a href="/{{ current_lang }}/projects/" class="view-more">{{ t.home.all_projects }}</a>
   {% endif %}
 </section>
 {% endif %}
 
-{% if site.posts.size > 0 %}
+{% if localized_posts.size > 0 %}
 <section class="section" id="blog">
-  <h4 class="section-title">Веду заметки</h4>
-  {% for post in site.posts limit: 5 %}
+  <h4 class="section-title">{{ t.home.notes }}</h4>
+  {% for post in localized_posts limit: 5 %}
   <div class="post-item">
     <h3 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
     {% if post.lead %}
@@ -54,17 +59,17 @@ layout: default
     </div>
   </div>
   {% endfor %}
-  {% if site.posts.size > 5 %}
-  <a href="/blog/" class="view-more">Все записи →</a>
+  {% if localized_posts.size > 5 %}
+  <a href="/{{ current_lang }}/notes/" class="view-more">{{ t.home.all_posts }}</a>
   {% endif %}
 </section>
 {% endif %}
 
-{% assign socials = site.data["socials"] %}
+{% assign socials = t.socials %}
 {% if socials and socials.size > 0 %}
 {% include ui-marquee.html
   class_name="projects-side-marquee"
-  aria_label="Я в соцсетях"
+  aria_label=t.home.socials_label
   items=socials
   theme="slate"
 %}

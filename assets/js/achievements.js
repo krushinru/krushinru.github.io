@@ -1,12 +1,104 @@
 (function () {
   const STORAGE_KEY = 'krushin_achievements_v1';
   const KNOWN_RARITIES = ['common', 'rare', 'epic', 'legendary'];
+  const PAGE_LANG = document.documentElement.lang === 'en' ? 'en' : 'ru';
 
   const RARITY_LABELS = {
-    common: 'Обычная',
-    rare: 'Редкая',
-    epic: 'Эпическая',
-    legendary: 'Легендарная'
+    ru: {
+      common: 'Обычная',
+      rare: 'Редкая',
+      epic: 'Эпическая',
+      legendary: 'Легендарная'
+    },
+    en: {
+      common: 'Common',
+      rare: 'Rare',
+      epic: 'Epic',
+      legendary: 'Legendary'
+    }
+  };
+
+  const UI_TEXT = {
+    ru: {
+      dateLocale: 'ru-RU',
+      defaultGroup: 'Общее',
+      summary: (unlocked, total) => `${unlocked} из ${total} достижений открыто`,
+      progressAria: 'Общий прогресс достижений',
+      unlockedPrefix: 'Открыто:',
+      conditionNotMet: 'Условие пока не выполнено',
+      achievementReceived: 'Достижение получено',
+      resetConfirm: 'Сбросить весь прогресс ачивок?'
+    },
+    en: {
+      dateLocale: 'en-US',
+      defaultGroup: 'General',
+      summary: (unlocked, total) => `${unlocked} of ${total} achievements unlocked`,
+      progressAria: 'Overall achievement progress',
+      unlockedPrefix: 'Unlocked:',
+      conditionNotMet: 'Condition not met yet',
+      achievementReceived: 'Achievement unlocked',
+      resetConfirm: 'Reset all achievement progress?'
+    }
+  };
+
+  const ACHIEVEMENT_TEXT = {
+    en: {
+      first_visit: {
+        title: 'First Step',
+        description: 'Open any page on the site.',
+        group: 'Navigation'
+      },
+      projects_page: {
+        title: 'Project Scout',
+        description: 'Visit the projects page.',
+        group: 'Navigation'
+      },
+      notes_page: {
+        title: 'Reader',
+        description: 'Visit the notes page.',
+        group: 'Navigation'
+      },
+      project_detail: {
+        title: 'Explorer',
+        description: 'Open at least one project page.',
+        group: 'Content'
+      },
+      note_detail: {
+        title: 'Author Trail',
+        description: 'Open at least one note.',
+        group: 'Content'
+      },
+      profile_visit: {
+        title: 'Profile Room',
+        description: 'Open the profile page.',
+        group: 'Profile'
+      },
+      site_explorer: {
+        title: 'Navigator',
+        description: 'Visit 3 different pages on the site.',
+        group: 'Navigation'
+      },
+      returning_user: {
+        title: 'Returning Guest',
+        description: 'Return to the site on 3 different days.',
+        group: 'Loyalty'
+      },
+      marathon: {
+        title: 'Marathon',
+        description: 'Reach 10 page views.',
+        group: 'Activity'
+      },
+      telegram_click: {
+        title: 'In Touch',
+        description: 'Click a Telegram link.',
+        group: 'Contact'
+      },
+      email_click: {
+        title: 'Contact',
+        description: 'Click an email link.',
+        group: 'Contact'
+      }
+    }
   };
 
   const ACHIEVEMENTS = [
@@ -166,7 +258,7 @@
   function normalizeAchievementMeta(achievement) {
     const group = typeof achievement.group === 'string' && achievement.group.trim().length > 0
       ? achievement.group.trim()
-      : 'Общее';
+      : UI_TEXT[PAGE_LANG].defaultGroup;
     const points = parseIntWithDefault(achievement.points, 10);
     const rarity = KNOWN_RARITIES.includes(achievement.rarity) ? achievement.rarity : 'common';
 
@@ -175,6 +267,15 @@
       group,
       points,
       rarity
+    };
+  }
+
+  function localizeAchievement(achievement) {
+    const localized = (ACHIEVEMENT_TEXT[PAGE_LANG] && ACHIEVEMENT_TEXT[PAGE_LANG][achievement.id]) || {};
+
+    return {
+      ...achievement,
+      ...localized
     };
   }
 
@@ -262,6 +363,12 @@
     return normalized;
   }
 
+  function getContentPath(pathname) {
+    const normalized = normalizePath(pathname);
+    const withoutLang = normalized.replace(/^\/(ru|en)(?=\/|$)/, '');
+    return withoutLang.length > 0 ? normalizePath(withoutLang) : '/';
+  }
+
   function normalizeEventName(rawValue) {
     if (typeof rawValue !== 'string') {
       return '';
@@ -307,16 +414,17 @@
 
   function trackCurrentPage() {
     const path = normalizePath(window.location.pathname);
+    const contentPath = getContentPath(path);
     state.metrics.pageViews += 1;
 
-    addUnique(state.visitedPaths, path, 200);
+    addUnique(state.visitedPaths, contentPath, 200);
     addUnique(state.visitedDays, getTodayKey(), 200);
 
-    if (path.startsWith('/projects/') && path !== '/projects/') {
+    if (contentPath.startsWith('/projects/') && contentPath !== '/projects/') {
       state.metrics.projectDetailViews += 1;
     }
 
-    if (path.startsWith('/notes/') && path !== '/notes/') {
+    if (contentPath.startsWith('/notes/') && contentPath !== '/notes/') {
       state.metrics.noteDetailViews += 1;
     }
   }
@@ -366,7 +474,7 @@
     if (Number.isNaN(date.getTime())) {
       return '';
     }
-    return date.toLocaleDateString('ru-RU', {
+    return date.toLocaleDateString(UI_TEXT[PAGE_LANG].dateLocale, {
       day: '2-digit',
       month: 'long',
       year: 'numeric'
@@ -391,7 +499,7 @@
 
   function getAchievementStatuses() {
     return ACHIEVEMENTS.map((achievementRaw) => {
-      const achievement = normalizeAchievementMeta(achievementRaw);
+      const achievement = localizeAchievement(normalizeAchievementMeta(achievementRaw));
       const unlockedAt = state.unlocked[achievement.id];
       const isUnlocked = Boolean(unlockedAt);
       const progress = normalizeProgress(achievement.getProgress(state));
@@ -440,25 +548,27 @@
     summaryEl.innerHTML = `
       <div class="achievements-overview__top">
         <div>
-          <p class="achievements-overview__count">${unlockedCount} из ${totalCount} достижений открыто</p>
+          <p class="achievements-overview__count">${escapeHtml(UI_TEXT[PAGE_LANG].summary(unlockedCount, totalCount))}</p>
           <p class="achievements-overview__meta">XP: ${unlockedPoints} / ${totalPoints}</p>
         </div>
         <div class="achievements-overview__ring" style="--achievements-progress: ${progressPercent}%;">
           <span>${progressPercent}%</span>
         </div>
       </div>
-      <div class="achievements-overview__bar" role="progressbar" aria-label="Общий прогресс достижений" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progressPercent}">
+      <div class="achievements-overview__bar" role="progressbar" aria-label="${escapeHtml(UI_TEXT[PAGE_LANG].progressAria)}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progressPercent}">
         <span style="width: ${progressPercent}%;"></span>
       </div>
     `;
 
     gridEl.innerHTML = statuses.map((status) => {
       const achievement = status.achievement;
-      const unlockedText = status.isUnlocked ? `Открыто: ${formatUnlockDate(status.unlockedAt)}` : 'Условие пока не выполнено';
+      const unlockedText = status.isUnlocked
+        ? `${UI_TEXT[PAGE_LANG].unlockedPrefix} ${formatUnlockDate(status.unlockedAt)}`
+        : UI_TEXT[PAGE_LANG].conditionNotMet;
       const progressText = status.isUnlocked
-        ? 'Достижение получено'
+        ? UI_TEXT[PAGE_LANG].achievementReceived
         : `${status.progress.current} / ${status.progress.total}`;
-      const rarityLabel = RARITY_LABELS[achievement.rarity] || RARITY_LABELS.common;
+      const rarityLabel = RARITY_LABELS[PAGE_LANG][achievement.rarity] || RARITY_LABELS[PAGE_LANG].common;
 
       return `
         <article class="achievement-card ${status.isUnlocked ? 'is-unlocked' : 'is-locked'} rarity-${achievement.rarity}">
@@ -487,7 +597,7 @@
     }
 
     resetButton.addEventListener('click', () => {
-      const approved = window.confirm('Сбросить весь прогресс ачивок?');
+      const approved = window.confirm(UI_TEXT[PAGE_LANG].resetConfirm);
       if (!approved) {
         return;
       }

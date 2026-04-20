@@ -1,5 +1,9 @@
 ---
 layout: post
+lang: ru
+locale: ru_RU
+translation_key: note-drive-to-survive
+permalink: /ru/notes/drive-to-survive/
 title: Как Drive To Survive изменил Формулу-1
 date: 2023-01-02
 lead: Выжимка из [рассылки](https://mobile.twitter.com/nathanbaugh27/status/1584176579885731841) и треда Натана Бау про то, как документальный сериал на Netflix изменил отношение к королевским гонкам в США и остальном мире

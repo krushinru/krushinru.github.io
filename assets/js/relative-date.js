@@ -6,6 +6,22 @@
   }
 
   const DAY_IN_MS = 24 * 60 * 60 * 1000;
+  const pageLang = document.documentElement.lang === 'en' ? 'en' : 'ru';
+  const TEXT = {
+    ru: {
+      today: 'сегодня',
+      yesterday: 'вчера',
+      dayForms: ['день', 'дня', 'дней'],
+      month: 'мес'
+    },
+    en: {
+      today: 'today',
+      yesterday: 'yesterday',
+      dayForms: ['day', 'days', 'days'],
+      month: 'mo'
+    }
+  };
+  const text = TEXT[pageLang];
 
   function parseLocalDate(dateString) {
     if (!dateString) {
@@ -50,6 +66,10 @@
   }
 
   function pluralize(value, forms) {
+    if (pageLang === 'en') {
+      return Math.abs(value) === 1 ? forms[0] : forms[1];
+    }
+
     const absValue = Math.abs(value) % 100;
     const lastDigit = absValue % 10;
 
@@ -76,25 +96,25 @@
     }
 
     if (diffDays === 0) {
-      return 'сегодня';
+      return text.today;
     }
 
     if (diffDays === 1) {
-      return 'вчера';
+      return text.yesterday;
     }
 
     if (diffDays < 30) {
-      return `${diffDays} ${pluralize(diffDays, ['день', 'дня', 'дней'])}`;
+      return `${diffDays} ${pluralize(diffDays, text.dayForms)}`;
     }
 
     const diffMonths = Math.max(0, getDiffInCalendarMonths(from, to));
 
     if (diffMonths < 1) {
-      return `${diffDays} ${pluralize(diffDays, ['день', 'дня', 'дней'])}`;
+      return `${diffDays} ${pluralize(diffDays, text.dayForms)}`;
     }
 
     if (diffMonths < 12) {
-      return `${diffMonths} ${pluralize(diffMonths, ['мес', 'мес', 'мес'])}`;
+      return `${diffMonths} ${text.month}`;
     }
 
     return String(from.getFullYear());

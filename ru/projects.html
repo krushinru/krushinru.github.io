@@ -1,0 +1,15 @@
+---
+layout: default
+lang: ru
+locale: ru_RU
+translation_key: projects
+title: Проекты
+description: Проекты Александра Крушина
+permalink: /ru/projects/
+---
+
+<section class="section">
+  <h1 class="section-title">{{ site.data.i18n[page.lang].projects.title }}</h1>
+  {% include projects-grid.html show_filter="false" short="false" %}
+  {% include projects-collab-cta.html %}
+</section>

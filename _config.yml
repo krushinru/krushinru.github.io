@@ -1,24 +1,17 @@
-# Настройки сайта
 title: Александр Крушин
 description: Запускаю собственные проекты. До этого был директором по маркетингу портала Рамблер и директором по развитию «Афиши». Обожаю медиа, контент и новые технологии.
 email: akrushin@gmail.com
 telegram_url: https://t.me/krushin
 baseurl: ""
 url: "https://krushin.me"
-permalink: /notes/:title
+permalink: /ru/notes/:title/
+default_lang: ru
+languages:
+  - ru
+  - en
+lang: ru
 locale: ru_RU
 logo: /images/logo.jpg
-navigation:
-  - title: Проекты
-    url: /projects/
-  - title: Игры
-    url: /games/
-  - title: Заметки
-    url: /notes/
-
-footer_navigation:
-
-
 author:
   name: Александр Крушин
   bio: Запускаю собственные проекты. До этого был директором по маркетингу портала <span class="rambler">Рамблер</span> и директором по развитию <span class="afisha">«Афиши»</span>. Обожаю медиа, контент и новые технологии.
@@ -26,7 +19,6 @@ author:
 
 plugins:
   - jekyll-feed
-  - jekyll-seo-tag
 
 exclude:
   - Gemfile
@@ -37,7 +29,6 @@ exclude:
 collections:
   projects:
     output: true
-    permalink: /projects/:name/
 
 defaults:
   - scope:
@@ -49,4 +40,4 @@ defaults:
       path: ""
       type: "projects"
     values:
-      layout: "page"
+      layout: "project"

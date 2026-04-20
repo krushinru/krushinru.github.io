@@ -1,0 +1,408 @@
+{% assign current_lang = page.lang | default: site.default_lang | default: 'ru' %}
+{% assign t = site.data.i18n[current_lang] | default: site.data.i18n.ru %}
+{% assign life = t.life_weeks %}
+
+<style>
+  .life-weeks-tool {
+    --life-bg: #0a0a0a;
+    --life-fg: #fafafa;
+    --life-muted: #8a8a8a;
+    --life-line: #2a2a2a;
+    --life-cell: #1a1a1a;
+    padding: 28px 0 80px;
+  }
+
+  .life-weeks-tool__landing {
+    min-height: 44vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .life-weeks-tool__form {
+    width: min(100%, 560px);
+  }
+
+  .life-weeks-tool__label,
+  .life-weeks-tool__select-label,
+  .life-weeks-tool__meta,
+  .life-weeks-tool__stat-label {
+    color: var(--life-muted);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .life-weeks-tool__label {
+    margin-bottom: 28px;
+    text-align: center;
+  }
+
+  .life-weeks-tool__selects {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1.2fr;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+
+  .life-weeks-tool__select-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.6875rem;
+  }
+
+  .life-weeks-tool select {
+    width: 100%;
+    padding: 14px 0;
+    color: var(--life-fg);
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid var(--life-line);
+    border-radius: 0;
+    font: inherit;
+    outline: 0;
+  }
+
+  .life-weeks-tool select:focus {
+    border-bottom-color: var(--life-fg);
+  }
+
+  .life-weeks-tool select option {
+    color: var(--life-fg);
+    background: var(--life-bg);
+  }
+
+  .life-weeks-tool__submit {
+    width: 100%;
+    padding: 18px 0;
+    color: var(--life-bg);
+    background: var(--life-fg);
+    border: 0;
+    border-radius: 6px;
+    font-weight: 600;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .life-weeks-tool__submit.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .life-weeks-tool__main {
+    display: none;
+  }
+
+  .life-weeks-tool__main.is-visible {
+    display: block;
+  }
+
+  .life-weeks-tool__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .life-weeks-tool__title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .life-weeks-tool__grid {
+    display: grid;
+    grid-template-columns: repeat(52, minmax(0, 1fr));
+    gap: 2px;
+    margin-bottom: 30px;
+  }
+
+  .life-weeks-tool__cell {
+    aspect-ratio: 1;
+    background: var(--life-cell);
+  }
+
+  .life-weeks-tool__cell.is-lived {
+    background: var(--life-fg);
+  }
+
+  .life-weeks-tool__legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    color: var(--life-muted);
+    font-size: 0.875rem;
+  }
+
+  .life-weeks-tool__legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .life-weeks-tool__legend-box {
+    width: 14px;
+    height: 14px;
+    background: var(--life-cell);
+  }
+
+  .life-weeks-tool__legend-box.is-lived {
+    background: var(--life-fg);
+  }
+
+  .life-weeks-tool__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 28px;
+    margin: 56px 0;
+  }
+
+  .life-weeks-tool__stat-value {
+    margin-bottom: 8px;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .life-weeks-tool__reset {
+    color: var(--life-muted);
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 576px) {
+    .life-weeks-tool__selects {
+      grid-template-columns: 76px 1fr 96px;
+      gap: 10px;
+    }
+
+    .life-weeks-tool__header {
+      display: block;
+    }
+
+    .life-weeks-tool__meta {
+      display: block;
+      margin-top: 8px;
+    }
+
+    .life-weeks-tool__grid {
+      gap: 1px;
+    }
+  }
+</style>
+
+<div class="life-weeks-tool" data-life-weeks data-number-locale="{{ life.locale }}">
+  <div class="life-weeks-tool__landing" data-life-landing>
+    <div class="life-weeks-tool__form">
+      <div class="life-weeks-tool__label">{{ life.birth_date }}</div>
+
+      <div class="life-weeks-tool__selects">
+        <label>
+          <span class="life-weeks-tool__select-label">{{ life.day }}</span>
+          <select data-life-day>
+            <option value="" disabled selected>--</option>
+          </select>
+        </label>
+
+        <label>
+          <span class="life-weeks-tool__select-label">{{ life.month }}</span>
+          <select data-life-month>
+            <option value="" disabled selected>------</option>
+            {% for month in life.months %}
+            <option value="{{ forloop.index }}">{{ month }}</option>
+            {% endfor %}
+          </select>
+        </label>
+
+        <label>
+          <span class="life-weeks-tool__select-label">{{ life.year }}</span>
+          <select data-life-year>
+            <option value="" disabled selected>----</option>
+          </select>
+        </label>
+      </div>
+
+      <button class="life-weeks-tool__submit" type="button" data-life-submit>{{ life.continue }}</button>
+    </div>
+  </div>
+
+  <div class="life-weeks-tool__main" data-life-main>
+    <div class="life-weeks-tool__header">
+      <h2 class="life-weeks-tool__title">{{ life.calendar_title }}</h2>
+      <span class="life-weeks-tool__meta">{{ life.calendar_meta }}</span>
+    </div>
+
+    <div class="life-weeks-tool__grid" data-life-grid></div>
+
+    <div class="life-weeks-tool__legend">
+      <span class="life-weeks-tool__legend-item">
+        <span class="life-weeks-tool__legend-box is-lived"></span>
+        {{ life.lived_weeks }}
+      </span>
+      <span class="life-weeks-tool__legend-item">
+        <span class="life-weeks-tool__legend-box"></span>
+        {{ life.future_weeks }}
+      </span>
+    </div>
+
+    <div class="life-weeks-tool__stats" data-life-stats></div>
+
+    <a href="#" class="life-weeks-tool__reset" data-life-reset>{{ life.reset }}</a>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const tool = document.querySelector('[data-life-weeks]');
+    if (!tool) return;
+
+    const labels = {
+      yearsLived: {{ life.years_lived | jsonify }},
+      weeksPassed: {{ life.weeks_passed | jsonify }},
+      weeksLeft: {{ life.weeks_left | jsonify }},
+      pathDone: {{ life.path_done | jsonify }}
+    };
+
+    const numberLocale = tool.getAttribute('data-number-locale') || 'ru-RU';
+    const storageKey = 'krushin_life_weeks_dob';
+    const landing = tool.querySelector('[data-life-landing]');
+    const main = tool.querySelector('[data-life-main]');
+    const daySelect = tool.querySelector('[data-life-day]');
+    const monthSelect = tool.querySelector('[data-life-month]');
+    const yearSelect = tool.querySelector('[data-life-year]');
+    const submitButton = tool.querySelector('[data-life-submit]');
+    const grid = tool.querySelector('[data-life-grid]');
+    const stats = tool.querySelector('[data-life-stats]');
+    const reset = tool.querySelector('[data-life-reset]');
+
+    for (let day = 1; day <= 31; day += 1) {
+      const option = document.createElement('option');
+      option.value = String(day);
+      option.textContent = String(day);
+      daySelect.appendChild(option);
+    }
+
+    const currentYear = new Date().getFullYear();
+    for (let year = currentYear; year >= 1920; year -= 1) {
+      const option = document.createElement('option');
+      option.value = String(year);
+      option.textContent = String(year);
+      yearSelect.appendChild(option);
+    }
+
+    function getDateString() {
+      return `${yearSelect.value}-${monthSelect.value.padStart(2, '0')}-${daySelect.value.padStart(2, '0')}`;
+    }
+
+    function updateSubmitVisibility() {
+      const isComplete = daySelect.value && monthSelect.value && yearSelect.value;
+      submitButton.classList.toggle('is-visible', Boolean(isComplete));
+    }
+
+    function calculateWeeksLived(dob) {
+      const diffMs = new Date() - new Date(dob);
+      return Math.max(0, Math.floor(diffMs / (1000 * 60 * 60 * 24 * 7)));
+    }
+
+    function calculateAge(dob) {
+      const now = new Date();
+      const birthDate = new Date(dob);
+      let age = now.getFullYear() - birthDate.getFullYear();
+      const monthDiff = now.getMonth() - birthDate.getMonth();
+
+      if (monthDiff < 0 || (monthDiff === 0 && now.getDate() < birthDate.getDate())) {
+        age -= 1;
+      }
+
+      return Math.max(0, age);
+    }
+
+    function formatNumber(value) {
+      return value.toLocaleString(numberLocale);
+    }
+
+    function renderGrid(weeksLived) {
+      const totalWeeks = 52 * 90;
+      const fragment = document.createDocumentFragment();
+      grid.innerHTML = '';
+
+      for (let index = 0; index < totalWeeks; index += 1) {
+        const cell = document.createElement('span');
+        cell.className = 'life-weeks-tool__cell';
+        if (index < weeksLived) {
+          cell.classList.add('is-lived');
+        }
+        fragment.appendChild(cell);
+      }
+
+      grid.appendChild(fragment);
+    }
+
+    function renderStats(dob) {
+      const weeksLived = calculateWeeksLived(dob);
+      const totalWeeks = 52 * 90;
+      const age = calculateAge(dob);
+      const percentLived = Math.min(100, (weeksLived / totalWeeks) * 100).toFixed(1);
+
+      stats.innerHTML = `
+        <div>
+          <div class="life-weeks-tool__stat-value">${formatNumber(age)}</div>
+          <div class="life-weeks-tool__stat-label">${labels.yearsLived}</div>
+        </div>
+        <div>
+          <div class="life-weeks-tool__stat-value">${formatNumber(weeksLived)}</div>
+          <div class="life-weeks-tool__stat-label">${labels.weeksPassed}</div>
+        </div>
+        <div>
+          <div class="life-weeks-tool__stat-value">${formatNumber(Math.max(0, totalWeeks - weeksLived))}</div>
+          <div class="life-weeks-tool__stat-label">${labels.weeksLeft}</div>
+        </div>
+        <div>
+          <div class="life-weeks-tool__stat-value">${percentLived}%</div>
+          <div class="life-weeks-tool__stat-label">${labels.pathDone}</div>
+        </div>
+      `;
+    }
+
+    function showVisualization(dob) {
+      const weeksLived = calculateWeeksLived(dob);
+      renderGrid(weeksLived);
+      renderStats(dob);
+      landing.style.display = 'none';
+      main.classList.add('is-visible');
+    }
+
+    function hideVisualization() {
+      landing.style.display = 'flex';
+      main.classList.remove('is-visible');
+      daySelect.value = '';
+      monthSelect.value = '';
+      yearSelect.value = '';
+      updateSubmitVisibility();
+    }
+
+    [daySelect, monthSelect, yearSelect].forEach((select) => {
+      select.addEventListener('change', updateSubmitVisibility);
+    });
+
+    submitButton.addEventListener('click', () => {
+      if (!daySelect.value || !monthSelect.value || !yearSelect.value) return;
+      const dob = getDateString();
+      window.localStorage.setItem(storageKey, dob);
+      showVisualization(dob);
+    });
+
+    reset.addEventListener('click', (event) => {
+      event.preventDefault();
+      window.localStorage.removeItem(storageKey);
+      hideVisualization();
+    });
+
+    const storedDob = window.localStorage.getItem(storageKey);
+    if (storedDob) {
+      showVisualization(storedDob);
+    }
+  })();
+</script>

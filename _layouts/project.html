@@ -2,6 +2,9 @@
 layout: default
 ---
 
+{% assign current_lang = page.lang | default: site.default_lang | default: 'ru' %}
+{% assign t = site.data.i18n[current_lang] | default: site.data.i18n.ru %}
+
 <article class="project-page">
   <header class="project-header">
 
@@ -28,7 +31,7 @@ layout: default
 
       {% if page.url_link %}
       <a href="{{ page.url_link }}" target="_blank" class="project-link-inline">
-        Перейти на сайт →
+        {{ t.projects.visit_site }}
       </a>
       {% endif %}
     </div>
@@ -62,7 +65,7 @@ layout: default
 
   {% if page.media %}
   <aside class="project-media">
-    <h3 class="media-title">Медиа о проекте</h3>
+    <h3 class="media-title">{{ t.projects.media_title }}</h3>
     <ul class="media-list">
       {% for item in page.media %}
       <li class="media-item">

@@ -1,5 +1,7 @@
+{% assign current_lang = page.lang | default: site.default_lang | default: 'ru' %}
+{% assign t = site.data.i18n[current_lang] | default: site.data.i18n.ru %}
 {% include ui-cta.html
   theme="cyan"
-  title="Открыт к предложениям"
-  text='Есть идея проекта? Пиши на <a href="mailto:akrushin@gmail.com?subject=Предложение%20о%20сотрудничестве">почту</a>'
+  title=t.projects.collab_title
+  text=t.projects.collab_text
 %}

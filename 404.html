@@ -1,8 +1,14 @@
 ---
 layout: default
+lang: ru
+locale: ru_RU
+translation_key: 404
 title: Страница не найдена
+description: Возможно, вы перешли по устаревшей ссылке или страница была удалена.
 permalink: /404.html
+sitemap: false
 ---
+{% assign t = site.data.i18n[page.lang] %}
 <style>
 /* 404 Error Page */
 .error-page {
@@ -25,7 +31,7 @@ permalink: /404.html
   color: var(--white);
   margin: 0 0 16px 0;
   line-height: 1;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
   opacity: 0.3;
 }
 
@@ -36,7 +42,7 @@ permalink: /404.html
   color: var(--white);
   margin: 0 0 16px 0;
   line-height: 1.2;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .error-desc {
@@ -101,14 +107,14 @@ permalink: /404.html
 <section class="error-page">
   <div class="error-content">
     <h1 class="error-code">404</h1>
-    <h2 class="error-title">Страница не найдена</h2>
+    <h2 class="error-title">{{ t.error.title }}</h2>
     <p class="error-desc">
-      Возможно, вы перешли по устаревшей ссылке или страница была удалена.
+      {{ t.error.description }}
     </p>
     <div class="error-actions">
-      <a href="/" class="error-link">На главную</a>
-      <a href="/projects/" class="error-link">Проекты</a>
-      <a href="/notes/" class="error-link">Заметки</a>
+      <a href="/ru/" class="error-link">{{ t.error.home }}</a>
+      <a href="/ru/projects/" class="error-link">{{ t.error.projects }}</a>
+      <a href="/ru/notes/" class="error-link">{{ t.error.notes }}</a>
     </div>
   </div>
 </section>

@@ -1,0 +1,307 @@
+ru:
+  lang: ru
+  locale: ru_RU
+  label: Русский
+  site:
+    title: Александр Крушин
+    description: Запускаю собственные проекты. До этого был директором по маркетингу портала Рамблер и директором по развитию «Афиши». Обожаю медиа, контент и новые технологии.
+    author_name: Александр Крушин
+    author_bio: Запускаю собственные проекты. До этого был директором по&nbsp;маркетингу портала <span class="rambler">Рамблер</span> и директором по развитию <span class="afisha">«Афиши»</span>. Обожаю медиа, контент и новые технологии.
+    avatar_alt: Аватар
+  navigation:
+    - title: Проекты
+      url: /ru/projects/
+    - title: Игры
+      url: /ru/games/
+    - title: Заметки
+      url: /ru/notes/
+  footer_navigation: []
+  header:
+    open_menu: Открыть меню
+    language_label: Язык
+  footer:
+    aria_label: Ссылки в футере
+    up: Наверх
+    made_prefix: Сделано с
+    made_suffix: в
+    year_suffix: году
+  home:
+    contact_label: Связаться
+    launched: Запустил
+    notes: Веду заметки
+    all_projects: Все проекты →
+    all_posts: Все записи →
+    socials_label: Я в соцсетях
+  projects:
+    title: Проекты
+    description: Проекты Александра Крушина
+    visit_site: Перейти на сайт →
+    media_title: Медиа о проекте
+    filter_prefix: Здесь собраны
+    filter_all: все
+    filter_active: активные
+    filter_closed: закрытые
+    filter_suffix: проекты, где я
+    role_or: или
+    side_projects_label: Дополнительные проекты
+    collab_title: Открыт к предложениям
+    collab_text: Есть идея проекта? Пиши на <a href="mailto:akrushin@gmail.com?subject=Предложение%20о%20сотрудничестве">почту</a>
+  notes:
+    title: Заметки
+    description: Заметки Александра Крушина о медиа, проектах и технологиях
+    more_title: хочу еще
+    more_text: Больше постов — в моём <a href="https://t.me/krushin">телеграм-канале</a>
+    published_at: Опубликовано
+  profile:
+    title: Достижения
+    description: Ачивки и прогресс на сайте Александра Крушина
+    kicker: Геймификация
+    greeting: Привет, %username%
+    intro: Открывай ачивки за действия на сайте. Прогресс хранится в браузере через localStorage и остаётся на этом устройстве.
+    loading: Загрузка прогресса...
+    hint: Прогресс хранится в браузере и остаётся на этом устройстве
+    reset: Сбросить
+  privacy:
+    title: Политика конфиденциальности
+    description: Политика конфиденциальности сайта Александра Крушина
+    body: |
+      На сайте не используется регистрация пользователей и не собираются персональные данные через формы.
+
+      Сайт использует системы веб-аналитики для базовой статистики посещений. Эти данные обрабатываются в обезличенном виде.
+
+      По вопросам, связанным с конфиденциальностью, можно написать на [akrushin@gmail.com](mailto:akrushin@gmail.com).
+  games:
+    title: Игры
+    description: Браузерные игры Александра Крушина
+    items:
+      pong:
+        title: Управленческий Пинг-Понг
+        description: Аркадная браузерная игра про дедлайны и рабочие чаты, стилизованная под Slack.
+      mediagame:
+        title: Медиа-менеджер
+        description: Симулятор владельца медиа, где приходится балансировать между деньгами, доверием аудитории и редакционной совестью.
+  error:
+    title: Страница не найдена
+    description: Возможно, вы перешли по устаревшей ссылке или страница была удалена.
+    home: На главную
+    projects: Проекты
+    notes: Заметки
+  life_weeks:
+    birth_date: Дата рождения
+    day: День
+    month: Месяц
+    year: Год
+    continue: Продолжить
+    calendar_title: Календарь жизни
+    calendar_meta: 52 недели × 90 лет
+    lived_weeks: Прожитые недели
+    future_weeks: Будущие недели
+    reset: Сбросить данные
+    years_lived: Лет прожито
+    weeks_passed: Недель прошло
+    weeks_left: Недель осталось
+    path_done: Пути пройдено
+    locale: ru-RU
+    months:
+      - Январь
+      - Февраль
+      - Март
+      - Апрель
+      - Май
+      - Июнь
+      - Июль
+      - Август
+      - Сентябрь
+      - Октябрь
+      - Ноябрь
+      - Декабрь
+  socials:
+    - name: Я в соцсетях
+    - name: Телеграм
+      url: https://t.me/krushin
+    - name: ТГ про игры
+      url: https://t.me/gamer
+    - name: Инстаграм*
+      url: https://instagram.com/krushin_ru
+    - name: Линкедин
+      url: https://www.linkedin.com/in/krushin/
+    - name: ФБ*
+      url: https://facebook.com/akrushin
+    - name: Я в соцсетях
+    - name: Телеграм
+      url: https://t.me/krushin
+    - name: ТГ про игры
+      url: https://t.me/gamer
+    - name: Инстаграм*
+      url: https://instagram.com/krushin_ru
+    - name: Линкедин
+      url: https://www.linkedin.com/in/krushin/
+    - name: ФБ*
+      url: https://facebook.com/akrushin
+  side_projects:
+    - name: Геймер
+      description: старейший телеграм-канал про видеоигры
+      url: https://t.me/gamer
+    - name: GeoConsent
+      description: js-библиотека для куки-уведомлений
+      url: https://krushin.me/geoconsent/
+    - name: Медиаменеджер
+      description: шуточная игра про будни владельца СМИ
+      url: https://krushin.me/games/mediagame/
+    - name: Конспекто
+      description: онлайн-блокнот с автотаймингом
+      url: https://konspekto.ru
+
+en:
+  lang: en
+  locale: en_US
+  label: English
+  site:
+    title: Alexander Krushin
+    description: I launch my own projects. Earlier I was marketing director at Rambler and chief digital officer at Afisha. I love media, content, and new technology.
+    author_name: Alexander Krushin
+    author_bio: I launch my own projects. Earlier I was marketing director at <span class="rambler">Rambler</span> and chief digital officer at <span class="afisha">Afisha</span>. I love media, content, and new technology.
+    avatar_alt: Avatar
+  navigation:
+    - title: Projects
+      url: /en/projects/
+    - title: Games
+      url: /en/games/
+    - title: Notes
+      url: /en/notes/
+  footer_navigation: []
+  header:
+    open_menu: Open menu
+    language_label: Language
+  footer:
+    aria_label: Footer links
+    up: Back to top
+    made_prefix: Made with
+    made_suffix: in
+    year_suffix: ""
+  home:
+    contact_label: Contact
+    launched: Launched
+    notes: Notes
+    all_projects: All projects →
+    all_posts: All notes →
+    socials_label: Social links
+  projects:
+    title: Projects
+    description: Projects by Alexander Krushin
+    visit_site: Visit website →
+    media_title: Media about the project
+    filter_prefix: Here are
+    filter_all: all
+    filter_active: active
+    filter_closed: closed
+    filter_suffix: projects where I
+    role_or: or
+    side_projects_label: Extra projects
+    collab_title: Open to ideas
+    collab_text: Have a project idea? Write to me by <a href="mailto:akrushin@gmail.com?subject=Project%20collaboration">email</a>
+  notes:
+    title: Notes
+    description: Notes by Alexander Krushin about media, projects, and technology
+    more_title: want more
+    more_text: More posts are in my <a href="https://t.me/krushin">Telegram channel</a>
+    published_at: Published
+  profile:
+    title: Achievements
+    description: Achievements and progress on Alexander Krushin's website
+    kicker: Gamification
+    greeting: Hello, %username%
+    intro: Unlock achievements by doing things on the site. Progress is stored in this browser with localStorage and stays on this device.
+    loading: Loading progress...
+    hint: Progress is stored in this browser and stays on this device
+    reset: Reset
+  privacy:
+    title: Privacy Policy
+    description: Privacy policy for Alexander Krushin's website
+    body: |
+      This site does not use user registration and does not collect personal data through forms.
+
+      The site uses web analytics for basic visit statistics. This data is processed in anonymized form.
+
+      For privacy-related questions, write to [akrushin@gmail.com](mailto:akrushin@gmail.com).
+  games:
+    title: Games
+    description: Browser games by Alexander Krushin
+    items:
+      pong:
+        title: Management Ping-Pong
+        description: An arcade browser game about deadlines and work chats, styled after Slack.
+      mediagame:
+        title: Media Manager
+        description: A media-owner simulator where you balance money, audience trust, and editorial conscience.
+  error:
+    title: Page not found
+    description: The link may be outdated, or the page may have been removed.
+    home: Home
+    projects: Projects
+    notes: Notes
+  life_weeks:
+    birth_date: Date of birth
+    day: Day
+    month: Month
+    year: Year
+    continue: Continue
+    calendar_title: Life calendar
+    calendar_meta: 52 weeks × 90 years
+    lived_weeks: Weeks lived
+    future_weeks: Future weeks
+    reset: Reset data
+    years_lived: Years lived
+    weeks_passed: Weeks passed
+    weeks_left: Weeks left
+    path_done: Path completed
+    locale: en-US
+    months:
+      - January
+      - February
+      - March
+      - April
+      - May
+      - June
+      - July
+      - August
+      - September
+      - October
+      - November
+      - December
+  socials:
+    - name: Social links
+    - name: Telegram
+      url: https://t.me/krushin
+    - name: Games channel
+      url: https://t.me/gamer
+    - name: Instagram*
+      url: https://instagram.com/krushin_ru
+    - name: LinkedIn
+      url: https://www.linkedin.com/in/krushin/
+    - name: Facebook*
+      url: https://facebook.com/akrushin
+    - name: Social links
+    - name: Telegram
+      url: https://t.me/krushin
+    - name: Games channel
+      url: https://t.me/gamer
+    - name: Instagram*
+      url: https://instagram.com/krushin_ru
+    - name: LinkedIn
+      url: https://www.linkedin.com/in/krushin/
+    - name: Facebook*
+      url: https://facebook.com/akrushin
+  side_projects:
+    - name: Gamer
+      description: one of the oldest Telegram channels about video games
+      url: https://t.me/gamer
+    - name: GeoConsent
+      description: a JS library for cookie consent banners
+      url: https://krushin.me/geoconsent/
+    - name: Media Manager
+      description: a satirical game about running a media company
+      url: https://krushin.me/games/mediagame/
+    - name: Konspekto
+      description: an online notebook with automatic timing
+      url: https://konspekto.ru

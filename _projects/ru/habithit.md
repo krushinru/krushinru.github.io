@@ -1,5 +1,9 @@
 ---
 layout: project
+lang: ru
+locale: ru_RU
+translation_key: project-habithit
+permalink: /ru/projects/habithit/
 title: HabitHit
 description: Трекер привычек в Telegram
 image: https://habithit.org/images/logo.png

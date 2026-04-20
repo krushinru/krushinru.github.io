@@ -1,10 +1,12 @@
+{% assign current_lang = page.lang | default: site.default_lang | default: 'ru' %}
+{% assign t = site.data.i18n[current_lang] | default: site.data.i18n.ru %}
 <footer>
   <div class="container">
     <div class="row py-3">
       <div class="col-12">
         <div class="footer-row">
-          <nav class="footer-menu" aria-label="Ссылки в футере">
-            {% for item in site.footer_navigation %}
+          <nav class="footer-menu" aria-label="{{ t.footer.aria_label }}">
+            {% for item in t.footer_navigation %}
               {% assign item_url = item.url %}
               {% unless item.external %}
                 {% assign item_url = item.url | relative_url %}
@@ -13,8 +15,8 @@
             {% endfor %}
           </nav>
           <div class="footer-bottom-line">
-            <a href="#" class="footer-up">↑</a>
-            <p class="mb-0 footer-made">Сделано с <i class="fa-solid fa-heart" style="color: #c9302c;"></i> в {{ 'now' | date: "%Y" }} году</p>
+            <a href="#" class="footer-up" aria-label="{{ t.footer.up }}">↑</a>
+            <p class="mb-0 footer-made">{{ t.footer.made_prefix }} <i class="fa-solid fa-heart" style="color: #c9302c;"></i> {{ t.footer.made_suffix }} {{ 'now' | date: "%Y" }}{% if t.footer.year_suffix %} {{ t.footer.year_suffix }}{% endif %}</p>
           </div>
         </div>
       </div>

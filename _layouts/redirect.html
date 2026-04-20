@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% include head.html %}
+<body>
+  {% include header.html %}
+  <div class="container">
+    <section class="section redirect-page" aria-live="polite">
+      <p class="redirect-page__kicker">Новый адрес</p>
+      <h1 class="section-title redirect-page__title">{{ page.title | default: 'Страница переехала' }}</h1>
+      <p class="redirect-page__text">
+        Сейчас откроется русская версия страницы. Если переход не сработал, перейдите по ссылке ниже.
+      </p>
+      <a class="redirect-page__link" href="{{ page.redirect_to | relative_url }}">Открыть страницу →</a>
+    </section>
+  </div>
+  {% include footer.html %}
+  <script>
+    window.location.replace({{ page.redirect_to | jsonify }});
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ '/assets/js/achievements.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+  <script src="{{ '/assets/js/relative-date.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+  <script>
+    (function () {
+      const burger = document.querySelector('.nav-burger');
+      const menu = document.querySelector('.nav-menu');
+
+      if (burger && menu) {
+        const setMenuState = (isOpen) => {
+          menu.classList.toggle('is-open', isOpen);
+          burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          document.body.classList.toggle('nav-open', isOpen);
+        };
+
+        burger.addEventListener('click', () => {
+          const isOpen = !menu.classList.contains('is-open');
+          setMenuState(isOpen);
+        });
+
+        menu.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => {
+            if (window.matchMedia('(max-width: 768px)').matches) {
+              setMenuState(false);
+            }
+          });
+        });
+
+        window.addEventListener('resize', () => {
+          if (!window.matchMedia('(max-width: 768px)').matches) {
+            setMenuState(false);
+          }
+        });
+
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') {
+            setMenuState(false);
+          }
+        });
+      }
+
+      document.querySelectorAll('.footer-up').forEach((link) => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

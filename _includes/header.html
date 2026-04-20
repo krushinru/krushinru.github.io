@@ -1,24 +1,44 @@
+{% assign current_lang = page.lang | default: site.default_lang | default: 'ru' %}
+{% assign t = site.data.i18n[current_lang] | default: site.data.i18n.ru %}
+{% assign alternate_pages = site.pages | concat: site.posts | concat: site.projects %}
 <nav class="navbar navbar-dark">
   <div class="container nav-layout">
     <div class="nav-profile">
-      <a class="navbar-brand" href="{{ '/' | relative_url }}">
-        <img src="{{ site.author.avatar }}" alt="Аватар" class="nav-avatar">
+      <a class="navbar-brand" href="{{ '/' | append: current_lang | append: '/' | relative_url }}">
+        <img src="{{ site.author.avatar }}" alt="{{ t.site.avatar_alt }}" class="nav-avatar">
       </a>
       <div class="nav-name-block">
-        <a class="nav-name-link" href="{{ '/' | relative_url }}">{{ site.author.name | default: site.title }}</a>
-        {% if site.author.subtitle %}<span class="nav-name-subtitle">{{ site.author.subtitle | default: "подпись скоро будет" }}</span>{% endif %}
+        <a class="nav-name-link" href="{{ '/' | append: current_lang | append: '/' | relative_url }}">{{ t.site.author_name | default: t.site.title }}</a>
+        {% if site.author.subtitle %}<span class="nav-name-subtitle">{{ site.author.subtitle }}</span>{% endif %}
       </div>
     </div>
-    <button class="nav-burger" type="button" aria-label="Открыть меню" aria-controls="siteNavMenu" aria-expanded="false">
+    <button class="nav-burger" type="button" aria-label="{{ t.header.open_menu }}" aria-controls="siteNavMenu" aria-expanded="false">
       <i class="fa-solid fa-burger nav-burger-icon" aria-hidden="true"></i>
     </button>
     <div class="nav-menu" id="siteNavMenu">
       <ul class="navbar-nav ms-auto gap-2">
-        {% for item in site.navigation %}
+        {% for item in t.navigation %}
         <li class="nav-item">
-          <a class="nav-link" href="{{ item.url }}">{{ item.title }}</a>
+          <a class="nav-link" href="{{ item.url | relative_url }}">{{ item.title }}</a>
         </li>
         {% endfor %}
+        <li class="nav-item nav-language" aria-label="{{ t.header.language_label }}">
+          {% for lang_code in site.languages %}
+            {% assign lang_url = '' %}
+            {% if page.translation_key %}
+              {% for alternate_page in alternate_pages %}
+                {% if alternate_page.translation_key == page.translation_key and alternate_page.lang == lang_code %}
+                  {% assign lang_url = alternate_page.url %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+            {% if lang_url == '' %}
+              {% assign lang_url = '/' | append: lang_code | append: '/' %}
+            {% endif %}
+            {% assign lang_t = site.data.i18n[lang_code] %}
+            <a class="nav-link nav-language__link{% if lang_code == current_lang %} is-active{% endif %}" href="{{ lang_url | relative_url }}" aria-label="{{ lang_t.label }}"{% if lang_code == current_lang %} aria-current="true"{% endif %}><span class="nav-language__short">{{ lang_code | upcase }}</span><span class="nav-language__full">{{ lang_t.label }}</span></a>
+          {% endfor %}
+        </li>
       </ul>
     </div>
   </div>

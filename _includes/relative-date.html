@@ -1,6 +1,8 @@
+{% assign current_lang = page.lang | default: site.default_lang | default: 'ru' %}
+{% assign t = site.data.i18n[current_lang] | default: site.data.i18n.ru %}
 <time
   datetime="{{ include.date | date: '%Y-%m-%d' }}"
   data-relative-date
   title="{{ include.date | date: '%d.%m.%Y' }}"
-  aria-label="Опубликовано {{ include.date | date: '%d.%m.%Y' }}"
+  aria-label="{{ t.notes.published_at }} {{ include.date | date: '%d.%m.%Y' }}"
 >{{ include.date | date: '%d.%m.%Y' }}</time>

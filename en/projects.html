@@ -1,0 +1,15 @@
+---
+layout: default
+lang: en
+locale: en_US
+translation_key: projects
+title: Projects
+description: Projects by Alexander Krushin
+permalink: /en/projects/
+---
+
+<section class="section">
+  <h1 class="section-title">{{ site.data.i18n[page.lang].projects.title }}</h1>
+  {% include projects-grid.html show_filter="false" short="false" %}
+  {% include projects-collab-cta.html %}
+</section>

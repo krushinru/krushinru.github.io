@@ -5,26 +5,29 @@
   - marquee_theme: тема для бегущей строки (solar|cyan|mint|coral|berry|slate)
 {% endcomment %}
 
+{% assign current_lang = page.lang | default: site.default_lang | default: 'ru' %}
+{% assign t = site.data.i18n[current_lang] | default: site.data.i18n.ru %}
 {% assign projects_limit = include.limit %}
 <div data-editorial-grid>
 {% unless include.show_filter == "false" %}
 <div class="projects-filter-sentence">
-  <span class="sentence-text">Здесь собраны</span>
+  <span class="sentence-text">{{ t.projects.filter_prefix }}</span>
   <div class="filter-dropdown">
     <button class="dropdown-btn" type="button" data-status-dropdown>
-      <span class="dropdown-value" data-status-value>все</span>
+      <span class="dropdown-value" data-status-value>{{ t.projects.filter_all }}</span>
       <span class="dropdown-arrow">▾</span>
     </button>
     <div class="dropdown-menu" data-status-menu>
-      <button class="dropdown-item active" data-status="all">все</button>
-      <button class="dropdown-item" data-status="active">активные</button>
-      <button class="dropdown-item" data-status="closed">закрытые</button>
+      <button class="dropdown-item active" data-status="all">{{ t.projects.filter_all }}</button>
+      <button class="dropdown-item" data-status="active">{{ t.projects.filter_active }}</button>
+      <button class="dropdown-item" data-status="closed">{{ t.projects.filter_closed }}</button>
     </div>
   </div>
-  <span class="sentence-text"> проекты, где я</span>
+  <span class="sentence-text"> {{ t.projects.filter_suffix }}</span>
   
   {% assign all_roles = "" | split: "" %}
-  {% for project in site.projects %}
+  {% assign all_projects_for_lang = site.projects | where: "lang", current_lang %}
+  {% for project in all_projects_for_lang %}
     {% for role in project.roles %}
       {% unless all_roles contains role %}
         {% assign all_roles = all_roles | push: role %}
@@ -33,14 +36,14 @@
   {% endfor %}
   
   {% for role in all_roles %}
-    <span class="sentence-role" data-role="{{ role | downcase }}">{{ role | downcase }}</span>{% if forloop.last == false %}{% if forloop.rindex == 2 %} или{% else %},{% endif %}{% endif %}
+    <span class="sentence-role" data-role="{{ role | downcase }}">{{ role | downcase }}</span>{% if forloop.last == false %}{% if forloop.rindex == 2 %} {{ t.projects.role_or }}{% else %},{% endif %}{% endif %}
   {% endfor %}
 </div>
 {% endunless %}
 
 <div class="projects-editorial-grid">
-  {% assign projects = site.projects | sort: "launch_year" | reverse %}
-  {% assign side_projects = site.data["side-projects"] %}
+  {% assign projects = site.projects | where: "lang", current_lang | sort: "launch_year" | reverse %}
+  {% assign side_projects = t.side_projects %}
   
   {% if projects_limit %}
     {% assign projects = projects | slice: 0, projects_limit %}
@@ -173,7 +176,7 @@
     {% if include.short == "false" and forloop.index == 2 and side_projects and side_projects.size > 0 %}
     {% include ui-marquee.html
       class_name="projects-side-marquee"
-      aria_label="Дополнительные проекты"
+      aria_label=t.projects.side_projects_label
       items=side_projects
       theme=include.marquee_theme
     %}

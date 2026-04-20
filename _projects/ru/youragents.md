@@ -1,5 +1,9 @@
 ---
 layout: project
+lang: ru
+locale: ru_RU
+translation_key: project-youragents
+permalink: /ru/projects/youragents/
 title: YourAgents
 description: Каталог ИИ-агентов и приложений на все случаи жизни
 image: /images/projects/youragents-screenshot.png

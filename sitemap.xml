@@ -1,0 +1,44 @@
+---
+layout: null
+permalink: /sitemap.xml
+sitemap: false
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{% assign documents = site.pages | concat: site.posts | concat: site.projects %}
+{% for document in documents %}
+  {% if document.lang and document.sitemap != false %}
+  <url>
+    <loc>{{ document.url | absolute_url | replace: '/index.html', '/' }}</loc>
+    {% if document.translation_key %}
+      {% for lang_code in site.languages %}
+        {% assign alternate_url = '' %}
+        {% for alternate_document in documents %}
+          {% if alternate_document.translation_key == document.translation_key and alternate_document.lang == lang_code and alternate_document.sitemap != false %}
+            {% assign alternate_url = alternate_document.url %}
+          {% endif %}
+        {% endfor %}
+        {% if alternate_url != '' %}
+    <xhtml:link rel="alternate" hreflang="{{ lang_code }}" href="{{ alternate_url | absolute_url | replace: '/index.html', '/' }}" />
+        {% endif %}
+      {% endfor %}
+      {% assign default_alternate_url = '' %}
+      {% for alternate_document in documents %}
+        {% if alternate_document.translation_key == document.translation_key and alternate_document.lang == site.default_lang and alternate_document.sitemap != false %}
+          {% assign default_alternate_url = alternate_document.url %}
+        {% endif %}
+      {% endfor %}
+      {% if default_alternate_url != '' %}
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ default_alternate_url | absolute_url | replace: '/index.html', '/' }}" />
+      {% endif %}
+    {% endif %}
+  </url>
+  {% endif %}
+{% endfor %}
+{% for game in site.data.games %}
+  <url>
+    <loc>{{ game.url | absolute_url }}</loc>
+  </url>
+{% endfor %}
+</urlset>

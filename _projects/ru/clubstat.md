@@ -1,5 +1,9 @@
 ---
 layout: project
+lang: ru
+locale: ru_RU
+translation_key: project-clubstat
+permalink: /ru/projects/clubstat/
 title: ClubStat
 description: Первый в мире сервис рейтинга, статистики и аналитики Clubhouse
 image: /images/projects/clubstat-screenshot.png
