@@ -10,8 +10,8 @@ image: /images/projects/youragents-screenshot.png
 url_link: https://youragents.me
 launch_year: 2025
 roles:
-  - Invented
-  - Coded
+  - Conceived
+  - Built
 stats:
   - value: "1,448+"
     label: AI agents and apps in the catalog
@@ -23,27 +23,31 @@ stats:
 
 ## About
 
-YourAgents is a catalog of AI agents and applications that brings together more than 1,400 modern artificial intelligence tools in one place. The project helps users, businesses, and developers find AI solutions for automation, productivity, and adopting new technology.
+YourAgents is a catalog of AI agents and apps that brings together more than 1,400 tools in one place. It helps users, businesses, and developers find AI products for automation, productivity, and everyday work.
 
-The mission is to make the world of artificial intelligence accessible and understandable. The platform creates a central space that connects AI tool makers with end users and makes it easier to discover and apply AI in everyday work and business processes.
+The mission is to make AI easier to understand and use. The platform connects AI tool makers with end users and makes it easier to discover, compare, and apply AI tools in everyday work and business operations.
 
 ### Platform features
 
-**Convenient search and filters**  
-The service helps users find the right AI agents by type, category, pricing, and other attributes. This saves time when choosing among many available tools.
+**Search and filters**
 
-**Detailed descriptions**  
-Every agent in the catalog includes a clear description of its functionality, capabilities, and usage details. Users can understand whether a tool fits their task before registering or paying.
+Users can find the right AI agents by type, category, pricing, and other attributes. This saves time when comparing a large number of available tools.
 
-**Categories by use case**  
+**Detailed descriptions**
+
+Every agent in the catalog includes a clear description of its functionality, capabilities, and usage details. Users can understand whether a tool fits their task before signing up or paying.
+
+**Categories by use case**
+
 More than 20 categories cover major areas of application, from marketing and sales to design, health, and education. Structured navigation helps users quickly find tools for a specific industry or task.
 
-**Rankings and collections**  
-Editor's picks and weekly or monthly best-agent lists help people navigate the variety of tools. Curated collections make selection easier for users who are just getting started with AI.
+**Rankings and collections**
+
+Editor's picks and weekly or monthly best-of lists help people navigate the variety of tools. Curated collections make it easier for newcomers to get started with AI.
 
 **Multilingual support**  
 Russian, English, German, and Spanish versions make the catalog accessible to an international audience and expand the project's reach.
 
 ### Results
 
-The catalog currently includes more than 1,448 AI agents and apps, covering almost every area of AI use: text and image generation, business-process automation, data analysis, chatbot creation, and more. The platform keeps growing with new tools and product improvements.
+The catalog currently includes more than 1,448 AI agents and apps, covering almost every major AI use case: text and image generation, business-process automation, data analysis, chatbot creation, and more. The platform keeps growing through new listings and ongoing product improvements.

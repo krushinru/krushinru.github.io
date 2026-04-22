@@ -89,40 +89,11 @@
     text-align: right;
   }
 
-  .achievements-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .achievement-card {
-    min-height: 0;
-  }
-
-  .achievements-overview__top {
-    align-items: flex-start;
-  }
-
-  .achievements-overview__ring {
-    width: 76px;
-    height: 76px;
-  }
-
-  .achievements-overview__stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .achievements-toolbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }
 
 @media (max-width: 576px) {
   .navbar-nav {
     flex-wrap: wrap;
-  }
-
-  .achievements-overview__stats {
-    grid-template-columns: 1fr;
   }
 }
 

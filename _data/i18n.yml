@@ -52,15 +52,6 @@ ru:
     more_title: хочу еще
     more_text: Больше постов — в моём <a href="https://t.me/krushin">телеграм-канале</a>
     published_at: Опубликовано
-  profile:
-    title: Достижения
-    description: Ачивки и прогресс на сайте Александра Крушина
-    kicker: Геймификация
-    greeting: Привет, %username%
-    intro: Открывай ачивки за действия на сайте. Прогресс хранится в браузере через localStorage и остаётся на этом устройстве.
-    loading: Загрузка прогресса...
-    hint: Прогресс хранится в браузере и остаётся на этом устройстве
-    reset: Сбросить
   privacy:
     title: Политика конфиденциальности
     description: Политика конфиденциальности сайта Александра Крушина
@@ -158,9 +149,9 @@ en:
   label: English
   site:
     title: Alexander Krushin
-    description: I launch my own projects. Earlier I was marketing director at Rambler and chief digital officer at Afisha. I love media, content, and new technology.
+    description: I build my own projects. Previously, I was Marketing Director at Rambler and Chief Digital Officer at Afisha. I love media, content, and new technologies.
     author_name: Alexander Krushin
-    author_bio: I launch my own projects. Earlier I was marketing director at <span class="rambler">Rambler</span> and chief digital officer at <span class="afisha">Afisha</span>. I love media, content, and new technology.
+    author_bio: I build my own projects. Previously, I was Marketing Director at <span class="rambler">Rambler</span> and Chief Digital Officer at <span class="afisha">Afisha</span>. I love media, content, and new technologies.
     avatar_alt: Avatar
   navigation:
     - title: Projects
@@ -181,7 +172,7 @@ en:
     year_suffix: ""
   home:
     contact_label: Contact
-    launched: Launched
+    launched: Built
     notes: Notes
     all_projects: All projects →
     all_posts: All notes →
@@ -189,51 +180,42 @@ en:
   projects:
     title: Projects
     description: Projects by Alexander Krushin
-    visit_site: Visit website →
-    media_title: Media about the project
-    filter_prefix: Here are
+    visit_site: Visit site →
+    media_title: Press coverage
+    filter_prefix: Explore
     filter_all: all
     filter_active: active
     filter_closed: closed
-    filter_suffix: projects where I
+    filter_suffix: projects I
     role_or: or
-    side_projects_label: Extra projects
-    collab_title: Open to ideas
-    collab_text: Have a project idea? Write to me by <a href="mailto:akrushin@gmail.com?subject=Project%20collaboration">email</a>
+    side_projects_label: Other projects
+    collab_title: Open to collaboration
+    collab_text: Have a project idea? <a href="mailto:akrushin@gmail.com?subject=Project%20collaboration">Email me</a>
   notes:
     title: Notes
     description: Notes by Alexander Krushin about media, projects, and technology
-    more_title: want more
-    more_text: More posts are in my <a href="https://t.me/krushin">Telegram channel</a>
-    published_at: Published
-  profile:
-    title: Achievements
-    description: Achievements and progress on Alexander Krushin's website
-    kicker: Gamification
-    greeting: Hello, %username%
-    intro: Unlock achievements by doing things on the site. Progress is stored in this browser with localStorage and stays on this device.
-    loading: Loading progress...
-    hint: Progress is stored in this browser and stays on this device
-    reset: Reset
+    more_title: Want more?
+    more_text: Find more posts on my <a href="https://t.me/krushin">Telegram channel</a>
+    published_at: Published on
   privacy:
     title: Privacy Policy
     description: Privacy policy for Alexander Krushin's website
     body: |
-      This site does not use user registration and does not collect personal data through forms.
+      This site does not have user accounts and does not collect personal data through forms.
 
-      The site uses web analytics for basic visit statistics. This data is processed in anonymized form.
+      The site uses web analytics to collect basic traffic statistics. The data is anonymized before it is processed.
 
-      For privacy-related questions, write to [akrushin@gmail.com](mailto:akrushin@gmail.com).
+      For privacy-related questions, email [akrushin@gmail.com](mailto:akrushin@gmail.com).
   games:
     title: Games
     description: Browser games by Alexander Krushin
     items:
       pong:
-        title: Management Ping-Pong
+        title: Corporate Ping-Pong
         description: An arcade browser game about deadlines and work chats, styled after Slack.
       mediagame:
         title: Media Manager
-        description: A media-owner simulator where you balance money, audience trust, and editorial conscience.
+        description: A media-owner simulator where you balance revenue, audience trust, and editorial integrity.
   error:
     title: Page not found
     description: The link may be outdated, or the page may have been removed.
@@ -254,7 +236,7 @@ en:
     years_lived: Years lived
     weeks_passed: Weeks passed
     weeks_left: Weeks left
-    path_done: Path completed
+    path_done: Life lived
     locale: en-US
     months:
       - January
@@ -303,5 +285,5 @@ en:
       description: a satirical game about running a media company
       url: https://krushin.me/games/mediagame/
     - name: Konspekto
-      description: an online notebook with automatic timing
+      description: an online notebook with automatic timestamps
       url: https://konspekto.ru
