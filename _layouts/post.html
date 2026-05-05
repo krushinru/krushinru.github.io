@@ -6,7 +6,7 @@ layout: default
   <header class="post-header">
     <h1 class="post-title-page">{{ page.title }}</h1>
     <div class="post-meta">
-      {% if page.lead %}<p>{{ page.lead | markdownify }}</p>{% endif %}
+      {% if page.lead %}{{ page.lead | markdownify }}{% endif %}
       {% if page.author %}
       <span class="post-author">{{ page.author }}</span>
       {% endif %}
