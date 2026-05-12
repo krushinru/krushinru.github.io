@@ -10,6 +10,7 @@ layout: default
 <main class="main-block">
   <div class="row">
     <div class="col-12">
+      <img src="{{ site.author.avatar }}?s=400" alt="{{ t.site.avatar_alt }}" class="face">
       <h1>{{ t.site.author_name | default: t.site.title }}</h1>
       <p class="lead">
         {{ t.site.author_bio | default: t.site.description }}

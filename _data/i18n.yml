@@ -4,8 +4,9 @@ ru:
   label: Русский
   site:
     title: Александр Крушин
-    description: Head of Growth. Работал директором по маркетингу портала Рамблер и директором по развитию «Афиши». Запускаю собственные проекты.
+    description: Head of Growth. Работал директором по маркетингу портала Рамблер и директором по развитию «Афиши». Запускаю собственные проекты.
     author_name: Александр Крушин
+    author_subtitle: Head of Growth / Стартапер
     author_bio: Head of Growth. Работал директором по маркетингу портала <span class="rambler">Рамблер</span> и директором по развитию <span class="afisha">«Афиши»</span>. Запускаю собственные проекты.
     avatar_alt: Аватар
   navigation:
@@ -43,7 +44,7 @@ ru:
     role_or: или
     side_projects_label: Дополнительные проекты
     collab_title: Открыт к предложениям
-    collab_text: Есть идея проекта? Пиши на <a href="mailto:akrushin@gmail.com?subject=Предложение%20о%20сотрудничестве">почту</a>
+    collab_text: Есть идея? Пиши на <a href="mailto:akrushin@gmail.com?subject=Предложение%20о%20сотрудничестве">почту</a>
   notes:
     title: Заметки
     description: Заметки Александра Крушина о медиа, проектах и технологиях
@@ -150,6 +151,7 @@ en:
     title: Alexander Krushin
     description: Head of Growth. Former Marketing Director at Rambler and Chief Digital Officer at Afisha. Founder and builder of my own projects.
     author_name: Alexander Krushin
+    author_subtitle: Head of Growth / Startup Founder
     author_bio: Head of Growth. Former Marketing Director at <span class="rambler">Rambler</span> and Chief Digital Officer at <span class="afisha">Afisha</span>. Founder and builder of my own projects.
     avatar_alt: Avatar
   navigation:

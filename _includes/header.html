@@ -3,15 +3,17 @@
 {% assign alternate_pages = site.pages | concat: site.posts | concat: site.projects %}
 <nav class="navbar navbar-dark">
   <div class="container nav-layout">
+    {% if page.layout!="home" %}
     <div class="nav-profile">
       <a class="navbar-brand" href="{{ '/' | append: current_lang | append: '/' | relative_url }}">
         <img src="{{ site.author.avatar }}" alt="{{ t.site.avatar_alt }}" class="nav-avatar">
       </a>
       <div class="nav-name-block">
         <a class="nav-name-link" href="{{ '/' | append: current_lang | append: '/' | relative_url }}">{{ t.site.author_name | default: t.site.title }}</a>
-        {% if site.author.subtitle %}<span class="nav-name-subtitle">{{ site.author.subtitle }}</span>{% endif %}
+        {% if t.site.author_subtitle %}<span class="nav-name-subtitle">{{ t.site.author_subtitle }}</span>{% endif %}
       </div>
     </div>
+    {% endif %}
     <button class="nav-burger" type="button" aria-label="{{ t.header.open_menu }}" aria-controls="siteNavMenu" aria-expanded="false">
       <i class="fa-solid fa-burger nav-burger-icon" aria-hidden="true"></i>
     </button>
