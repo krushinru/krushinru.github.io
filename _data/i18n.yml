@@ -4,9 +4,9 @@ ru:
   label: Русский
   site:
     title: Александр Крушин
-    description: Запускаю собственные проекты. До этого был директором по маркетингу портала Рамблер и директором по развитию «Афиши». Обожаю медиа, контент и новые технологии.
+    description: Head of Growth. Работал директором по маркетингу портала Рамблер и директором по развитию «Афиши». Запускаю собственные проекты.
     author_name: Александр Крушин
-    author_bio: Запускаю собственные проекты. До этого был директором по&nbsp;маркетингу портала <span class="rambler">Рамблер</span> и директором по развитию <span class="afisha">«Афиши»</span>. Обожаю медиа, контент и новые технологии.
+    author_bio: Head of Growth. Работал директором по маркетингу портала <span class="rambler">Рамблер</span> и директором по развитию <span class="afisha">«Афиши»</span>. Запускаю собственные проекты.
     avatar_alt: Аватар
   navigation:
     - title: Проекты
@@ -149,9 +149,9 @@ en:
   label: English
   site:
     title: Alexander Krushin
-    description: I build my own projects. Previously, I was Marketing Director at Rambler and Chief Digital Officer at Afisha. I love media, content, and new technologies.
+    description: Head of Growth. Former Marketing Director at Rambler and Chief Digital Officer at Afisha. Founder and builder of my own projects.
     author_name: Alexander Krushin
-    author_bio: I build my own projects. Previously, I was Marketing Director at <span class="rambler">Rambler</span> and Chief Digital Officer at <span class="afisha">Afisha</span>. I love media, content, and new technologies.
+    author_bio: Head of Growth. Former Marketing Director at <span class="rambler">Rambler</span> and Chief Digital Officer at <span class="afisha">Afisha</span>. Founder and builder of my own projects.
     avatar_alt: Avatar
   navigation:
     - title: Projects
@@ -255,8 +255,6 @@ en:
     - name: Social links
     - name: Telegram
       url: https://t.me/krushin
-    - name: Games channel
-      url: https://t.me/gamer
     - name: Instagram*
       url: https://instagram.com/krushin_ru
     - name: LinkedIn
@@ -266,8 +264,6 @@ en:
     - name: Social links
     - name: Telegram
       url: https://t.me/krushin
-    - name: Games channel
-      url: https://t.me/gamer
     - name: Instagram*
       url: https://instagram.com/krushin_ru
     - name: LinkedIn

@@ -1,5 +1,5 @@
 title: Александр Крушин
-description: Запускаю собственные проекты. До этого был директором по маркетингу портала Рамблер и директором по развитию «Афиши». Обожаю медиа, контент и новые технологии.
+description: Head of Growth. Работал директором по маркетингу портала Рамблер и директором по развитию «Афиши». Запускаю собственные проекты.
 email: akrushin@gmail.com
 telegram_url: https://t.me/krushin
 baseurl: ""
@@ -14,7 +14,7 @@ locale: ru_RU
 logo: /images/logo.jpg
 author:
   name: Александр Крушин
-  bio: Запускаю собственные проекты. До этого был директором по маркетингу портала <span class="rambler">Рамблер</span> и директором по развитию <span class="afisha">«Афиши»</span>. Обожаю медиа, контент и новые технологии.
+  bio: Head of Growth. Работал директором по маркетингу портала <span class="rambler">Рамблер</span> и директором по развитию <span class="afisha">«Афиши»</span>. Запускаю собственные проекты.
   avatar: https://www.gravatar.com/avatar/173303ff8da78411c197beb08a15626f
 
 plugins:
