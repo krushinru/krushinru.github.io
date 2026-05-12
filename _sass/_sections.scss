@@ -992,11 +992,13 @@ footer {
 }
 
 .project-editorial-header {
-  display: flex;
   justify-content: space-between;
   align-items: baseline;
   gap: 16px;
   flex-wrap: wrap;
+}
+.span-4 .project-editorial-header {
+  display: flex;
 }
 
 .project-editorial-title {

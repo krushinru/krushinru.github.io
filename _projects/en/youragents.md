@@ -6,7 +6,7 @@ translation_key: project-youragents
 permalink: /en/projects/youragents/
 title: YourAgents
 description: A catalog of AI agents and apps for everyday tasks
-image: /images/projects/youragents-screenshot.png
+image: /images/projects/youragents-snippet.png
 url_link: https://youragents.me
 launch_year: 2025
 roles:

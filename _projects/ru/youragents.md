@@ -6,7 +6,7 @@ translation_key: project-youragents
 permalink: /ru/projects/youragents/
 title: YourAgents
 description: Каталог ИИ-агентов и приложений на все случаи жизни
-image: /images/projects/youragents-screenshot.png
+image: /images/projects/youragents-snippet.png
 url_link: https://youragents.me
 launch_year: 2025
 roles:

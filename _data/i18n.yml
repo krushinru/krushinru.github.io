@@ -11,8 +11,6 @@ ru:
   navigation:
     - title: Проекты
       url: /ru/projects/
-    - title: Игры
-      url: /ru/games/
     - title: Заметки
       url: /ru/notes/
   footer_navigation: []
@@ -107,7 +105,6 @@ ru:
       - Ноябрь
       - Декабрь
   socials:
-    - name: Я в соцсетях
     - name: Телеграм
       url: https://t.me/krushin
     - name: ТГ про игры
@@ -118,7 +115,6 @@ ru:
       url: https://www.linkedin.com/in/krushin/
     - name: ФБ*
       url: https://facebook.com/akrushin
-    - name: Я в соцсетях
     - name: Телеграм
       url: https://t.me/krushin
     - name: ТГ про игры
@@ -142,6 +138,9 @@ ru:
     - name: Конспекто
       description: онлайн-блокнот с автотаймингом
       url: https://konspekto.ru
+    - name: Управленческий Пинг-Понг
+      description: аркадная игра про дедлайны и рабочие чаты
+      url: https://krushin.me/games/pong/
 
 en:
   lang: en
@@ -156,8 +155,6 @@ en:
   navigation:
     - title: Projects
       url: /en/projects/
-    - title: Games
-      url: /en/games/
     - title: Notes
       url: /en/notes/
   footer_navigation: []
@@ -252,7 +249,6 @@ en:
       - November
       - December
   socials:
-    - name: Social links
     - name: Telegram
       url: https://t.me/krushin
     - name: Instagram*
@@ -261,7 +257,6 @@ en:
       url: https://www.linkedin.com/in/krushin/
     - name: Facebook*
       url: https://facebook.com/akrushin
-    - name: Social links
     - name: Telegram
       url: https://t.me/krushin
     - name: Instagram*
@@ -283,3 +278,6 @@ en:
     - name: Konspekto
       description: an online notebook with automatic timestamps
       url: https://konspekto.ru
+    - name: Corporate Ping-Pong
+      description: an arcade browser game about deadlines and work chats
+      url: https://krushin.me/games/pong/
