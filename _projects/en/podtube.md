@@ -5,7 +5,7 @@ locale: en_US
 translation_key: project-podtube
 permalink: /en/projects/podtube/
 title: PodTube
-description: YouTube channels as podcasts
+description: Turns YouTube channels into audio podcasts
 image: /images/projects/podtube-screenshot.png
 url_link: https://podtube.ru
 launch_year: 2026
