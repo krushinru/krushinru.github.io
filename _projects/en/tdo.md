@@ -9,6 +9,7 @@ description: One of Russia's largest services for accessing Telegram
 url_link: https://t-do.ru
 image: /images/projects/tdo-tg.png
 image_type: icon
+featured_order: 1
 launch_year: 2018
 close_year: 2021
 roles:

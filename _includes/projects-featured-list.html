@@ -1,0 +1,57 @@
+{% comment %}
+  Текстоцентричный список главных проектов для главной страницы.
+  Каждый блок: заголовок + годы, одна строка описания, один факт, одна цитата прессы.
+  Параметры:
+  - limit: сколько проектов показать (по умолчанию 2)
+{% endcomment %}
+
+{% assign current_lang = page.lang | default: site.default_lang | default: 'ru' %}
+{% assign featured_limit = include.limit | default: 2 %}
+
+{% assign all_projects = site.projects | where: "lang", current_lang %}
+{% assign featured_projects = all_projects | where_exp: "p", "p.featured_order" | sort: "featured_order" %}
+{% assign featured_projects = featured_projects | slice: 0, featured_limit %}
+
+{% if featured_projects.size > 0 %}
+<ul class="projects-featured-list">
+  {% for project in featured_projects %}
+  <li class="projects-featured-item">
+    <a href="{{ project.url | relative_url }}" class="projects-featured-link">
+      <div class="projects-featured-head">
+        <h3 class="projects-featured-title">{{ project.title }}</h3>
+        {% if project.launch_year %}
+        <span class="projects-featured-years">
+          {{- project.launch_year -}}
+          {%- if project.close_year -%}
+            &nbsp;—&nbsp;{{- project.close_year -}}
+          {%- endif -%}
+        </span>
+        {% endif %}
+      </div>
+
+      {% if project.description %}
+      <p class="projects-featured-desc">{{ project.description }}</p>
+      {% endif %}
+
+      <div class="projects-featured-body">
+        {% if project.stats and project.stats.size > 0 %}
+        {% assign top_stat = project.stats | first %}
+        <div class="projects-featured-stat">
+          <span class="projects-featured-stat-value">{{ top_stat.value }}</span>
+          <span class="projects-featured-stat-label">{{ top_stat.label }}</span>
+        </div>
+        {% endif %}
+
+        {% if project.media and project.media.size > 0 %}
+        {% assign top_media = project.media | first %}
+        <blockquote class="projects-featured-quote">
+          <span class="projects-featured-quote-text">{{ top_media.title }}</span>
+          <cite class="projects-featured-quote-source">{{ top_media.source }}</cite>
+        </blockquote>
+        {% endif %}
+      </div>
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}

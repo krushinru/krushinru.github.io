@@ -42,7 +42,16 @@
 {% endunless %}
 
 <div class="projects-editorial-grid">
-  {% assign projects = site.projects | where: "lang", current_lang | sort: "launch_year" | reverse %}
+  {% assign all_projects = site.projects | where: "lang", current_lang %}
+  {% assign featured_projects = all_projects | where_exp: "p", "p.featured_order" | sort: "featured_order" %}
+  {% assign by_year = all_projects | sort: "launch_year" | reverse %}
+  {% assign rest_projects = "" | split: "" %}
+  {% for p in by_year %}
+    {% unless p.featured_order %}
+      {% assign rest_projects = rest_projects | push: p %}
+    {% endunless %}
+  {% endfor %}
+  {% assign projects = featured_projects | concat: rest_projects %}
   {% assign side_projects = t.side_projects %}
   
   {% if projects_limit %}

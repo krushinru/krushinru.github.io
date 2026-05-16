@@ -8,6 +8,7 @@ title: YourAgents
 description: Каталог ИИ-агентов и приложений на все случаи жизни
 image: /images/projects/youragents-snippet.png
 url_link: https://youragents.me
+featured_order: 3
 launch_year: 2025
 roles:
   - Придумал

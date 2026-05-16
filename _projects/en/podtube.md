@@ -8,6 +8,7 @@ title: PodTube
 description: Turns YouTube channels into audio podcasts
 image: /images/projects/podtube-screenshot.png
 url_link: https://podtube.ru
+featured_order: 5
 launch_year: 2026
 roles:
   - Conceived

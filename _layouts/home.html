@@ -34,7 +34,7 @@ layout: default
 {% if localized_projects.size > 0 %}
 <section class="section section--compact-top" id="projects">
   <h4 class="section-title">{{ t.home.launched }}</h4>
-  {% include projects-grid.html show_filter="false" short="true" limit=2 %}
+  {% include projects-featured-list.html limit=2 %}
   {% if localized_projects.size > 2 %}
   <a href="/{{ current_lang }}/projects/" class="view-more">{{ t.home.all_projects }}</a>
   {% endif %}

@@ -9,6 +9,7 @@ description: A habit tracker for Telegram
 image: https://habithit.org/images/logo.png
 image_type: icon
 url_link: https://habithit.org
+featured_order: 4
 launch_year: 2025
 roles:
   - Conceived

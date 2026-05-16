@@ -8,6 +8,7 @@ title: ClubStat
 description: The world's first Clubhouse rankings and analytics service
 image: /images/projects/clubstat-screenshot.png
 url_link: https://clubstat.org
+featured_order: 2
 launch_year: 2021
 close_year: 2022
 roles:
