@@ -1,0 +1,16 @@
+{% assign current_lang = page.lang | default: site.default_lang | default: 'ru' %}
+{% assign t = site.data.i18n[current_lang] | default: site.data.i18n.ru %}
+
+<div class="projects-sort" data-projects-sort role="group" aria-label="{{ t.projects.sort_featured }} / {{ t.projects.sort_chrono }}">
+  <button class="projects-sort-pill is-active" data-sort="featured" type="button" title="{{ t.projects.sort_featured }}" aria-label="{{ t.projects.sort_featured }}" aria-pressed="true">
+    <svg class="projects-sort-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+    </svg>
+  </button>
+  <button class="projects-sort-pill" data-sort="chrono" type="button" title="{{ t.projects.sort_chrono }}" aria-label="{{ t.projects.sort_chrono }}" aria-pressed="false">
+    <svg class="projects-sort-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <circle cx="12" cy="12" r="9"/>
+      <polyline points="12 7 12 12 15.5 14"/>
+    </svg>
+  </button>
+</div>

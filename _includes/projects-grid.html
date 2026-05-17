@@ -1,6 +1,6 @@
 {% comment %}
   Параметры:
-  - show_filter: true/false (показывать фильтры)
+  - show_filter: true/false (показывать развёрнутый фильтр-предложение)
   - limit: число проектов (nil = все)
   - marquee_theme: тема для бегущей строки (solar|cyan|mint|coral|berry|slate)
 {% endcomment %}
@@ -84,7 +84,9 @@
              data-roles="{{ project.roles | join: ',' | downcase }}"
              data-has-image="{% if has_screenshot or has_icon %}true{% else %}false{% endif %}"
              data-has-icon="{% if has_icon %}true{% else %}false{% endif %}"
-             data-has-screenshot="{% if has_screenshot %}true{% else %}false{% endif %}">
+             data-has-screenshot="{% if has_screenshot %}true{% else %}false{% endif %}"
+             data-launch-year="{{ project.launch_year | default: 0 }}"
+             data-featured-order="{{ project.featured_order | default: '' }}">
       
       <a href="{{ project.url | relative_url }}" class="project-editorial-link">
         

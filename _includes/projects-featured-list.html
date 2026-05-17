@@ -1,6 +1,7 @@
 {% comment %}
   Текстоцентричный список главных проектов для главной страницы.
-  Каждый блок: заголовок + годы, одна строка описания, один факт, одна цитата прессы.
+  Десктоп: 2 колонки — слева ротируются цифры, справа ротируются цитаты прессы (с фавиконками).
+  Мобилка: общая ротация всех фактов и цитат в одну строку (как в больших карточках).
   Параметры:
   - limit: сколько проектов показать (по умолчанию 2)
 {% endcomment %}
@@ -13,45 +14,95 @@
 {% assign featured_projects = featured_projects | slice: 0, featured_limit %}
 
 {% if featured_projects.size > 0 %}
-<ul class="projects-featured-list">
-  {% for project in featured_projects %}
-  <li class="projects-featured-item">
-    <a href="{{ project.url | relative_url }}" class="projects-featured-link">
-      <div class="projects-featured-head">
-        <h3 class="projects-featured-title">{{ project.title }}</h3>
-        {% if project.launch_year %}
-        <span class="projects-featured-years">
-          {{- project.launch_year -}}
-          {%- if project.close_year -%}
-            &nbsp;—&nbsp;{{- project.close_year -}}
-          {%- endif -%}
-        </span>
+<div data-editorial-grid class="projects-featured-wrap">
+  <ul class="projects-featured-list">
+    {% for project in featured_projects %}
+
+    {% assign has_stats = false %}
+    {% if project.stats and project.stats.size > 0 %}
+      {% assign has_stats = true %}
+    {% endif %}
+
+    {% assign has_media = false %}
+    {% if project.media and project.media.size > 0 %}
+      {% assign has_media = true %}
+    {% endif %}
+
+    <li class="projects-featured-item">
+      <a href="{{ project.url | relative_url }}" class="projects-featured-link">
+        <div class="projects-featured-head">
+          <h3 class="projects-featured-title">{{ project.title }}</h3>
+          {% if project.launch_year %}
+          <span class="projects-featured-years">
+            {{- project.launch_year -}}
+            {%- if project.close_year -%}
+              &nbsp;–&nbsp;{{- project.close_year -}}
+            {%- endif -%}
+          </span>
+          {% endif %}
+        </div>
+
+        {% if project.description %}
+        <p class="projects-featured-desc">{{ project.description }}</p>
         {% endif %}
-      </div>
 
-      {% if project.description %}
-      <p class="projects-featured-desc">{{ project.description }}</p>
-      {% endif %}
+        {% if has_stats or has_media %}
+        <div class="projects-featured-body">
+          {% if has_stats %}
+          <div class="project-editorial-stats projects-featured-stats">
+            {% for stat in project.stats %}
+            <div class="editorial-stat-item">
+              <div class="editorial-stat-value">{{ stat.value }}</div>
+              <div class="editorial-stat-label">{{ stat.label }}</div>
+            </div>
+            {% endfor %}
+          </div>
+          {% endif %}
 
-      <div class="projects-featured-body">
-        {% if project.stats and project.stats.size > 0 %}
-        {% assign top_stat = project.stats | first %}
-        <div class="projects-featured-stat">
-          <span class="projects-featured-stat-value">{{ top_stat.value }}</span>
-          <span class="projects-featured-stat-label">{{ top_stat.label }}</span>
+          {% if has_media %}
+          <div class="project-editorial-media projects-featured-media">
+            {% for media_item in project.media %}
+            <div class="editorial-media-item">
+              <div class="editorial-media-link">
+                <img src="https://www.google.com/s2/favicons?domain={{ media_item.url }}&sz=32"
+                     alt="{{ media_item.source }}"
+                     class="editorial-media-favicon"
+                     loading="lazy">
+                <span class="editorial-media-text">{{ media_item.title }}</span>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+
+        <div class="project-editorial-rotator projects-featured-rotator" aria-hidden="true">
+          {% if has_stats %}
+          {% for stat in project.stats %}
+          <div class="project-rotator-item project-rotator-item--stat">
+            <span class="project-rotator-value">{{ stat.value }}</span>
+            <span class="project-rotator-text">{{ stat.label | strip_html }}</span>
+          </div>
+          {% endfor %}
+          {% endif %}
+
+          {% if has_media %}
+          {% for media_item in project.media %}
+          <div class="project-rotator-item project-rotator-item--media">
+            <img src="https://www.google.com/s2/favicons?domain={{ media_item.url }}&sz=32"
+                 alt="{{ media_item.source }}"
+                 class="project-rotator-favicon"
+                 loading="lazy">
+            <span class="project-rotator-text">{{ media_item.title }}</span>
+          </div>
+          {% endfor %}
+          {% endif %}
         </div>
         {% endif %}
-
-        {% if project.media and project.media.size > 0 %}
-        {% assign top_media = project.media | first %}
-        <blockquote class="projects-featured-quote">
-          <span class="projects-featured-quote-text">{{ top_media.title }}</span>
-          <cite class="projects-featured-quote-source">{{ top_media.source }}</cite>
-        </blockquote>
-        {% endif %}
-      </div>
-    </a>
-  </li>
-  {% endfor %}
-</ul>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+<script src="{{ '/assets/js/projects-grid-filter.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
 {% endif %}

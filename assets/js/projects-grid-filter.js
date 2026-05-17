@@ -147,7 +147,12 @@ if (!window.__editorialGridInitialized) {
       const projectCards = Array.from(section.querySelectorAll('.project-editorial-card'));
       const roleSpans = section.querySelectorAll('.sentence-role');
 
-      if (!projectCards.length) return;
+      if (!projectCards.length) {
+        initProjectRotators(section);
+        initDesktopEditorialRotators(section);
+        section.dataset.initialized = 'true';
+        return;
+      }
 
       let currentStatus = 'all';
       let activeRoles = new Set();
@@ -201,6 +206,62 @@ if (!window.__editorialGridInitialized) {
             filterProjects();
           });
         });
+      }
+
+      const sortHost = section.closest('section') || section.parentElement;
+      const sortPills = sortHost
+        ? sortHost.querySelectorAll('[data-projects-sort] .projects-sort-pill')
+        : [];
+      const grid = section.querySelector('.projects-editorial-grid');
+      const marquee = grid ? grid.querySelector('.projects-side-marquee') : null;
+
+      function compareFeatured(a, b) {
+        const aFO = parseInt(a.dataset.featuredOrder, 10);
+        const bFO = parseInt(b.dataset.featuredOrder, 10);
+        const aHas = !Number.isNaN(aFO);
+        const bHas = !Number.isNaN(bFO);
+        if (aHas && bHas) return aFO - bFO;
+        if (aHas) return -1;
+        if (bHas) return 1;
+        return (parseInt(b.dataset.launchYear, 10) || 0) - (parseInt(a.dataset.launchYear, 10) || 0);
+      }
+
+      function compareChrono(a, b) {
+        return (parseInt(b.dataset.launchYear, 10) || 0) - (parseInt(a.dataset.launchYear, 10) || 0);
+      }
+
+      function applySort(mode) {
+        if (!grid) return;
+        const cards = Array.from(grid.querySelectorAll('.project-editorial-card'));
+        if (!cards.length) return;
+
+        cards.sort(mode === 'chrono' ? compareChrono : compareFeatured);
+        cards.forEach((card) => grid.appendChild(card));
+
+        if (marquee && cards.length >= 2) {
+          grid.insertBefore(marquee, cards[1].nextSibling);
+        } else if (marquee) {
+          grid.appendChild(marquee);
+        }
+
+        applyPairLogic(cards.filter((c) => c.style.display !== 'none'));
+      }
+
+      sortPills.forEach((pill) => {
+        pill.addEventListener('click', function () {
+          const mode = this.dataset.sort;
+          sortPills.forEach((p) => {
+            p.classList.remove('is-active');
+            p.setAttribute('aria-pressed', 'false');
+          });
+          this.classList.add('is-active');
+          this.setAttribute('aria-pressed', 'true');
+          applySort(mode);
+        });
+      });
+
+      if (sortPills.length && marquee) {
+        applySort('featured');
       }
 
       roleSpans.forEach((span) => {

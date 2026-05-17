@@ -9,7 +9,10 @@ permalink: /en/projects/
 ---
 
 <section class="section">
-  <h1 class="section-title">{{ site.data.i18n[page.lang].projects.title }}</h1>
+  <div class="section-head">
+    <h1 class="section-title">{{ site.data.i18n[page.lang].projects.title }}</h1>
+    {% include projects-sort-toggle.html %}
+  </div>
   {% include projects-grid.html show_filter="false" short="false" %}
   {% include projects-collab-cta.html %}
 </section>

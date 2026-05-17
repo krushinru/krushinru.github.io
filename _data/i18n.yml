@@ -42,6 +42,11 @@ ru:
     filter_closed: закрытые
     filter_suffix: проекты, где я
     role_or: или
+    toggle_all: Все
+    toggle_fresh: Свежие
+    toggle_archive: Архив
+    sort_featured: Главные
+    sort_chrono: По дате
     side_projects_label: Дополнительные проекты
     collab_title: Открыт к предложениям
     collab_text: Есть идея? Пиши на <a href="mailto:akrushin@gmail.com?subject=Предложение%20о%20сотрудничестве">почту</a>
@@ -187,6 +192,11 @@ en:
     filter_closed: closed
     filter_suffix: projects I
     role_or: or
+    toggle_all: All
+    toggle_fresh: Active
+    toggle_archive: Archive
+    sort_featured: Featured
+    sort_chrono: By date
     side_projects_label: Other projects
     collab_title: Open to collaboration
     collab_text: Have a project idea? <a href="mailto:akrushin@gmail.com?subject=Project%20collaboration">Email me</a>
