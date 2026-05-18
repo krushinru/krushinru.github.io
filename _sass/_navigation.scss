@@ -1,19 +1,19 @@
 .navbar {
   background: var(--nav-black) !important;
-  padding: var(--space-6) 0;
+  padding: var(--space-2xs) 0;
 }
 
 .nav-layout {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: var(--space-sm);
   min-height: 44px;
 }
 
 .nav-profile {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--space-2xs);
   flex-shrink: 0;
 }
 
@@ -35,7 +35,7 @@
 .nav-avatar {
   width: 44px;
   height: 44px;
-  border-radius: 50%;
+  border-radius: var(--r-circle);
   object-fit: cover;
 }
 
@@ -43,7 +43,7 @@
   display: flex;
   flex-direction: column;
   gap: 0;
-  line-height: 1.1;
+  line-height: var(--lh-display);
 }
 
 .nav-name-link {
@@ -51,15 +51,15 @@
   font-size: var(--text-sm);
   font-family: var(--font-family-heading);
   font-weight: 400;
-  line-height: 1.1;
-  color: var(--white);
+  line-height: var(--lh-display);
+  color: var(--text-primary);
   border-bottom: none;
 }
 
 .nav-name-subtitle {
-  font-size: 0.72rem;
-  line-height: 1.1;
-  color: var(--white);
+  font-size: var(--text-xs);
+  line-height: var(--lh-display);
+  color: var(--text-primary);
 }
 
 .navbar-nav {
@@ -73,54 +73,54 @@
 }
 
 .navbar-nav .nav-link {
-  color: var(--white) !important;
+  color: var(--text-primary) !important;
   font-weight: 300;
   font-size: var(--nav-font-size);
   font-family: 'Inter';
-  padding: 0.5rem 1rem;
-  transition: color 0.12s;
+  padding: var(--space-xs) var(--space-md);
+  transition: color var(--t-fast);
   border-bottom: none !important;
 }
 
 .navbar-nav .nav-link:hover {
-  color: #eaeaea !important;
+  color: var(--text-secondary) !important;
 }
 
 .nav-language {
   display: inline-flex;
   align-items: center;
   gap: 0;
-  margin-left: 12px;
-  padding-left: 12px;
-  border-left: 1px solid var(--gray-2);
+  margin-left: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 1px solid var(--border-default);
 }
 
 .navbar-nav .nav-language__link {
   border: 0;
   border-radius: 0;
-  padding: 0.5rem 0.24rem;
+  padding: var(--space-xs) 0.24rem;
   font-size: var(--text-xs);
   line-height: 1;
   font-weight: 700;
   text-align: center;
-  color: var(--gray-4) !important;
-  transition: color 0.14s ease;
+  color: var(--text-muted) !important;
+  transition: color var(--t-fast) ease;
 }
 
 .navbar-nav .nav-language__link + .nav-language__link::before {
   content: "/";
   display: inline-block;
   margin: 0 0.48rem 0 0.24rem;
-  color: var(--gray-3);
+  color: var(--border-strong);
   font-weight: 400;
 }
 
 .navbar-nav .nav-language__link:hover {
-  color: var(--white) !important;
+  color: var(--text-primary) !important;
 }
 
 .navbar-nav .nav-language__link.is-active {
-  color: var(--white) !important;
+  color: var(--text-primary) !important;
 }
 
 .nav-language__full {
@@ -138,11 +138,11 @@
   justify-content: center;
   border: 0;
   background: none;
-  color: var(--white);
+  color: var(--text-primary);
   border-radius: 0;
-  padding: 0 var(--space-2);
+  padding: 0 2px;
   line-height: 1;
-  transition: transform 0.18s ease, opacity 0.18s ease;
+  transition: transform var(--t-base) ease, opacity var(--t-base) ease;
 }
 
 .nav-burger:hover {
@@ -186,13 +186,13 @@ body.nav-open {
     width: 100vw;
     height: 100vh;
     display: block;
-    padding: calc(var(--space-72) + var(--space-14)) var(--space-24) var(--space-24);
+    padding: calc(var(--space-3xl) + var(--space-sm)) var(--space-lg) var(--space-lg);
     background: rgba(10, 10, 10, 0.98);
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
     pointer-events: none;
-    transition: opacity 0.24s ease, transform 0.24s ease, visibility 0s linear 0.24s;
+    transition: opacity var(--t-base) ease, transform var(--t-base) ease, visibility 0s linear var(--t-base);
   }
 
   .nav-menu.is-open {
@@ -220,7 +220,7 @@ body.nav-open {
   .nav-menu .navbar-nav .nav-item {
     width: auto;
     border-bottom: 0;
-    margin: 0 0 var(--space-14);
+    margin: 0 0 var(--space-sm);
   }
 
   .nav-menu .navbar-nav .nav-link {
@@ -229,12 +229,12 @@ body.nav-open {
     padding: 0;
     font-size: clamp(2rem, 11vw, 3rem);
     font-weight: 600;
-    line-height: 1.02;
+    line-height: var(--lh-display);
     letter-spacing: 0;
   }
 
   .nav-menu .navbar-nav .nav-language {
-    margin-top: var(--space-10);
+    margin-top: var(--space-xs);
     margin-left: 0;
     padding-left: 0;
     border-left: 0;
