@@ -7,3 +7,4 @@ User-agent: *
 Allow: /
 
 Sitemap: {{ '/sitemap.xml' | absolute_url }}
+llms.txt: {{ '/llms.txt' | absolute_url }}

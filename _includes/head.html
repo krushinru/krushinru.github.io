@@ -63,7 +63,74 @@
   <meta property="og:site_name" content="{{ site_title | escape }}">
   <meta property="og:type" content="{% if page.date %}article{% else %}website{% endif %}">
   {% if og_image_url %}<meta property="og:image" content="{{ og_image_url }}">{% endif %}
+  {% if page.date %}
+  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+  <meta property="article:author" content="https://krushin.me">
+  {% endif %}
   <meta name="twitter:card" content="{% if og_image_url %}summary_large_image{% else %}summary{% endif %}">
   <meta property="twitter:title" content="{{ page_title | escape }}">
   {% if og_image_url %}<meta property="twitter:image" content="{{ og_image_url }}">{% endif %}
+  <meta name="author" content="{{ site.author.name }}">
+  <script type="application/ld+json">
+  {% if page.layout == "home" %}
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "url": {{ canonical_url | jsonify }},
+    "inLanguage": {{ current_lang | jsonify }},
+    "mainEntity": {
+      "@type": "Person",
+      "name": "Александр Крушин",
+      "url": "https://krushin.me",
+      "email": "akrushin@gmail.com",
+      "image": "{{ site.author.avatar }}?s=400",
+      "jobTitle": "Head of Growth",
+      "description": {{ site_description | strip_html | normalize_whitespace | jsonify }},
+      "sameAs": ["https://t.me/krushin"]
+    }
+  }
+  {% elsif page.layout == "post" %}
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": {{ page_title | jsonify }},
+    "description": {{ page_description | strip_html | normalize_whitespace | jsonify }},
+    "datePublished": "{{ page.date | date_to_xmlschema }}",
+    "url": {{ canonical_url | jsonify }},
+    "inLanguage": {{ current_lang | jsonify }},
+    "author": {
+      "@type": "Person",
+      "name": "Александр Крушин",
+      "url": "https://krushin.me"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Александр Крушин",
+      "url": "https://krushin.me"
+    }
+  }
+  {% elsif page.layout == "project" %}
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": {{ page_title | jsonify }},
+    "description": {{ page_description | strip_html | normalize_whitespace | jsonify }},
+    "url": {{ canonical_url | jsonify }},
+    "inLanguage": {{ current_lang | jsonify }},
+    "author": {
+      "@type": "Person",
+      "name": "Александр Крушин",
+      "url": "https://krushin.me"
+    }
+  }
+  {% else %}
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": {{ page_title | jsonify }},
+    "description": {{ page_description | strip_html | normalize_whitespace | jsonify }},
+    "url": {{ canonical_url | jsonify }}
+  }
+  {% endif %}
+  </script>
 </head>

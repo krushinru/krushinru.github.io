@@ -1,0 +1,44 @@
+---
+layout: null
+permalink: /llms.txt
+sitemap: false
+---
+# Александр Крушин
+
+> Head of Growth, стартапер. Работал директором по маркетингу Рамблера и директором по развитию «Афиши». Запускаю собственные проекты: от сервисов аналитики до медиапроектов.
+
+Сайт: https://krushin.me
+Email: akrushin@gmail.com
+Telegram: https://t.me/krushin
+
+## О сайте
+
+Личный сайт Александра Крушина — портфолио, список запущенных проектов и заметки о медиа, технологиях и стартапах.
+
+## Основные разделы
+
+- [Главная](https://krushin.me/ru/): Биография, навигация по проектам и заметкам
+- [Проекты](https://krushin.me/ru/projects/): Все запущенные продукты и сервисы
+- [Заметки](https://krushin.me/ru/notes/): Блог о медиа, проектах и технологиях
+
+## Проекты
+
+{% assign ru_projects = site.projects | where: "lang", "ru" | sort: "featured_order" %}
+{% for project in ru_projects %}
+- [{{ project.title }}]({{ project.url | absolute_url }}){% if project.description %}: {{ project.description }}{% endif %}{% if project.launch_year %} ({{ project.launch_year }}{% if project.close_year %}–{{ project.close_year }}{% else %}–н.в.{% endif %}){% endif %}
+{% endfor %}
+## Заметки
+
+{% assign ru_posts = site.posts | where: "lang", "ru" | sort: "date" | reverse %}
+{% for post in ru_posts %}
+- [{{ post.title }}]({{ post.url | absolute_url }}){% if post.description %}: {{ post.description }}{% endif %}
+{% endfor %}
+## English version
+
+- [About (EN)](https://krushin.me/en/): Head of Growth. Worked as Marketing Director at Rambler portal and Development Director at Afisha. Building own projects.
+- [Projects (EN)](https://krushin.me/en/projects/)
+- [Notes (EN)](https://krushin.me/en/notes/)
+{% assign en_posts = site.posts | where: "lang", "en" | sort: "date" | reverse %}
+{% for post in en_posts %}
+- [{{ post.title }}]({{ post.url | absolute_url }}){% if post.description %}: {{ post.description }}{% endif %}
+{% endfor %}
