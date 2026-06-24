@@ -4,8 +4,12 @@ layout: default
 
 {% assign current_lang = page.lang | default: site.default_lang | default: 'ru' %}
 {% assign t = site.data.i18n[current_lang] | default: site.data.i18n.ru %}
+{% assign has_project_hero_image = false %}
+{% if page.image and page.image_type!="icon" %}
+  {% assign has_project_hero_image = true %}
+{% endif %}
 
-<article class="project-page">
+<article class="project-page{% if has_project_hero_image %} project-page--has-hero-image{% else %} project-page--no-hero-image{% endif %}{% if page.stats %} project-page--has-stats{% else %} project-page--no-stats{% endif %}{% if page.media %} project-page--has-media{% endif %}">
   <header class="project-header">
 
 
@@ -36,7 +40,7 @@ layout: default
       {% endif %}
     </div>
 
-    {% if page.image and page.image_type!="icon" %}
+    {% if has_project_hero_image %}
     <div class="post-image">
       <img src="{{ page.image | relative_url }}" 
            alt="{{ page.title }}" 
