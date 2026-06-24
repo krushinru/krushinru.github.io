@@ -42,7 +42,7 @@
 .nav-name-block {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 1px;
   line-height: var(--lh-display);
 }
 
@@ -57,8 +57,8 @@
 }
 
 .nav-name-subtitle {
-  font-size: var(--text-xs);
-  line-height: var(--lh-display);
+  font-size: 0.78rem;
+  line-height: var(--lh-snug);
   color: var(--text-primary);
 }
 
