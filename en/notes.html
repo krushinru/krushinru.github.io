@@ -11,7 +11,7 @@ permalink: /en/notes/
 {% assign t = site.data.i18n[page.lang] %}
 {% assign localized_posts = site.posts | where: "lang", page.lang %}
 
-<section class="section">
+<section class="section notes-list">
   <h1 class="section-title">{{ t.notes.title }}</h1>
   {% for post in localized_posts %}
   <div class="post-item">
