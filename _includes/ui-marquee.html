@@ -17,30 +17,30 @@
 
   <div class="accent-marquee accent-theme accent-theme--{{ marquee_theme }}{% if include.class_name %} {{ include.class_name }}{% endif %}"{% if include.aria_label %} aria-label="{{ include.aria_label }}"{% endif %}>
     <div class="accent-marquee__fullbleed">
-      <div class="accent-marquee__track">
-        {% for run in (1..2) %}
+      <div class="accent-marquee__track" data-marquee-track>
+        <div class="accent-marquee__group" data-marquee-group>
           {% for item in marquee_items %}
-            {% assign item_name = item[name_key] | default: item %}
-            {% assign item_desc = item[desc_key] %}
-            {% assign item_url = item[url_key] %}
+          {% assign item_name = item[name_key] | default: item %}
+          {% assign item_desc = item[desc_key] %}
+          {% assign item_url = item[url_key] %}
 
-            {% if item_url and item_url != "" %}
-              <a href="{{ item_url }}" class="accent-marquee__item" target="_blank" rel="noopener noreferrer">
-                <span class="accent-marquee__name">{{ item_name }}</span>
-                {% if item_desc and item_desc != "" %}
-                  <span class="accent-marquee__desc">{{ item_desc }}</span>
-                {% endif %}
-              </a>
-            {% else %}
-              <span class="accent-marquee__item">
-                <span class="accent-marquee__name">{{ item_name }}</span>
-                {% if item_desc and item_desc != "" %}
-                  <span class="accent-marquee__desc">{{ item_desc }}</span>
-                {% endif %}
-              </span>
+          {% if item_url and item_url != "" %}
+            <a href="{{ item_url }}" class="accent-marquee__item" target="_blank" rel="noopener noreferrer">
+              <span class="accent-marquee__name">{{ item_name }}</span>
+              {% if item_desc and item_desc != "" %}
+                <span class="accent-marquee__desc">{{ item_desc }}</span>
+              {% endif %}
+            </a>
+          {% else %}
+            <span class="accent-marquee__item">
+              <span class="accent-marquee__name">{{ item_name }}</span>
+              {% if item_desc and item_desc != "" %}
+                <span class="accent-marquee__desc">{{ item_desc }}</span>
+              {% endif %}
+            </span>
             {% endif %}
           {% endfor %}
-        {% endfor %}
+        </div>
       </div>
     </div>
   </div>

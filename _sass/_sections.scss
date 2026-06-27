@@ -304,6 +304,7 @@
 }
 
 .accent-marquee__track {
+  --accent-marquee-distance: 0px;
   display: flex;
   align-items: center;
   gap: var(--space-lg);
@@ -311,6 +312,13 @@
   white-space: nowrap;
   padding: var(--space-xs) 0;
   animation: accent-marquee-scroll 38s linear infinite;
+}
+
+.accent-marquee__group {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: inherit;
 }
 
 .accent-marquee__item {
@@ -344,7 +352,7 @@
 
 @keyframes accent-marquee-scroll {
   from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  to { transform: translateX(calc(-1 * var(--accent-marquee-distance))); }
 }
 
 
