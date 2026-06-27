@@ -79,6 +79,24 @@
       {% assign has_media = true %}
     {% endif %}
 
+    {% assign project_card_style = "" %}
+    {% if has_screenshot %}
+      {% capture project_card_style %}--project-image: url('{{ project.image | relative_url }}');{% endcapture %}
+    {% elsif has_icon %}
+      {% assign project_icon_bg = "#1498f2" %}
+      {% if project.title == "T-Do" %}
+        {% assign project_icon_bg = "#159bf2" %}
+      {% elsif project.title == "HabitHit" %}
+        {% assign project_icon_bg = "#1478ff" %}
+      {% endif %}
+      {% capture project_card_style %}--project-icon-bg: {{ project_icon_bg }};{% endcapture %}
+    {% endif %}
+    {% if project.card_text_theme == "dark" %}
+      {% capture project_card_style %}{{ project_card_style }} --project-card-fg: #07121f; --project-card-muted: rgba(7, 18, 31, 0.72); --project-card-overlay: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.48));{% endcapture %}
+    {% elsif project.card_text_theme == "light" %}
+      {% capture project_card_style %}{{ project_card_style }} --project-card-fg: #fff; --project-card-muted: rgba(255, 255, 255, 0.78);{% endcapture %}
+    {% endif %}
+
     <article class="project-editorial-card"
              data-status="{% if project.close_year and project.close_year != "" %}closed{% else %}active{% endif %}"
              data-roles="{{ project.roles | join: ',' | downcase }}"
@@ -86,7 +104,8 @@
              data-has-icon="{% if has_icon %}true{% else %}false{% endif %}"
              data-has-screenshot="{% if has_screenshot %}true{% else %}false{% endif %}"
              data-launch-year="{{ project.launch_year | default: 0 }}"
-             data-featured-order="{{ project.featured_order | default: '' }}">
+             data-featured-order="{{ project.featured_order | default: '' }}"
+             {% if project_card_style != "" %}style="{{ project_card_style | strip }}"{% endif %}>
       
       <a href="{{ project.url | relative_url }}" class="project-editorial-link">
         
@@ -184,6 +203,7 @@
       </a>
     </article>
 
+    {% unless include.show_marquee == "false" %}
     {% if include.short == "false" and forloop.index == 2 and side_projects and side_projects.size > 0 %}
     {% include ui-marquee.html
       class_name="projects-side-marquee"
@@ -192,6 +212,7 @@
       theme=include.marquee_theme
     %}
     {% endif %}
+    {% endunless %}
   {% endfor %}
 </div>
 

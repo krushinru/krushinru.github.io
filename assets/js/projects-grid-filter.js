@@ -17,6 +17,11 @@ if (!window.__editorialGridInitialized) {
           'span-3',
           'span-4',
           'span-6',
+          'bento-hero',
+          'bento-wide',
+          'bento-tall',
+          'bento-compact',
+          'bento-muted',
           'hide-image',
           'hide-facts',
           'hide-quote',
@@ -24,44 +29,39 @@ if (!window.__editorialGridInitialized) {
         );
       });
 
-      for (let i = 0; i < cards.length; i += 2) {
-        const leftCard = cards[i];
-        const rightCard = cards[i + 1];
+      const pattern = [
+        ['bento-hero', 'span-4'],
+        ['bento-tall', 'span-2'],
+        ['bento-wide', 'span-3'],
+        ['bento-compact', 'span-3'],
+        ['bento-wide', 'span-4'],
+        ['bento-compact', 'span-2']
+      ];
 
-        if (!rightCard) {
-          leftCard.classList.add('single', 'span-6');
-          continue;
+      cards.forEach((card, index) => {
+        const [shapeClass, spanClass] = pattern[index % pattern.length];
+        const hasImage = card.querySelector('.project-editorial-image') !== null;
+        const hasIcon = card.querySelector('.project-editorial-app-icon') !== null;
+
+        card.classList.add(shapeClass, spanClass);
+
+        if (index === cards.length - 1 && cards.length % 2 === 1 && cards.length > 1) {
+          card.classList.remove('span-2', 'span-3', 'span-4');
+          card.classList.add('single', 'span-6');
         }
 
-        const leftHasImage = leftCard.querySelector('.project-editorial-image') !== null;
-        const rightHasImage = rightCard.querySelector('.project-editorial-image') !== null;
-        const leftHasFacts = leftCard.querySelector('.project-editorial-stats') !== null;
-        const rightHasFacts = rightCard.querySelector('.project-editorial-stats') !== null;
-
-        leftCard.classList.add('pair-left');
-        rightCard.classList.add('pair-right');
-
-        if (leftHasImage && !rightHasImage) {
-          leftCard.classList.add('span-4', 'hide-facts');
-          rightCard.classList.add('span-2', 'hide-image', 'hide-media');
-        } else if (!leftHasImage && rightHasImage) {
-          leftCard.classList.add('span-2', 'hide-media');
-          rightCard.classList.add('span-4', 'hide-facts');
-        } else if (leftHasImage && rightHasImage) {
-          leftCard.classList.add('span-4', 'hide-facts');
-          rightCard.classList.add('span-2', 'hide-image', 'hide-media');
-        } else {
-          leftCard.classList.add('span-3');
-          rightCard.classList.add('span-3');
-
-          if (leftHasFacts) {
-            leftCard.classList.add('hide-media');
-          }
-          if (rightHasFacts) {
-            rightCard.classList.add('hide-media');
-          }
+        if (shapeClass === 'bento-compact') {
+          card.classList.add('hide-media');
         }
-      }
+
+        if (shapeClass === 'bento-tall' && hasImage) {
+          card.classList.add('hide-media');
+        }
+
+        if (!hasImage && !hasIcon && shapeClass !== 'bento-hero') {
+          card.classList.add('bento-muted');
+        }
+      });
     }
 
     function initProjectRotators(section) {

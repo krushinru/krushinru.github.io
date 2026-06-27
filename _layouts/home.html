@@ -33,17 +33,27 @@ layout: default
 
 {% if localized_projects.size > 0 %}
 <section class="section section--compact-top" id="projects">
-  <h4 class="section-title">{{ t.home.launched }}</h4>
-  {% include projects-featured-list.html limit=2 %}
+  <div class="section-head">
+    <h4 class="section-title">{{ t.home.launched }}</h4>
+    {% if localized_projects.size > 2 %}
+    <a href="/{{ current_lang }}/projects/" class="view-more view-more--desktop">{{ t.home.all_projects }}</a>
+    {% endif %}
+  </div>
+  {% include projects-grid.html show_filter="false" short="false" limit=2 show_marquee="false" %}
   {% if localized_projects.size > 2 %}
-  <a href="/{{ current_lang }}/projects/" class="view-more">{{ t.home.all_projects }}</a>
+  <a href="/{{ current_lang }}/projects/" class="view-more view-more--mobile">{{ t.home.all_projects }}</a>
   {% endif %}
 </section>
 {% endif %}
 
 {% if localized_posts.size > 0 %}
 <section class="section" id="blog">
-  <h4 class="section-title">{{ t.home.notes }}</h4>
+  <div class="section-head">
+    <h4 class="section-title">{{ t.home.notes }}</h4>
+    {% if localized_posts.size > 0 %}
+    <a href="/{{ current_lang }}/notes/" class="view-more view-more--desktop">{{ t.home.all_posts }}</a>
+    {% endif %}
+  </div>
   {% for post in localized_posts limit: 5 %}
   <div class="post-item">
     <h3 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
@@ -60,8 +70,8 @@ layout: default
     </div>
   </div>
   {% endfor %}
-  {% if localized_posts.size > 5 %}
-  <a href="/{{ current_lang }}/notes/" class="view-more">{{ t.home.all_posts }}</a>
+  {% if localized_posts.size > 0 %}
+  <a href="/{{ current_lang }}/notes/" class="view-more view-more--mobile">{{ t.home.all_posts }}</a>
   {% endif %}
 </section>
 {% endif %}
