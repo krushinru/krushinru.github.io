@@ -4,10 +4,6 @@
 #   description: Короткое описание
 #   url: https://example.com (необязательно)
 
-- name: Геймер
-  description: старейший телеграм-канал про видеоигры
-  url: https://t.me/gamer
-
 - name: GeoConsent
   description: js-библиотека для куки-уведомлений
   url: https://krushin.me/geoconsent/

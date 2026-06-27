@@ -113,8 +113,6 @@ ru:
   socials:
     - name: Телеграм
       url: https://t.me/krushin
-    - name: ТГ про игры
-      url: https://t.me/gamer
     - name: Инстаграм*
       url: https://instagram.com/krushin_ru
     - name: Линкедин
@@ -123,8 +121,6 @@ ru:
       url: https://facebook.com/akrushin
     - name: Телеграм
       url: https://t.me/krushin
-    - name: ТГ про игры
-      url: https://t.me/gamer
     - name: Инстаграм*
       url: https://instagram.com/krushin_ru
     - name: Линкедин
@@ -132,9 +128,6 @@ ru:
     - name: ФБ*
       url: https://facebook.com/akrushin
   side_projects:
-    - name: Геймер
-      description: старейший телеграм-канал про видеоигры
-      url: https://t.me/gamer
     - name: GeoConsent
       description: js-библиотека для куки-уведомлений
       url: https://krushin.me/geoconsent/
@@ -278,9 +271,6 @@ en:
     - name: Facebook*
       url: https://facebook.com/akrushin
   side_projects:
-    - name: Gamer
-      description: one of the oldest Telegram channels about video games
-      url: https://t.me/gamer
     - name: GeoConsent
       description: a JS library for cookie consent banners
       url: https://krushin.me/geoconsent/
