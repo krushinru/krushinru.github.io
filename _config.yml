@@ -2,6 +2,12 @@ title: Александр Крушин
 description: Head of Growth. Работал директором по маркетингу портала Рамблер и директором по развитию «Афиши». Запускаю собственные проекты.
 email: akrushin@gmail.com
 telegram_url: https://t.me/krushin
+telegram_contact_url: https://t.me/krushin_ru
+calendar_url: https://cal.com/krushin
+github_url: https://github.com/krushinru
+features:
+  shelf: false
+  about: false
 baseurl: ""
 url: "https://krushin.me"
 permalink: /ru/notes/:title/

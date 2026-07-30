@@ -11,8 +11,7 @@ permalink: /ru/projects/
 <section class="section">
   <div class="section-head">
     <h1 class="section-title">{{ site.data.i18n[page.lang].projects.title }}</h1>
-    {% include projects-sort-toggle.html %}
   </div>
-  {% include projects-grid.html show_filter="false" short="false" %}
+  {% include projects-grid.html variant="catalog" %}
   {% include projects-collab-cta.html %}
 </section>

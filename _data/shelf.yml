@@ -1,0 +1,11 @@
+# Поля элемента:
+# - category: books | games | series
+# - title: название; при необходимости можно задать title_ru и title_en
+# - cover: путь к обложке (для игр используется квадратный формат)
+# - year: год завершения; если поле не указано, элемент попадёт в «Читаю / Играю / Смотрю»
+# - format_ru / format_en: необязательная пометка, например «Аудио»
+# - url: необязательная внешняя ссылка
+
+- category: games
+  title: "Resonance: A Plague Tale Legacy"
+  cover: /images/shelf/games/resonance.png

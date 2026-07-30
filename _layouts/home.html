@@ -7,79 +7,95 @@ layout: default
 {% assign localized_projects = site.projects | where: "lang", current_lang %}
 {% assign localized_posts = site.posts | where: "lang", current_lang %}
 
-<main class="main-block">
-  <div class="row">
-    <div class="col-12">
+<main class="home-layout">
+  <aside class="home-profile">
+    <div class="main-block">
       <img src="{{ site.author.avatar }}?s=400" alt="{{ t.site.avatar_alt }}" class="face">
       <h1>{{ t.site.author_name | default: t.site.title }}</h1>
       <p class="lead">
-        {{ t.site.author_bio | default: t.site.description }}
+        {% if t.home.bio %}
+          {{ t.home.bio.prefix }} {% include editorial-note-trigger.html id="home-rambler" text=t.home.bio.rambler label=t.home.bio.rambler_label class_name="rambler editorial-note-trigger--rambler" %} {{ t.home.bio.between }} {% include editorial-note-trigger.html id="home-afisha" text=t.home.bio.afisha label=t.home.bio.afisha_label class_name="afisha editorial-note-trigger--afisha" %}{{ t.home.bio.suffix }}
+        {% else %}
+          {{ t.site.author_bio | default: t.site.description }}
+        {% endif %}
       </p>
-      {% if t.navigation %}
-      <nav class="main-links">
-        {% for link in t.navigation %}
-        <a href="{{ link.url | relative_url }}">{{ link.title }}</a>
-        {% endfor %}
+      <nav class="profile-contacts" aria-label="{{ t.home.contact_label | default: t.site.author_name }}">
+        <a class="profile-contact" href="mailto:{{ site.email }}" aria-label="{{ t.home.contacts.email }}" title="{{ t.home.contacts.email }}">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+        </a>
+        <a class="profile-contact" href="{{ site.calendar_url }}" aria-label="{{ t.home.contacts.calendar }}" title="{{ t.home.contacts.calendar }}">
+          <i class="fa-regular fa-calendar-check" aria-hidden="true"></i>
+        </a>
+        <a class="profile-contact" href="{{ site.telegram_contact_url }}" aria-label="{{ t.home.contacts.telegram }}" title="{{ t.home.contacts.telegram }}">
+          <i class="fa-brands fa-telegram" aria-hidden="true"></i>
+        </a>
+        <a class="profile-contact" href="{{ site.github_url }}" aria-label="{{ t.home.contacts.github }}" title="{{ t.home.contacts.github }}">
+          <i class="fa-brands fa-github" aria-hidden="true"></i>
+        </a>
       </nav>
-      {% endif %}
-      <div class="main-contact">
-        {{ t.home.contact_label }}: <a href="mailto:{{ site.email }}">{{ site.email }}</a>
-      </div>
     </div>
+
+    {% if t.home.editorial_notes %}
+      {% include editorial-notes.html notes=t.home.editorial_notes close_label=t.home.editorial_notes_close %}
+      <script src="{{ '/assets/js/editorial-notes.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+    {% endif %}
+  </aside>
+
+  <div class="home-content">
+    {{ content }}
+
+    {% if localized_projects.size > 0 %}
+    <section class="section section--compact-top" id="projects">
+      <div class="section-head">
+        <h4 class="section-title">{{ t.home.launched }}</h4>
+        {% if localized_projects.size > 2 %}
+        <a href="/{{ current_lang }}/projects/" class="view-more view-more--desktop">{{ t.home.all_projects }}</a>
+        {% endif %}
+      </div>
+      {% include projects-grid.html variant="home" limit=3 show_marquee="false" %}
+      {% if localized_projects.size > 2 %}
+      <a href="/{{ current_lang }}/projects/" class="view-more view-more--mobile">{{ t.home.all_projects }}</a>
+      {% endif %}
+    </section>
+    {% endif %}
+
+    {% if localized_posts.size > 0 %}
+    <section class="section" id="blog">
+      <div class="section-head">
+        <h4 class="section-title">{{ t.home.notes }}</h4>
+        {% if localized_posts.size > 0 %}
+        <a href="/{{ current_lang }}/notes/" class="view-more view-more--desktop">{{ t.home.all_posts }}</a>
+        {% endif %}
+      </div>
+      {% for post in localized_posts limit: 5 %}
+      <div class="post-item">
+        <h3 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        {% if post.lead %}
+        <div class="post-lead">{{ post.lead | markdownify }}</div>
+        {% endif %}
+
+        <div class="post-tags">
+          {% include relative-date.html date=post.date %}
+
+          {% for tag in post.tags %}
+            <a href="{{ tag }}" class="tag">{{ tag }}</a>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+      {% if localized_posts.size > 0 %}
+      <a href="/{{ current_lang }}/notes/" class="view-more view-more--mobile">{{ t.home.all_posts }}</a>
+      {% endif %}
+    </section>
+    {% endif %}
+
   </div>
 </main>
-
-{{ content }}
-
-{% if localized_projects.size > 0 %}
-<section class="section section--compact-top" id="projects">
-  <div class="section-head">
-    <h4 class="section-title">{{ t.home.launched }}</h4>
-    {% if localized_projects.size > 2 %}
-    <a href="/{{ current_lang }}/projects/" class="view-more view-more--desktop">{{ t.home.all_projects }}</a>
-    {% endif %}
-  </div>
-  {% include projects-grid.html show_filter="false" short="false" limit=2 show_marquee="false" %}
-  {% if localized_projects.size > 2 %}
-  <a href="/{{ current_lang }}/projects/" class="view-more view-more--mobile">{{ t.home.all_projects }}</a>
-  {% endif %}
-</section>
-{% endif %}
-
-{% if localized_posts.size > 0 %}
-<section class="section" id="blog">
-  <div class="section-head">
-    <h4 class="section-title">{{ t.home.notes }}</h4>
-    {% if localized_posts.size > 0 %}
-    <a href="/{{ current_lang }}/notes/" class="view-more view-more--desktop">{{ t.home.all_posts }}</a>
-    {% endif %}
-  </div>
-  {% for post in localized_posts limit: 5 %}
-  <div class="post-item">
-    <h3 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-    {% if post.lead %}
-    <div class="post-lead">{{ post.lead | markdownify }}</div>
-    {% endif %}
-    
-    <div class="post-tags">
-      {% include relative-date.html date=post.date %}
-      
-      {% for tag in post.tags %}
-        <a href="{{ tag }}" class="tag">{{ tag }}</a>
-      {% endfor %}
-    </div>
-  </div>
-  {% endfor %}
-  {% if localized_posts.size > 0 %}
-  <a href="/{{ current_lang }}/notes/" class="view-more view-more--mobile">{{ t.home.all_posts }}</a>
-  {% endif %}
-</section>
-{% endif %}
 
 {% assign socials = t.socials %}
 {% if socials and socials.size > 0 %}
 {% include ui-marquee.html
-  class_name="projects-side-marquee"
+  class_name="projects-side-marquee home-social-marquee"
   aria_label=t.home.socials_label
   items=socials
   theme="slate"

@@ -24,7 +24,11 @@
   <title>{% if page_title and page_title != site_title %}{{ page_title | escape }} | {{ site_title | escape }}{% else %}{{ site_title | escape }}{% endif %}</title>
   <meta name="description" content="{{ page_description | strip_html | normalize_whitespace | escape }}">
   <meta name="author" content="{{ site.author.name }}">
-  {% if page.robots %}<meta name="robots" content="{{ page.robots }}">{% endif %}
+  {% if page.feature and site.features[page.feature] != true %}
+  <meta name="robots" content="noindex, nofollow">
+  {% elsif page.robots %}
+  <meta name="robots" content="{{ page.robots }}">
+  {% endif %}
   <link rel="canonical" href="{{ canonical_url }}">
   <link rel="me" href="mailto:{{ site.email }}">
   <link rel="me" href="{{ site.telegram_url }}">

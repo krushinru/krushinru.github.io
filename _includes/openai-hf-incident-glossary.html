@@ -1,0 +1,53 @@
+<div class="incident-glossary js-incident-glossary" hidden>
+  <div class="incident-glossary__backdrop js-glossary-close" aria-hidden="true"></div>
+  <aside
+    class="incident-glossary__panel"
+    id="incident-glossary-panel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="incident-glossary-title"
+    aria-describedby="incident-glossary-body"
+    tabindex="-1">
+    <div class="incident-glossary__topline">
+      <button class="incident-glossary__close js-glossary-close" type="button" aria-label="Закрыть пояснение">Закрыть ×</button>
+    </div>
+    <h2 id="incident-glossary-title"></h2>
+    <div class="incident-glossary__body" id="incident-glossary-body"></div>
+  </aside>
+
+  <template data-glossary-term="agent" data-title="ИИ-агент">
+    <p>Программа, построенная вокруг языковой модели. Агент получает цель, выбирает последовательность действий, запускает команды, читает файлы и проверяет результат.</p>
+  </template>
+
+  <template data-glossary-term="hf" data-title="Hugging Face">
+    <p>Платформа, на которой разработчики публикуют модели, наборы данных и приложения для машинного обучения.</p>
+  </template>
+
+  <template data-glossary-term="model" data-title="Модель">
+    <p>Обученная математическая система, которая продолжает текст, пишет код или решает другие задачи. Один агент может обращаться к нескольким моделям.</p>
+  </template>
+
+  <template data-glossary-term="sandbox" data-title="Песочница">
+    <p>Изолированный виртуальный компьютер. Внутри можно запускать подозрительный код, не давая ему прямого доступа к остальной сети.</p>
+  </template>
+
+  <template data-glossary-term="exploit" data-title="Эксплойт">
+    <p>Программа или набор команд, которые используют конкретную уязвимость для проникновения в систему или выполнения действий без разрешения.</p>
+  </template>
+
+  <template data-glossary-term="token" data-title="Токен доступа">
+    <p>Цифровой ключ, который подтверждает право программы подключаться к сервису и выполнять разрешённые действия.</p>
+  </template>
+
+  <template data-glossary-term="repository" data-title="Репозиторий">
+    <p>Хранилище исходного кода с историей изменений. Закрытый репозиторий доступен только сотрудникам и другим пользователям с разрешением.</p>
+  </template>
+
+  <template data-glossary-term="open-weights" data-title="Открытые веса">
+    <p>Обученную модель можно скачать и запустить на своих компьютерах. При этом её исходный код и данные обучения не обязательно открыты.</p>
+  </template>
+
+  <template data-glossary-term="frontier" data-title="Фронтирные модели">
+    <p>Наиболее мощные ИИ-модели своего времени. Обычно их создают крупнейшие лаборатории, а обучение требует особенно много вычислительных ресурсов.</p>
+  </template>
+</div>

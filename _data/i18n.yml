@@ -14,6 +14,12 @@ ru:
       url: /ru/projects/
     - title: Заметки
       url: /ru/notes/
+    - title: Полка
+      url: /ru/shelf/
+      feature: shelf
+    - title: Обо мне
+      url: /ru/about/
+      feature: about
   footer_navigation: []
   header:
     open_menu: Открыть меню
@@ -25,17 +31,38 @@ ru:
     made_suffix: в
     year_suffix: году
   home:
-    contact_label: Связаться
     launched: Запустил
     notes: Веду заметки
     all_projects: Все проекты →
     all_posts: Все записи →
     socials_label: Я в соцсетях
+    contacts:
+      email: Написать на почту
+      calendar: Забронировать созвон
+      telegram: Написать в Telegram
+      github: GitHub
+    bio:
+      prefix: Head of Growth. Работал директором по маркетингу портала
+      rambler: Рамблер
+      rambler_label: О Рамблере
+      between: и директором по развитию
+      afisha: «Афиши»
+      afisha_label: Об «Афише»
+      suffix: . Запускаю собственные проекты.
+    editorial_notes_close: Закрыть
+    editorial_notes:
+      - id: home-rambler
+        title: Рамблер
+        body: Один из старейших российских интернет-порталов. Объединяет новости, почту, поиск и тематические сервисы.
+      - id: home-afisha
+        title: Афиша
+        body: Российское медиа о кино, музыке, событиях, ресторанах и городской жизни.
   projects:
     title: Проекты
     description: Проекты Александра Крушина
     visit_site: Перейти на сайт →
-    media_title: Медиа о проекте
+    facts_title: В цифрах
+    media_title: Медиа о проекте
     filter_prefix: Здесь собраны
     filter_all: все
     filter_active: активные
@@ -52,9 +79,9 @@ ru:
     collab_text: Есть идея? Пиши на <a href="mailto:akrushin@gmail.com?subject=Предложение%20о%20сотрудничестве">почту</a>
   notes:
     title: Заметки
-    description: Заметки Александра Крушина о медиа, проектах и технологиях
-    more_title: хочу еще
-    more_text: Больше постов — в моём <a href="https://t.me/krushin">телеграм-канале</a>
+    description: Заметки Александра Крушина о медиа, проектах и технологиях
+    more_title: Хочу ещё
+    more_text: Больше постов — в моём <a href="https://t.me/krushin">телеграм-канале</a>
     published_at: Опубликовано
   privacy:
     title: Политика конфиденциальности
@@ -75,6 +102,33 @@ ru:
       mediagame:
         title: Медиа-менеджер
         description: Симулятор владельца медиа, где приходится балансировать между деньгами, доверием аудитории и редакционной совестью.
+  shelf:
+    title: Полка
+    description: Книги, игры и сериалы, которые я читаю, прохожу и смотрю
+    tabs_label: Разделы полки
+    books: Книги
+    games: Игры
+    series: Сериалы
+    now:
+      books: Читаю
+      games: Играю
+      series: Смотрю
+    empty:
+      books: Здесь скоро появятся книги.
+      games: Здесь скоро появятся игры.
+      series: Здесь скоро появятся сериалы.
+    cover_alt: Обложка
+  about:
+    title: Обо мне
+    description: Александр Крушин — Head of Growth и создатель digital-продуктов
+    eyebrow: Head of Growth / создатель продуктов
+    intro: Более 12 лет развиваю digital-продукты на стыке маркетинга, контента и технологий. Руководил маркетингом «Рамблера», отвечал за цифровые продукты «Афиши», запускал собственные сервисы с многомиллионной аудиторией. Сейчас исследую ИИ и собираю продукты на базе LLM.
+    stats_title: Коротко в цифрах
+    experience_title: Опыт
+    focus_title: Чем могу быть полезен
+    focus_text: Помогаю находить точки роста digital-продуктов, собирать маркетинговую и продуктовую стратегию, запускать MVP и внедрять ИИ в рабочие процессы.
+    contact: Обсудить задачу
+    book_call: Забронировать созвон
   error:
     title: Страница не найдена
     description: Возможно, вы перешли по устаревшей ссылке или страница была удалена.
@@ -157,6 +211,12 @@ en:
       url: /en/projects/
     - title: Notes
       url: /en/notes/
+    - title: Shelf
+      url: /en/shelf/
+      feature: shelf
+    - title: About
+      url: /en/about/
+      feature: about
   footer_navigation: []
   header:
     open_menu: Open menu
@@ -168,16 +228,37 @@ en:
     made_suffix: in
     year_suffix: ""
   home:
-    contact_label: Contact
     launched: Built
     notes: Notes
     all_projects: All projects →
     all_posts: All notes →
     socials_label: Social links
+    contacts:
+      email: Send an email
+      calendar: Book a call
+      telegram: Message on Telegram
+      github: GitHub
+    bio:
+      prefix: Head of Growth. Former Marketing Director at
+      rambler: Rambler
+      rambler_label: About Rambler
+      between: and Chief Digital Officer at
+      afisha: Afisha
+      afisha_label: About Afisha
+      suffix: . Founder and builder of my own projects.
+    editorial_notes_close: Close
+    editorial_notes:
+      - id: home-rambler
+        title: Rambler
+        body: One of Russia’s oldest web portals, combining news, email, search, and themed services.
+      - id: home-afisha
+        title: Afisha
+        body: A Russian publication about film, music, events, restaurants, and city life.
   projects:
     title: Projects
     description: Projects by Alexander Krushin
     visit_site: Visit site →
+    facts_title: By the numbers
     media_title: Press coverage
     filter_prefix: Explore
     filter_all: all
@@ -218,6 +299,33 @@ en:
       mediagame:
         title: Media Manager
         description: A media-owner simulator where you balance revenue, audience trust, and editorial integrity.
+  shelf:
+    title: Shelf
+    description: Books, games, and shows I am reading, playing, and watching
+    tabs_label: Shelf sections
+    books: Books
+    games: Games
+    series: Shows
+    now:
+      books: Reading
+      games: Playing
+      series: Watching
+    empty:
+      books: Books will appear here soon.
+      games: Games will appear here soon.
+      series: Shows will appear here soon.
+    cover_alt: Cover
+  about:
+    title: About
+    description: Alexander Krushin — Head of Growth and digital product builder
+    eyebrow: Head of Growth / product builder
+    intro: I have spent more than 12 years growing digital products at the intersection of marketing, content, and technology. I led marketing at Rambler, worked on Afisha’s digital products, and launched independent services with millions of users. Today I research AI and build LLM-powered products.
+    stats_title: At a glance
+    experience_title: Experience
+    focus_title: How I can help
+    focus_text: I help digital products find growth opportunities, shape product and marketing strategy, launch MVPs, and introduce AI into everyday workflows.
+    contact: Discuss a project
+    book_call: Book a call
   error:
     title: Page not found
     description: The link may be outdated, or the page may have been removed.

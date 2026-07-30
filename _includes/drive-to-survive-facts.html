@@ -1,0 +1,122 @@
+{% assign dts_lang = page.lang | default: "ru" %}
+{% if include.section == "baseline" %}
+<section class="dts-facts dts-facts--baseline" aria-labelledby="dts-baseline-title">
+  <header class="dts-facts__header">
+    <span class="dts-facts__kicker">2012–2016</span>
+    {% if dts_lang == "en" %}
+    <h2 id="dts-baseline-title">What Liberty Media was buying</h2>
+    <p>Formula 1 was losing viewers and value while other sports leagues were booming.</p>
+    {% else %}
+    <h2 id="dts-baseline-title">Что досталось Liberty Media</h2>
+    <p>Формула-1 теряла зрителей и&nbsp;стоимость, пока другие спортивные лиги росли.</p>
+    {% endif %}
+  </header>
+
+  <dl class="dts-facts__baseline-grid">
+    <div class="dts-facts__baseline-item">
+      {% if dts_lang == "en" %}
+      <dt>Global audience</dt>
+      <dd>
+        <span>500m</span>
+        <span class="dts-facts__arrow" aria-hidden="true">→</span>
+        <span>390m</span>
+      </dd>
+      <dd class="dts-facts__change"><strong>−22%</strong> over four years</dd>
+      {% else %}
+      <dt>Мировая аудитория</dt>
+      <dd>
+        <span>500&nbsp;млн</span>
+        <span class="dts-facts__arrow" aria-hidden="true">→</span>
+        <span>390&nbsp;млн</span>
+      </dd>
+      <dd class="dts-facts__change"><strong>−22%</strong> за четыре года</dd>
+      {% endif %}
+    </div>
+
+    <div class="dts-facts__baseline-item">
+      {% if dts_lang == "en" %}
+      <dt>Business valuation</dt>
+      <dd>
+        <span>$9bn</span>
+        <span class="dts-facts__arrow" aria-hidden="true">→</span>
+        <span>$8bn</span>
+      </dd>
+      <dd class="dts-facts__change"><strong>−$1bn</strong> by the Liberty Media deal</dd>
+      {% else %}
+      <dt>Оценка бизнеса</dt>
+      <dd>
+        <span>$9&nbsp;млрд</span>
+        <span class="dts-facts__arrow" aria-hidden="true">→</span>
+        <span>$8&nbsp;млрд</span>
+      </dd>
+      <dd class="dts-facts__change"><strong>−$1&nbsp;млрд</strong> к&nbsp;сделке с&nbsp;Liberty Media</dd>
+      {% endif %}
+    </div>
+  </dl>
+</section>
+{% elsif include.section == "impact" %}
+<section class="dts-facts dts-facts--impact" aria-labelledby="dts-impact-title">
+  <header class="dts-facts__header">
+    {% if dts_lang == "en" %}
+    <span class="dts-facts__kicker">After the first season</span>
+    <h2 id="dts-impact-title">The audience grew, two U.S. races were added, and Formula 1 became more valuable</h2>
+    {% else %}
+    <span class="dts-facts__kicker">После первого сезона</span>
+    <h2 id="dts-impact-title">Аудитория выросла, в&nbsp;США добавились две гонки, а&nbsp;Формула-1 подорожала</h2>
+    {% endif %}
+  </header>
+
+  <dl class="dts-facts__impact-grid">
+    <div>
+      {% if dts_lang == "en" %}
+      <dt>American audience</dt>
+      {% else %}
+      <dt>американская аудитория</dt>
+      {% endif %}
+      <dd>+40%</dd>
+    </div>
+    <div>
+      {% if dts_lang == "en" %}
+      <dt>Grands Prix among F1’s most-watched races in four years</dt>
+      {% else %}
+      <dt>Гран-при вошли в&nbsp;число самых просматриваемых гонок Ф1 за четыре года</dt>
+      {% endif %}
+      <dd>7</dd>
+    </div>
+    <div>
+      {% if dts_lang == "en" %}
+      <dt>spectators at the record-setting race in Austin</dt>
+      <dd>400,000</dd>
+      {% else %}
+      <dt>зрителей на&nbsp;самой посещаемой гонке Ф1 в&nbsp;Остине</dt>
+      <dd>400&nbsp;тыс.</dd>
+      {% endif %}
+    </div>
+    <div>
+      {% if dts_lang == "en" %}
+      <dt>U.S. races: Miami in 2022 and Las Vegas in 2023</dt>
+      {% else %}
+      <dt>этапа в&nbsp;США: Майами в&nbsp;2022 году и&nbsp;Лас-Вегас в&nbsp;2023-м</dt>
+      {% endif %}
+      <dd>+2</dd>
+    </div>
+    <div class="dts-facts__impact-value">
+      {% if dts_lang == "en" %}
+      <dt>Formula 1 valuation in three years: +63%</dt>
+      <dd>
+        <span>$8bn</span>
+        <span class="dts-facts__arrow" aria-hidden="true">→</span>
+        <span>$13bn</span>
+      </dd>
+      {% else %}
+      <dt>оценка Формулы-1 за три года: +63%</dt>
+      <dd>
+        <span>$8&nbsp;млрд</span>
+        <span class="dts-facts__arrow" aria-hidden="true">→</span>
+        <span>$13&nbsp;млрд</span>
+      </dd>
+      {% endif %}
+    </div>
+  </dl>
+</section>
+{% endif %}

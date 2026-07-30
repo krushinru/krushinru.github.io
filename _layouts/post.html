@@ -38,3 +38,18 @@ layout: default
   </div>
   {% endunless %}
 </article>
+{% if page.incident_interactive %}
+  {% if page.lang == 'en' %}
+    {% include openai-hf-incident-glossary-en.html %}
+  {% else %}
+    {% include openai-hf-incident-glossary.html %}
+  {% endif %}
+{% endif %}
+{% if page.editorial_notes %}
+  {% assign editorial_notes_close = "Закрыть" %}
+  {% if page.lang == "en" %}
+    {% assign editorial_notes_close = "Close" %}
+  {% endif %}
+  {% include editorial-notes.html notes=page.editorial_notes close_label=editorial_notes_close %}
+  <script src="{{ '/assets/js/editorial-notes.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+{% endif %}

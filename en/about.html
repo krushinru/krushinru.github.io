@@ -1,0 +1,112 @@
+---
+layout: page
+lang: en
+locale: en_US
+translation_key: about
+feature: about
+title: About
+description: Alexander Krushin — Head of Growth and digital product builder
+permalink: /en/about/
+---
+
+{% assign t = site.data.i18n[page.lang] %}
+<article class="about-page">
+  <header class="about-hero">
+    <p class="about-hero__eyebrow">{{ t.about.eyebrow }}</p>
+    <h1>{{ t.about.title }}</h1>
+    <p class="about-hero__intro">I grow digital products at the intersection of marketing, content, and technology. I led marketing at Rambler and digital products at Afisha, and built services used by up to 6 million people a month. Today I work with AI and LLMs.</p>
+  </header>
+
+  <section class="about-section" aria-labelledby="about-stats">
+    <h2 id="about-stats">{{ t.about.stats_title }}</h2>
+    <dl class="about-stats">
+      <div>
+        <dt>12+</dt>
+        <dd>years in digital products</dd>
+      </div>
+      <div>
+        <dt>6M</dt>
+        <dd>monthly T‑Do users at its peak</dd>
+      </div>
+      <div>
+        <dt>+40%</dt>
+        <dd>growth in depth and time spent at Rambler</dd>
+      </div>
+      <div>
+        <dt>1,400+</dt>
+        <dd>AI tools in YourAgents across four languages</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="about-section" aria-labelledby="about-experience">
+    <h2 id="about-experience">{{ t.about.experience_title }}</h2>
+    <ol class="career">
+      <li class="career-item">
+        <div class="career-item__period">December 2023 — present</div>
+        <div class="career-item__body">
+          <h3>Independent practice</h3>
+          <p class="career-item__role">Business development for AI and digital products</p>
+          <p>Launched the YourAgents AI directory, the POAPI public API catalogue, the Konspekto online notebook, and the PodTube podcast service. I help teams introduce AI and LLMs into marketing and products.</p>
+        </div>
+      </li>
+      <li class="career-item">
+        <div class="career-item__period">September 2021–December 2023</div>
+        <div class="career-item__body">
+          <h3>Rambler</h3>
+          <p class="career-item__role">Marketing Director</p>
+          <p>Led marketing for a portfolio of services and managed a team of seven. Grew the news aggregator’s average monthly audience by 28% year over year, while increasing depth and time spent by more than 40%.</p>
+        </div>
+      </li>
+      <li class="career-item">
+        <div class="career-item__period">February–September 2021</div>
+        <div class="career-item__body">
+          <h3>ClubStat</h3>
+          <p class="career-item__role">Founder and Business Development Director</p>
+          <p>Built a Clubhouse analytics service for advertising agencies in 72 hours. ClubStat indexed more than 400,000 profiles and 10,000 rooms, attracted paying customers, and drew interest from investors.</p>
+        </div>
+      </li>
+      <li class="career-item">
+        <div class="career-item__period">April 2018–September 2021</div>
+        <div class="career-item__body">
+          <h3>T‑Do</h3>
+          <p class="career-item__role">Founder and Business Development Director</p>
+          <p>Grew a Telegram access service to 6 million monthly users. Launched versions for three international markets and built its advertising network.</p>
+        </div>
+      </li>
+      <li class="career-item">
+        <div class="career-item__period">September 2018–March 2019</div>
+        <div class="career-item__body">
+          <h3>Afisha</h3>
+          <p class="career-item__role">Chief Digital Officer / Business Development Director</p>
+          <p>Developed Afisha.ru’s ticketing service and Afisha Daily, reset product and marketing priorities, and built partnerships to grow transactional revenue.</p>
+        </div>
+      </li>
+      <li class="career-item">
+        <div class="career-item__period">May–September 2018</div>
+        <div class="career-item__body">
+          <h3>Sports.ru</h3>
+          <p class="career-item__role">Product Development Manager</p>
+          <p>Developed Cyber.Sports.ru and the Well Played app. Together with Winstrike, launched a club app with news, rosters, and live match statistics in two months.</p>
+        </div>
+      </li>
+      <li class="career-item">
+        <div class="career-item__period">May 2013–November 2017</div>
+        <div class="career-item__body">
+          <h3>Media and project work</h3>
+          <p class="career-item__role">Marketing, editorial, and production</p>
+          <p>Grew audiences for Hello.ru, BURO 24/7, and Interior.ru. Relaunched a section at Life.ru and doubled its audience in three months. Before that, I built websites, YouTube channels, and podcasts and managed writers, editors, and video editors.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="about-section about-contact" aria-labelledby="about-focus">
+    <h2 id="about-focus">{{ t.about.focus_title }}</h2>
+    <p>{{ t.about.focus_text }}</p>
+    <div class="about-contact__actions">
+      <a href="mailto:{{ site.email }}">{{ t.about.contact }} →</a>
+      <a href="{{ site.calendar_url }}">{{ t.about.book_call }} →</a>
+    </div>
+  </section>
+</article>

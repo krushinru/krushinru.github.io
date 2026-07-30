@@ -1,0 +1,224 @@
+.about-page {
+  margin: var(--space-2xl) 0 var(--space-3xl);
+  color: var(--text-primary);
+}
+
+.about-hero {
+  max-width: 760px;
+  padding-bottom: clamp(1.75rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.about-hero__eyebrow {
+  margin: 0 0 0.55rem;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.about-hero h1 {
+  margin: 0;
+  font-family: var(--font-family-heading);
+  font-size: clamp(2.1rem, 6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+
+.about-hero__intro {
+  max-width: 720px;
+  margin: clamp(1.2rem, 3vw, 1.75rem) 0 0;
+  color: var(--text-secondary);
+  font-size: clamp(1.05rem, 2.1vw, 1.3rem);
+  line-height: 1.55;
+}
+
+.about-section {
+  margin-top: clamp(2.75rem, 7vw, 5rem);
+}
+
+.about-section > h2 {
+  margin: 0 0 clamp(1.25rem, 3vw, 2rem);
+  font-family: var(--font-family-heading);
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  border-top: 1px solid var(--border-default);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.about-stats > div {
+  min-width: 0;
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(0.75rem, 2.5vw, 1.5rem);
+}
+
+.about-stats > div:first-child {
+  padding-left: 0;
+}
+
+.about-stats > div:last-child {
+  padding-right: 0;
+}
+
+.about-stats > div + div {
+  border-left: 1px solid var(--border-default);
+}
+
+.about-stats dt {
+  margin-bottom: 0.65rem;
+  font-family: var(--font-family-heading);
+  font-size: clamp(1.35rem, 3vw, 1.9rem);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.about-stats dd {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.career {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--border-default);
+}
+
+.career-item {
+  display: grid;
+  grid-template-columns: minmax(145px, 0.28fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  padding: clamp(1.5rem, 4vw, 2.5rem) 0;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.career-item__period {
+  padding-top: 0.25rem;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.career-item__body h3 {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-family-body);
+  font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+.career-item__role {
+  margin: 0 0 0.9rem;
+  color: var(--text-secondary);
+  font-size: 0.84rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.career-item__body > p:last-child {
+  max-width: 680px;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: clamp(0.94rem, 1.3vw, 1.04rem);
+  line-height: 1.58;
+}
+
+.about-contact {
+  padding: clamp(1.5rem, 4vw, 2.5rem) 0;
+  border-top: 1px solid var(--border-default);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.about-contact > h2 {
+  margin-bottom: 0.7rem;
+}
+
+.about-contact > p {
+  max-width: 720px;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: clamp(0.94rem, 1.3vw, 1.04rem);
+  line-height: 1.58;
+}
+
+.about-contact__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.about-contact__actions a {
+  color: var(--text-primary);
+  font-size: 0.84rem;
+  font-weight: 650;
+}
+
+@media (max-width: 768px) {
+  .about-page {
+    margin-top: var(--space-xl);
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-stats > div {
+    padding: 1.25rem 0;
+  }
+
+  .about-stats > div:nth-child(even) {
+    padding-left: 1rem;
+    border-left: 1px solid var(--border-default);
+  }
+
+  .about-stats > div:nth-child(odd) {
+    padding-right: 1rem;
+    border-left: 0;
+  }
+
+  .about-stats > div:nth-child(n + 3) {
+    border-top: 1px solid var(--border-default);
+  }
+
+  .career-item {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .career-item__period {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .about-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .about-stats > div,
+  .about-stats > div:nth-child(even),
+  .about-stats > div:nth-child(odd) {
+    padding: 1.15rem 0;
+    border-left: 0;
+  }
+
+  .about-stats > div + div {
+    border-top: 1px solid var(--border-default);
+  }
+}

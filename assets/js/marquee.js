@@ -19,33 +19,35 @@
   function initMarquee(marquee) {
     const track = marquee.querySelector('[data-marquee-track]');
     const sourceGroup = marquee.querySelector('[data-marquee-group]');
+    const viewport = marquee.querySelector('.accent-marquee__fullbleed');
 
-    if (!track || !sourceGroup) return;
+    if (!track || !sourceGroup || !viewport) return;
 
+    marquee.removeAttribute('data-marquee-ready');
     resetTrack(track);
 
-    const viewportWidth = marquee.getBoundingClientRect().width;
+    const viewportWidth = viewport.getBoundingClientRect().width;
     const sourceWidth = sourceGroup.getBoundingClientRect().width;
     const gap = getFlexGap(track);
 
     if (viewportWidth <= 0 || sourceWidth <= 0) return;
 
     const distance = sourceWidth + gap;
-    let availableWidthAfterLoop = -gap;
-    let copies = 1;
+    const copies = Math.max(
+      2,
+      Math.ceil(1 + ((viewportWidth + gap) / distance))
+    );
 
-    while (availableWidthAfterLoop < viewportWidth && copies < 24) {
+    for (let index = 1; index < copies; index += 1) {
       const clone = sourceGroup.cloneNode(true);
       clone.setAttribute('aria-hidden', 'true');
       clone.dataset.marqueeClone = 'true';
       disableCloneFocus(clone);
       track.appendChild(clone);
-
-      copies += 1;
-      availableWidthAfterLoop = (copies - 1) * sourceWidth + (copies - 2) * gap;
     }
 
-    track.style.setProperty('--accent-marquee-distance', `${Math.ceil(distance)}px`);
+    track.style.setProperty('--accent-marquee-distance', `${distance.toFixed(3)}px`);
+    marquee.setAttribute('data-marquee-ready', 'true');
   }
 
   function initAllMarquees() {
@@ -61,10 +63,15 @@
     };
   }
 
-  document.addEventListener('DOMContentLoaded', initAllMarquees);
-  window.addEventListener('resize', debounce(initAllMarquees, 150));
+  function startMarquees() {
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(initAllMarquees).catch(initAllMarquees);
+      return;
+    }
 
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(initAllMarquees).catch(function () {});
+    initAllMarquees();
   }
+
+  document.addEventListener('DOMContentLoaded', startMarquees);
+  window.addEventListener('resize', debounce(initAllMarquees, 150));
 })();

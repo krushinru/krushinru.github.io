@@ -5,7 +5,7 @@ locale: ru_RU
 translation_key: project-tdo
 permalink: /ru/projects/tdo/
 title: T-Do
-description: Один из крупнейших сервисов для доступа к Telegram в России
+description: Один из крупнейших сервисов для доступа к Telegram в России
 url_link: https://t-do.ru
 image: /images/projects/tdo-tg.png
 image_type: icon
@@ -19,7 +19,7 @@ stats:
   - value: "6M+"
     label: Пиковая ежемесячная аудитория
   - value: "300K+"
-    label: Переходов в сутки
+    label: Переходов в&nbsp;сутки
 media:
   - source: Палач
     title: "«Сервисом пользуется Василий Уткин»: кто и как спас Telegram для внешнего мира"

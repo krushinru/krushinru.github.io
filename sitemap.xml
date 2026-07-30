@@ -8,7 +8,14 @@ sitemap: false
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 {%- assign documents = site.pages | concat: site.posts | concat: site.projects -%}
 {%- for document in documents -%}
-{%- if document.lang and document.sitemap != false %}
+{%- assign include_document = true -%}
+{%- if document.sitemap == false -%}
+  {%- assign include_document = false -%}
+{%- endif -%}
+{%- if document.feature and site.features[document.feature] != true -%}
+  {%- assign include_document = false -%}
+{%- endif -%}
+{%- if document.lang and include_document %}
   <url>
     <loc>{{ document.url | absolute_url | replace: '/index.html', '/' }}</loc>
     {%- if document.date %}
@@ -18,7 +25,14 @@ sitemap: false
       {%- for lang_code in site.languages -%}
         {%- assign alternate_url = '' -%}
         {%- for alt_doc in documents -%}
-          {%- if alt_doc.translation_key == document.translation_key and alt_doc.lang == lang_code and alt_doc.sitemap != false -%}
+          {%- assign include_alternate = true -%}
+          {%- if alt_doc.sitemap == false -%}
+            {%- assign include_alternate = false -%}
+          {%- endif -%}
+          {%- if alt_doc.feature and site.features[alt_doc.feature] != true -%}
+            {%- assign include_alternate = false -%}
+          {%- endif -%}
+          {%- if alt_doc.translation_key == document.translation_key and alt_doc.lang == lang_code and include_alternate -%}
             {%- assign alternate_url = alt_doc.url -%}
           {%- endif -%}
         {%- endfor -%}
@@ -28,7 +42,14 @@ sitemap: false
       {%- endfor -%}
       {%- assign default_alternate_url = '' -%}
       {%- for alt_doc in documents -%}
-        {%- if alt_doc.translation_key == document.translation_key and alt_doc.lang == site.default_lang and alt_doc.sitemap != false -%}
+        {%- assign include_default_alternate = true -%}
+        {%- if alt_doc.sitemap == false -%}
+          {%- assign include_default_alternate = false -%}
+        {%- endif -%}
+        {%- if alt_doc.feature and site.features[alt_doc.feature] != true -%}
+          {%- assign include_default_alternate = false -%}
+        {%- endif -%}
+        {%- if alt_doc.translation_key == document.translation_key and alt_doc.lang == site.default_lang and include_default_alternate -%}
           {%- assign default_alternate_url = alt_doc.url -%}
         {%- endif -%}
       {%- endfor -%}

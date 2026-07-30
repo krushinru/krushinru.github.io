@@ -5,7 +5,7 @@ locale: ru_RU
 translation_key: project-clubstat
 permalink: /ru/projects/clubstat/
 title: ClubStat
-description: Первый в мире сервис рейтинга, статистики и аналитики Clubhouse
+description: Первый в мире сервис аналитики Clubhouse
 image: /images/projects/clubstat-screenshot.png
 url_link: https://clubstat.org
 featured_order: 2

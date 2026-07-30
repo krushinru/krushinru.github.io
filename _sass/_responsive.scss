@@ -8,13 +8,7 @@
     margin: var(--space-md) 0 var(--space-sm);
   }
 
-  .main-links {
-    font-size: var(--text-md);
-    margin: var(--space-md) 0 var(--space-sm);
-    gap: var(--space-md);
-  }
-
-  .main-contact {
+  .profile-contacts {
     margin-top: var(--space-md);
   }
 
@@ -50,7 +44,10 @@
 
   footer {
     font-size: var(--text-sm);
-    padding: var(--space-xs) 0;
+  }
+
+  .footer-shell {
+    padding: var(--space-sm) var(--space-md);
   }
 
   .footer-row {

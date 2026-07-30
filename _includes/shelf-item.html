@@ -1,0 +1,29 @@
+{% assign item = include.item %}
+{% assign item_format_key = "format_" | append: current_lang %}
+{% assign item_format = item[item_format_key] | default: item.format %}
+{% assign item_title_key = "title_" | append: current_lang %}
+{% assign item_title = item[item_title_key] | default: item.title %}
+<article class="shelf-item">
+  {% if item.url %}<a class="shelf-item__link" href="{{ item.url }}">{% endif %}
+    <figure class="shelf-item__cover">
+      {% if item.cover %}
+        <img src="{{ item.cover | relative_url }}"
+             alt="{{ t.shelf.cover_alt }}: {{ item_title }}"
+             loading="lazy"
+             decoding="async">
+      {% else %}
+        <span class="shelf-item__placeholder" aria-hidden="true">
+          {% case item.category %}
+            {% when "games" %}<i class="fa-solid fa-gamepad"></i>
+            {% when "series" %}<i class="fa-solid fa-tv"></i>
+            {% else %}<i class="fa-solid fa-book-open"></i>
+          {% endcase %}
+        </span>
+      {% endif %}
+    </figure>
+    <div class="shelf-item__meta">
+      <h3 class="shelf-item__title">{{ item_title }}</h3>
+      {% if item_format %}<span class="shelf-item__format">{{ item_format }}</span>{% endif %}
+    </div>
+  {% if item.url %}</a>{% endif %}
+</article>

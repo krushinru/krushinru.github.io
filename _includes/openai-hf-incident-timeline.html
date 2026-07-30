@@ -1,0 +1,82 @@
+<section class="incident-timeline js-incident-timeline" aria-labelledby="incident-timeline-title">
+  <header class="incident-timeline__header">
+    <div>
+      <span class="incident-kicker">9–21 июля 2026</span>
+      <h2 id="incident-timeline-title">Как внутренний тест превратился в реальный взлом</h2>
+    </div>
+    <div class="incident-timeline__controls" aria-label="Управление хронологией">
+      <button class="incident-control js-timeline-back" type="button" aria-label="Предыдущее событие" title="Предыдущее событие" disabled>
+        <i class="fa-solid fa-backward-step" aria-hidden="true"></i>
+      </button>
+      <button class="incident-control incident-control--play js-timeline-play" type="button" aria-label="Пауза" title="Пауза" aria-pressed="true">
+        <i class="fa-solid fa-pause js-timeline-play-icon" aria-hidden="true"></i>
+      </button>
+      <button class="incident-control incident-control--primary js-timeline-next" type="button" aria-label="Следующее событие" title="Следующее событие">
+        <i class="fa-solid fa-forward-step" aria-hidden="true"></i>
+      </button>
+    </div>
+  </header>
+
+  <div class="incident-timeline__navigation">
+    <input class="incident-range js-timeline-range" type="range" min="0" max="11" value="0" step="1" aria-label="Событие в хронологии">
+    <div class="incident-timeline__stepmarks" aria-hidden="true">
+      <span class="is-current"></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="incident-timeline__dates" aria-hidden="true">
+      <span>09.07</span>
+      <span>11.07</span>
+      <span>13.07</span>
+      <span>16.07</span>
+      <span>21.07</span>
+    </div>
+  </div>
+
+  <div class="incident-timeline__stage" aria-live="polite">
+    <div class="incident-timeline__meta">
+      <span class="js-timeline-step">Событие 1 из 12</span>
+      <time class="js-timeline-time">9 июля · 02:28 UTC</time>
+    </div>
+
+    <article class="incident-timeline__story">
+      <h3 class="js-timeline-title">OpenAI запускает экзамен для киберагента</h3>
+      <p class="js-timeline-summary">Модели получают 898 задач на основе реальных уязвимостей. Чтобы пройти тест, агент должен найти ошибку, написать эксплойт и доказать, что тот работает.</p>
+    </article>
+
+    <aside class="incident-timeline__technical">
+      <span>Техническая деталь</span>
+      <p class="js-timeline-detail">Защитные ограничения ослабили, потому что тест проверял опасные возможности. Агента запустили в песочнице без прямого доступа в интернет.</p>
+    </aside>
+  </div>
+
+  <figure class="incident-timeline__photo">
+    <img src="{{ '/images/notes/openai-hf-agent-incident/server-racks.jpg' | relative_url }}" alt="Серверные стойки с сетевыми кабелями" width="1600" height="898" loading="lazy">
+  </figure>
+
+  <noscript>
+    <ol class="incident-noscript">
+      <li>9 июля OpenAI запускает экзамен для киберагента.</li>
+      <li>Агент использует ошибки в служебном шлюзе и выходит в интернет.</li>
+      <li>Получает административные права на стороннем сервере.</li>
+      <li>11 июля заставляет обработчик Hugging Face прочитать служебные файлы.</li>
+      <li>Получает возможность запускать команды на рабочем сервере.</li>
+      <li>Находит хранилище со 136 служебными ключами.</li>
+      <li>12 июля регистрирует 181 устройство во внутренней сети.</li>
+      <li>Получает права записи в части закрытых репозиториев.</li>
+      <li>13 июля Hugging Face перекрывает доступ.</li>
+      <li>16 июля Hugging Face публично сообщает об инциденте.</li>
+      <li>21 июля OpenAI связывает атаку со своим экспериментом.</li>
+      <li>Открытая GLM-5.2 помогает восстановить хронологию.</li>
+    </ol>
+  </noscript>
+</section>

@@ -4,85 +4,112 @@ layout: default
 
 {% assign current_lang = page.lang | default: site.default_lang | default: 'ru' %}
 {% assign t = site.data.i18n[current_lang] | default: site.data.i18n.ru %}
-{% assign has_project_hero_image = false %}
-{% if page.image and page.image_type!="icon" %}
-  {% assign has_project_hero_image = true %}
+{% assign project_icon = page.icon | default: "" %}
+{% if project_icon == "" and page.image_type == "icon" %}
+  {% assign project_icon = page.image | default: "" %}
+{% endif %}
+{% assign has_project_icon = false %}
+{% if project_icon != "" %}
+  {% assign has_project_icon = true %}
+{% endif %}
+{% assign has_project_cover = false %}
+{% if page.image and page.image != "" and page.image_type != "icon" %}
+  {% assign has_project_cover = true %}
 {% endif %}
 
-<article class="project-page{% if has_project_hero_image %} project-page--has-hero-image{% else %} project-page--no-hero-image{% endif %}{% if page.stats %} project-page--has-stats{% else %} project-page--no-stats{% endif %}{% if page.media %} project-page--has-media{% endif %}">
-  <header class="project-header">
-
-
-    <div class="project-header-content">
-      <div class="project-header-top">
-        <h1 class="project-title-page">{{ page.title }}</h1>
-        
-        {% if page.launch_year or page.close_year %}
-        <div class="project-years">
-          {% if page.launch_year %}
-            {{- page.launch_year -}}
-            {%- if page.close_year -%}
-              &nbsp;–&nbsp;{{- page.close_year -}}
-            {%- endif -%}
-          {% endif %}
-        </div>
-        {% endif %}
+<article class="post-content project-page{% if has_project_icon %} project-page--has-icon{% endif %}{% if has_project_cover %} project-page--has-cover{% endif %}{% if page.stats %} project-page--has-facts{% endif %}">
+  <header class="post-header project-header">
+    <div class="project-title-row">
+      {% if has_project_icon %}
+      <div class="project-title-icon">
+        <img src="{{ project_icon | relative_url }}"
+             alt=""
+             width="80"
+             height="80"
+             decoding="async">
       </div>
-      
-      {% if page.description %}
-      <p class="project-description">{{ page.description }}</p>
       {% endif %}
+      <h1 class="post-title-page project-title-page">{{ page.title }}</h1>
+    </div>
 
+    {% if page.description %}
+    <div class="post-meta project-description">
+      <p>{{ page.description }}</p>
+    </div>
+    {% endif %}
+
+    {% if page.launch_year or page.url_link %}
+    <div class="project-header-meta">
+      {% if page.launch_year %}
+      <span class="project-years">
+        {{- page.launch_year -}}
+        {%- if page.close_year -%}
+          &nbsp;–&nbsp;{{- page.close_year -}}
+        {%- endif -%}
+      </span>
+      {% endif %}
       {% if page.url_link %}
-      <a href="{{ page.url_link }}" target="_blank" class="project-link-inline">
+      <a href="{{ page.url_link }}"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="project-link-inline">
         {{ t.projects.visit_site }}
       </a>
       {% endif %}
     </div>
-
-    {% if has_project_hero_image %}
-    <div class="post-image">
-      <img src="{{ page.image | relative_url }}" 
-           alt="{{ page.title }}" 
-           loading="lazy">
-    </div>
-  {% endif %}
-  
+    {% endif %}
   </header>
 
- {% if page.stats %}
- <div class="project-editorial-bottom project-hero-stats">
-    <div class="project-editorial-stats">
-    {% for stat in page.stats %}
-      <div class="editorial-stat-item">
-        <div class="editorial-stat-value">{{ stat.value }}</div>
-        <div class="editorial-stat-label">{{ stat.label }}</div>
-      </div>
-    {% endfor %}
-    </div>
- </div>
- {% endif %}
+  <div class="post-body project-body editorial-body">
+    {% if has_project_cover %}
+    <figure class="post-image project-cover">
+      <img src="{{ page.image | relative_url }}"
+           alt="{{ page.title }}"
+           loading="lazy"
+           decoding="async">
+    </figure>
+    {% endif %}
 
-  <div class="project-body editorial-body">
+    {% if page.stats and page.stats.size > 0 %}
+    <section class="project-facts" aria-labelledby="project-facts-title">
+      <h2 class="project-facts__title" id="project-facts-title">{{ t.projects.facts_title }}</h2>
+      <dl class="project-facts__grid" style="--project-fact-count: {{ page.stats.size }};">
+        {% for stat in page.stats %}
+        <div class="project-facts__item">
+          <dt class="project-facts__value">{{ stat.value }}</dt>
+          <dd class="project-facts__label">{{ stat.label }}</dd>
+        </div>
+        {% endfor %}
+      </dl>
+    </section>
+    {% endif %}
+
     {{ content }}
-  </div>
 
-  {% if page.media %}
-  <aside class="project-media">
-    <h3 class="media-title">{{ t.projects.media_title }}</h3>
-    <ul class="media-list">
-      {% for item in page.media %}
-      <li class="media-item">
-        <a href="{{ item.url }}" target="_blank" class="media-link">
-          <img src="https://www.google.com/s2/favicons?domain={{ item.url }}&sz=32" 
-               alt="{{ item.source }}" 
-               class="media-favicon"
-               loading="lazy">
-          <span class="media-text">{{ item.title }}</span>
-        </a>
-      </li>
-      {% endfor %}
-    </ul>
-  </aside>
-  {% endif %}
+    {% if page.media and page.media.size > 0 %}
+    <aside class="project-media" aria-labelledby="project-media-title">
+      <h2 class="media-title" id="project-media-title">{{ t.projects.media_title }}</h2>
+      <ul class="media-list">
+        {% for item in page.media %}
+        <li class="media-item">
+          <a href="{{ item.url }}"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="media-link">
+            <img src="https://www.google.com/s2/favicons?domain={{ item.url }}&sz=32"
+                 alt=""
+                 class="media-favicon"
+                 loading="lazy"
+                 decoding="async">
+            <span class="media-copy">
+              <span class="media-source">{{ item.source }}</span>
+              <span class="media-text">{{ item.title }}</span>
+            </span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </aside>
+    {% endif %}
+  </div>
 </article>

@@ -1,220 +1,147 @@
 {% comment %}
+  Курируемый bento проектов.
+
   Параметры:
-  - show_filter: true/false (показывать развёрнутый фильтр-предложение)
-  - limit: число проектов (nil = все)
-  - marquee_theme: тема для бегущей строки (solar|cyan|mint|coral|berry|slate)
+  - limit: число проектов (nil = все);
+  - variant: catalog|home;
+  - show_marquee: true|false.
 {% endcomment %}
 
 {% assign current_lang = page.lang | default: site.default_lang | default: 'ru' %}
 {% assign t = site.data.i18n[current_lang] | default: site.data.i18n.ru %}
 {% assign projects_limit = include.limit %}
-<div data-editorial-grid>
-{% unless include.show_filter == "false" %}
-<div class="projects-filter-sentence">
-  <span class="sentence-text">{{ t.projects.filter_prefix }}</span>
-  <div class="filter-dropdown">
-    <button class="dropdown-btn" type="button" data-status-dropdown>
-      <span class="dropdown-value" data-status-value>{{ t.projects.filter_all }}</span>
-      <span class="dropdown-arrow">▾</span>
-    </button>
-    <div class="dropdown-menu" data-status-menu>
-      <button class="dropdown-item active" data-status="all">{{ t.projects.filter_all }}</button>
-      <button class="dropdown-item" data-status="active">{{ t.projects.filter_active }}</button>
-      <button class="dropdown-item" data-status="closed">{{ t.projects.filter_closed }}</button>
-    </div>
-  </div>
-  <span class="sentence-text"> {{ t.projects.filter_suffix }}</span>
-  
-  {% assign all_roles = "" | split: "" %}
-  {% assign all_projects_for_lang = site.projects | where: "lang", current_lang %}
-  {% for project in all_projects_for_lang %}
-    {% for role in project.roles %}
-      {% unless all_roles contains role %}
-        {% assign all_roles = all_roles | push: role %}
-      {% endunless %}
-    {% endfor %}
-  {% endfor %}
-  
-  {% for role in all_roles %}
-    <span class="sentence-role" data-role="{{ role | downcase }}">{{ role | downcase }}</span>{% if forloop.last == false %}{% if forloop.rindex == 2 %} {{ t.projects.role_or }}{% else %},{% endif %}{% endif %}
-  {% endfor %}
-</div>
-{% endunless %}
+{% assign bento_variant = include.variant | default: 'catalog' %}
 
-<div class="projects-editorial-grid">
-  {% assign all_projects = site.projects | where: "lang", current_lang %}
-  {% assign featured_projects = all_projects | where_exp: "p", "p.featured_order" | sort: "featured_order" %}
-  {% assign by_year = all_projects | sort: "launch_year" | reverse %}
-  {% assign rest_projects = "" | split: "" %}
-  {% for p in by_year %}
-    {% unless p.featured_order %}
-      {% assign rest_projects = rest_projects | push: p %}
-    {% endunless %}
-  {% endfor %}
-  {% assign projects = featured_projects | concat: rest_projects %}
-  {% assign side_projects = t.side_projects %}
-  
-  {% if projects_limit %}
-    {% assign projects = projects | slice: 0, projects_limit %}
-  {% endif %}
-  
+{% assign all_projects = site.projects | where: "lang", current_lang %}
+{% assign project_tdo = all_projects | where: "title", "T-Do" | first %}
+{% assign project_clubstat = all_projects | where: "title", "ClubStat" | first %}
+{% assign project_habithit = all_projects | where: "title", "HabitHit" | first %}
+{% assign project_youragents = all_projects | where: "title", "YourAgents" | first %}
+{% assign project_poapi = all_projects | where: "title", "POAPI" | first %}
+{% assign project_podtube = all_projects | where: "title", "PodTube" | first %}
+{% assign projects = "" | split: "" %}
+{% assign projects = projects | push: project_tdo | push: project_clubstat | push: project_habithit | push: project_youragents | push: project_poapi | push: project_podtube %}
+{% if projects_limit %}
+  {% assign projects = projects | slice: 0, projects_limit %}
+{% endif %}
+
+<div class="projects-bento projects-bento--{{ bento_variant }}">
   {% for project in projects %}
-    {% assign has_screenshot = false %}
     {% assign has_icon = false %}
     {% if project.image and project.image != "" %}
-     {% if project.image_type == "icon" %}
-      {% assign has_icon = true %}
-     {% else %}
-      {% assign has_screenshot = true %}
-     {% endif %}
-    {% endif %}
-    
-    {% assign has_stats = false %}
-    {% if project.stats and project.stats.size > 0 %}
-      {% assign has_stats = true %}
-    {% endif %}
-    
-    {% assign has_media = false %}
-    {% if project.media and project.media.size > 0 %}
-      {% assign has_media = true %}
-    {% endif %}
-
-    {% assign project_card_style = "" %}
-    {% if has_screenshot %}
-      {% capture project_card_style %}--project-image: url('{{ project.image | relative_url }}');{% endcapture %}
-    {% elsif has_icon %}
-      {% assign project_icon_bg = "#1498f2" %}
-      {% if project.title == "T-Do" %}
-        {% assign project_icon_bg = "#159bf2" %}
-      {% elsif project.title == "HabitHit" %}
-        {% assign project_icon_bg = "#1478ff" %}
+      {% if project.image_type == "icon" %}
+        {% assign has_icon = true %}
       {% endif %}
-      {% capture project_card_style %}--project-icon-bg: {{ project_icon_bg }};{% endcapture %}
-    {% endif %}
-    {% if project.card_text_theme == "dark" %}
-      {% capture project_card_style %}{{ project_card_style }} --project-card-fg: #07121f; --project-card-muted: rgba(7, 18, 31, 0.72); --project-card-overlay: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.48));{% endcapture %}
-    {% elsif project.card_text_theme == "light" %}
-      {% capture project_card_style %}{{ project_card_style }} --project-card-fg: #fff; --project-card-muted: rgba(255, 255, 255, 0.78);{% endcapture %}
     {% endif %}
 
-    <article class="project-editorial-card"
-             data-status="{% if project.close_year and project.close_year != "" %}closed{% else %}active{% endif %}"
-             data-roles="{{ project.roles | join: ',' | downcase }}"
-             data-has-image="{% if has_screenshot or has_icon %}true{% else %}false{% endif %}"
-             data-has-icon="{% if has_icon %}true{% else %}false{% endif %}"
-             data-has-screenshot="{% if has_screenshot %}true{% else %}false{% endif %}"
-             data-launch-year="{{ project.launch_year | default: 0 }}"
-             data-featured-order="{{ project.featured_order | default: '' }}"
-             {% if project_card_style != "" %}style="{{ project_card_style | strip }}"{% endif %}>
-      
-      <a href="{{ project.url | relative_url }}" class="project-editorial-link">
-        
-        {% if has_screenshot %}
-        <div class="project-editorial-image">
-          <img src="{{ project.image | relative_url }}" 
-               alt="{{ project.title }}"
-               loading="lazy">
-        </div>
-        {% elsif has_icon %}
-        <div class="project-editorial-app-icon">
-          <img src="{{ project.image | relative_url }}" 
-               alt="{{ project.title }}"
-               loading="lazy">
-        </div>
-        {% endif %}
+    {% assign has_facts = false %}
+    {% if project.title == "T-Do" and project.stats and project.stats.size > 0 %}
+      {% assign has_facts = true %}
+    {% endif %}
 
-        <div class="project-editorial-header">
-          <h3 class="project-editorial-title">{{ project.title }}</h3>
-          {% if project.launch_year %}
-          <span class="project-editorial-years">
-            {{- project.launch_year -}}
-            {%- if project.close_year -%}
-              &nbsp;–&nbsp;{{- project.close_year -}}
-            {%- endif -%}
+    {% assign card_variant = "standard" %}
+    {% case project.title %}
+      {% when "T-Do" %}
+        {% assign card_variant = "hero" %}
+      {% when "ClubStat" %}
+        {% assign card_variant = "leaderboard" %}
+      {% when "HabitHit" %}
+        {% assign card_variant = "brand" %}
+      {% when "YourAgents" %}
+        {% assign card_variant = "agents" %}
+      {% when "POAPI" %}
+        {% assign card_variant = "api" %}
+      {% when "PodTube" %}
+        {% assign card_variant = "podcast" %}
+    {% endcase %}
+
+    {% assign project_accent = "#161616" %}
+    {% if project.title == "T-Do" %}
+      {% assign project_accent = "#159bf2" %}
+    {% elsif project.title == "HabitHit" %}
+      {% assign project_accent = "#1478ff" %}
+    {% endif %}
+
+    <article class="project-bento-card project-bento-card--{{ card_variant }}{% if has_icon %} project-bento-card--has-icon{% endif %}{% unless has_icon %} project-bento-card--has-art{% endunless %}{% if has_facts %} project-bento-card--has-facts{% endif %}"
+             style="--project-bento-brand: {{ project_accent }};">
+      <a href="{{ project.url | relative_url }}" class="project-bento-card__link">
+        {% case card_variant %}
+        {% when "leaderboard" %}
+        <figure class="project-bento-card__art project-bento-card__art--leaderboard" aria-hidden="true">
+          <span class="project-leaderboard-row"><b>01</b><i></i><em></em></span>
+          <span class="project-leaderboard-row"><b>02</b><i></i><em></em></span>
+          <span class="project-leaderboard-row"><b>03</b><i></i><em></em></span>
+          <span class="project-leaderboard-row"><b>04</b><i></i><em></em></span>
+        </figure>
+        {% when "agents" %}
+        <figure class="project-bento-card__art project-bento-card__art--agents" aria-hidden="true">
+          <img src="{{ project.image | relative_url }}"
+               alt=""
+               loading="lazy"
+               decoding="async">
+        </figure>
+        {% when "api" %}
+        <figure class="project-bento-card__art project-bento-card__art--api" aria-hidden="true">
+          <span><code>GET /payments</code><b>200</b></span>
+          <span><code>GET /delivery</code><b>200</b></span>
+          <span><code>GET /machine-learning</code><b>200</b></span>
+        </figure>
+        {% when "podcast" %}
+        <figure class="project-bento-card__art project-bento-card__art--podcast" aria-hidden="true">
+          <span class="project-podcast-play">▶</span>
+          <span class="project-podcast-arrow">→</span>
+          <span class="project-podcast-wave">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
           </span>
+          <span class="project-podcast-arrow">→</span>
+          <span class="project-podcast-rss">RSS</span>
+        </figure>
+        {% endcase %}
+
+        <div class="project-bento-card__content">
+          <div class="project-bento-card__meta">
+            {% if has_icon %}
+            <span class="project-bento-card__icon" aria-hidden="true">
+              <img src="{{ project.image | relative_url }}"
+                   alt=""
+                   loading="lazy"
+                   decoding="async">
+            </span>
+            {% endif %}
+
+            <span class="project-bento-card__arrow" aria-hidden="true">→</span>
+          </div>
+
+          <h3 class="project-bento-card__title">{{ project.title }}</h3>
+
+          {% if project.description %}
+          <p class="project-bento-card__description">{{ project.description }}</p>
           {% endif %}
-        </div>
 
-        {% if project.description %}
-        <div class="project-editorial-desc">
-          <p>{{ project.description }}</p>
-        </div>
-        {% endif %}
-        
-        {% if include.short == "false" %}
-        {% if (has_stats or has_media) %}
-        <div class="project-editorial-spacer"></div>
-
-        <div class="project-editorial-bottom">
-          {% if has_stats %}
-          <div class="project-editorial-stats">
+          {% if has_facts %}
+          <dl class="project-bento-card__facts">
             {% for stat in project.stats %}
-            <div class="editorial-stat-item">
-              <div class="editorial-stat-value">{{ stat.value }}</div>
-              <div class="editorial-stat-label">{{ stat.label }}</div>
+            <div class="project-bento-card__fact">
+              <dt class="project-bento-card__fact-value">{{ stat.value }}</dt>
+              <dd class="project-bento-card__fact-label">{{ stat.label }}</dd>
             </div>
             {% endfor %}
-          </div>
-          {% endif %}
-
-          {% if has_media %}
-          <div class="project-editorial-media">
-            {% for media_item in project.media %}
-            <div class="editorial-media-item">
-              <div class="editorial-media-link">
-                <img src="https://www.google.com/s2/favicons?domain={{ media_item.url }}&sz=32" 
-                     alt="{{ media_item.source }}"
-                     class="editorial-media-favicon"
-                     loading="lazy">
-                <span class="editorial-media-text">{{ media_item.title }}</span>
-              </div>
-            </div>
-            {% endfor %}
-          </div>
+          </dl>
           {% endif %}
         </div>
-
-        <div class="project-editorial-rotator" aria-hidden="true">
-          {% if has_stats %}
-          {% for stat in project.stats %}
-          <div class="project-rotator-item project-rotator-item--stat">
-            <span class="project-rotator-value">{{ stat.value }}</span>
-            <span class="project-rotator-text">{{ stat.label | strip_html }}</span>
-          </div>
-          {% endfor %}
-          {% endif %}
-
-          {% if has_media %}
-          {% for media_item in project.media %}
-          <div class="project-rotator-item project-rotator-item--media">
-            <img src="https://www.google.com/s2/favicons?domain={{ media_item.url }}&sz=32" 
-                 alt="{{ media_item.source }}"
-                 class="project-rotator-favicon"
-                 loading="lazy">
-            <span class="project-rotator-text">{{ media_item.title }}</span>
-          </div>
-          {% endfor %}
-          {% endif %}
-
-        </div>
-        {% endif %}
-        {% endif %}
-
       </a>
     </article>
+  {% endfor %}
+</div>
 
-    {% unless include.show_marquee == "false" %}
-    {% if include.short == "false" and forloop.index == 2 and side_projects and side_projects.size > 0 %}
+{% assign side_projects = t.side_projects %}
+{% unless include.show_marquee == "false" %}
+  {% if side_projects and side_projects.size > 0 %}
     {% include ui-marquee.html
-      class_name="projects-side-marquee"
+      class_name="projects-side-marquee projects-side-marquee--after-grid"
       aria_label=t.projects.side_projects_label
       items=side_projects
       theme=include.marquee_theme
     %}
-    {% endif %}
-    {% endunless %}
-  {% endfor %}
-</div>
-
-<script src="{{ '/assets/js/projects-grid-filter.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
-</div>
+  {% endif %}
+{% endunless %}

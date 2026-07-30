@@ -20,14 +20,6 @@ permalink: /en/notes/
     <div class="post-lead">{{ post.lead | markdownify }}</div>
     {% endif %}
 
-    {% if post.image %}
-    <div class="post-image">
-      <img src="{{ post.image | relative_url }}"
-           alt="{{ post.title }}"
-           loading="lazy">
-    </div>
-    {% endif %}
-
     <div class="post-tags">
       {% include relative-date.html date=post.date %}
 

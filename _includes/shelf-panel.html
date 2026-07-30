@@ -1,0 +1,40 @@
+{% assign current_lang = page.lang | default: site.default_lang | default: 'ru' %}
+{% assign t = site.data.i18n[current_lang] | default: site.data.i18n.ru %}
+{% assign shelf_items = site.data.shelf | where: "category", include.category %}
+{% assign current_items = shelf_items | where_exp: "item", "item.year == nil" %}
+{% assign completed_items = shelf_items | where_exp: "item", "item.year != nil" | sort: "year" | reverse %}
+
+<section class="shelf-panel shelf-panel--{{ include.category }}{% unless include.active %} is-hidden{% endunless %}"
+         id="shelf-{{ include.category }}"
+         role="tabpanel"
+         aria-labelledby="shelf-tab-{{ include.category }}"
+         {% unless include.active %}hidden{% endunless %}>
+  {% if shelf_items.size == 0 %}
+    <p class="shelf-empty">{{ t.shelf.empty[include.category] }}</p>
+  {% else %}
+    {% if current_items.size > 0 %}
+      <section class="shelf-group">
+        <h2 class="shelf-group__title">{{ t.shelf.now[include.category] }}</h2>
+        <div class="shelf-grid">
+          {% for item in current_items %}
+            {% include shelf-item.html item=item %}
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
+
+    {% assign shelf_year = "" %}
+    {% for item in completed_items %}
+      {% capture item_year %}{{ item.year }}{% endcapture %}
+      {% if item_year != shelf_year %}
+        {% unless forloop.first %}</div></section>{% endunless %}
+        <section class="shelf-group">
+          <h2 class="shelf-group__title">{{ item.year }}</h2>
+          <div class="shelf-grid">
+        {% assign shelf_year = item_year %}
+      {% endif %}
+      {% include shelf-item.html item=item %}
+      {% if forloop.last %}</div></section>{% endif %}
+    {% endfor %}
+  {% endif %}
+</section>

@@ -1,0 +1,31 @@
+<section class="incident-letters js-incident-letters" aria-labelledby="incident-letters-title">
+  <header class="incident-letters__header">
+    <span class="incident-kicker">July 24–28, 2026</span>
+    <h2 id="incident-letters-title">Two letters, two problems</h2>
+    <p>A few days after the incident, two open letters about AI were published. In the first, NVIDIA, Microsoft, Meta, Hugging Face, and other companies defended open-weight models. In the second, employees of OpenAI, Anthropic, Google DeepMind, Meta, and other labs proposed an agreement to slow development together. The authors did not connect their letters to the intrusion, but both texts address questions it raised.</p>
+  </header>
+
+  <nav class="incident-letters__questions" aria-label="Comparison question">
+    <button class="is-active" type="button" data-letters-question="problem" aria-pressed="true">What is the problem?</button>
+    <button type="button" data-letters-question="proposal" aria-pressed="false">What do they propose?</button>
+    <button type="button" data-letters-question="incident" aria-pressed="false">How does this relate to the attack?</button>
+  </nav>
+
+  <div class="incident-letters__comparison" aria-live="polite">
+    <article>
+      <time datetime="2026-07-24">July 24</time>
+      <h3><a href="https://www.microsoft.com/en-us/corporate-responsibility/topics/open-weight/">Open Weights and American AI Leadership</a></h3>
+      <p class="incident-letters__authors">NVIDIA, Microsoft, Meta, Hugging Face, and other companies</p>
+      <p class="incident-letters__answer js-letters-open-answer">Capable commercial models may refuse to investigate a real attack, while sensitive logs cannot safely be sent to an external service.</p>
+    </article>
+
+    <article>
+      <time datetime="2026-07-28">July 28</time>
+      <h3><a href="https://www.pacingthefrontier.com/">Pacing the Frontier</a></h3>
+      <p class="incident-letters__authors">As of July 30: 1,293 employees of OpenAI, Anthropic, Google DeepMind, Meta, and other companies</p>
+      <p class="incident-letters__answer js-letters-pacing-answer">No single lab or country benefits from slowing first: its competitors can keep racing ahead and gain an advantage.</p>
+    </article>
+  </div>
+
+  <p class="incident-letters__takeaway js-letters-takeaway" aria-live="polite">The letters describe different risks: defenders lack tools, while competition prevents labs from slowing down.</p>
+</section>

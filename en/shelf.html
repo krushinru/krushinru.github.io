@@ -1,0 +1,38 @@
+---
+layout: page
+lang: en
+locale: en_US
+translation_key: shelf
+feature: shelf
+title: Shelf
+description: Books, games, and shows enjoyed by Alexander Krushin
+permalink: /en/shelf/
+shelf_interactive: true
+---
+
+{% assign t = site.data.i18n[page.lang] %}
+<section class="section shelf">
+  <header class="page-intro">
+    <h1 class="section-title">{{ t.shelf.title }}</h1>
+    <p>{{ t.shelf.description }}</p>
+  </header>
+
+  <div class="shelf-tabs" role="tablist" aria-label="{{ t.shelf.tabs_label }}">
+    <button class="shelf-tab is-active" id="shelf-tab-books" type="button" role="tab" aria-selected="true" aria-controls="shelf-books" data-shelf-tab="books">
+      <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+      <span>{{ t.shelf.books }}</span>
+    </button>
+    <button class="shelf-tab" id="shelf-tab-games" type="button" role="tab" aria-selected="false" aria-controls="shelf-games" data-shelf-tab="games" tabindex="-1">
+      <i class="fa-solid fa-gamepad" aria-hidden="true"></i>
+      <span>{{ t.shelf.games }}</span>
+    </button>
+    <button class="shelf-tab" id="shelf-tab-series" type="button" role="tab" aria-selected="false" aria-controls="shelf-series" data-shelf-tab="series" tabindex="-1">
+      <i class="fa-solid fa-tv" aria-hidden="true"></i>
+      <span>{{ t.shelf.series }}</span>
+    </button>
+  </div>
+
+  {% include shelf-panel.html category="books" active=true %}
+  {% include shelf-panel.html category="games" %}
+  {% include shelf-panel.html category="series" %}
+</section>

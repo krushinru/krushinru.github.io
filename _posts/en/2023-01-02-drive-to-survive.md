@@ -9,32 +9,33 @@ date: 2023-01-02
 lead: A concise look at how Netflix's documentary series reshaped Formula 1's relationship with audiences in the United States and around the world
 description: How Netflix's documentary series changed Formula 1's relationship with audiences in the United States and around the world
 image: https://static.krushin.me/uploads/1271822de276.jpg
-image_caption: "Photo: [gustavo Campos](https://unsplash.com/@gustavocpo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) / [Unsplash](https://unsplash.com/s/photos/formula-one?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)"
+image_caption: "Photo: [Gustavo Campos](https://unsplash.com/@gustavocpo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) / [Unsplash](https://unsplash.com/s/photos/formula-one?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)"
 ---
 
-To understand the impact of *Drive to Survive*, it helps to remember what shape Formula 1 was in when Liberty Media acquired it at the end of 2016:
+To understand the impact of Drive to Survive, it helps to remember what Liberty Media bought at the end of 2016. Over four years, Formula 1’s global audience had fallen by 22%, while the business had lost about $1 billion in value. Other sports leagues were booming at the time.
 
-- From 2012 to 2016, the global F1 audience fell by 22%, from 500 million to 390 million viewers.
-- The business itself had also lost value: in 2012, a Formula 1 stake was sold at a total valuation of $9 billion, but by the time of the Liberty Media deal the company was worth about $1 billion less. This happened while other sports leagues were booming.
+{% include drive-to-survive-facts.html section="baseline" %}
 
-One of the first tasks for Formula 1's new owners was solving the "American problem." In Europe, F1 had long been popular and attractive to premium advertisers. In the United States, it struggled to find its audience. Liberty Media decided to turn F1 into more of a media business: it invested more heavily in social media, launched an esports league, and a year later signed a deal with Netflix to produce a documentary series.
+## Formula 1 needed an American audience
 
-The Netflix deal did not create much excitement at first. Many people inside Formula 1 considered it a strange idea. Two of the most popular teams, Mercedes and Ferrari, refused to participate in filming. But that ended up helping the show: instead of focusing only on the leaders, the creators of *Drive to Survive* had to introduce viewers to every team and driver.
+One of the new owners’ first tasks was solving the “American problem.” In Europe, F1 had long been popular and attractive to major advertisers. In the United States, it remained a niche sport. Liberty Media set out to turn F1 into a media business: it invested more heavily in social media, launched an esports league, and a year later signed a documentary deal with Netflix.
 
-### Why Drive to Survive worked
+The Netflix deal did not create much excitement at first. Many people inside Formula 1 considered it a strange idea. Mercedes and Ferrari, two of the most popular teams, refused to participate in filming. That ended up helping the show: instead of focusing only on the leaders, the creators had to introduce viewers to teams and drivers across the grid.
 
-Box to Box Films, the production company behind the series, understands conflict and storytelling better than most. The creators took a traditional sport and reframed it. Actual racing accounts for less than 20% of the screen time in *Drive to Survive*.
+## Why Drive to Survive worked
 
-Formula 1 has a unique structure: there is both an individual championship between drivers and a constructors' championship between teams. This makes team rivalries, team principals, owners, and internal conflicts natural storylines for every season.
+Box to Box Films built the series around characters and conflict. Actual racing accounts for less than 20% of the screen time; the rest introduces viewers to the teams, drivers, and their relationships.
 
-Teammate rivalry is especially useful. Out of 20 F1 drivers, only a teammate drives the same car, so it is the cleanest comparison the sport can offer: the outcome depends more directly on the drivers' own skill. The show's creators understood that.
+Formula 1 runs two championships at once: the drivers’ championship and the constructors’ championship between teams. That gives every season several natural storylines, including team rivalries, clashes between owners and team principals, and competition between teammates.
 
-Some drivers, including Max Verstappen, criticized *Drive to Survive* for excessive dramatization. But the format worked because it made the sport legible for people who were not already F1 fans.
+Teammate rivalry is especially useful. Out of 20 F1 drivers, only a teammate drives the same car, making it the cleanest comparison of driver skill the sport can offer.
 
-### What changed after the first season
+Some drivers, including Max Verstappen, criticized Drive to Survive for excessive dramatization. But that format made Formula 1 legible to people who had never followed it before.
 
-- Formula 1's American audience grew by 40%.
-- Over four years, seven Grands Prix ranked among the most-watched F1 races.
-- The United States Grand Prix in Austin became the most attended race in F1 history, with 400,000 spectators.
-- Two more American races were added to the calendar: Miami joined in 2022, and Las Vegas followed.
-- The success of *Drive to Survive* also affected Formula 1's financial performance. Over three years, its total valuation grew by 63%, from $8 billion to $13 billion.
+## What changed after the first season
+
+After the premiere, Formula 1’s American audience grew by 40%. Record television audiences and attendance followed, along with two more U.S. races and a higher valuation for the business itself.
+
+{% include drive-to-survive-facts.html section="impact" %}
+
+The series was not Liberty Media’s only project: the company was also expanding Formula 1’s social media presence and its esports league. But Drive to Survive gave a new audience a clear way into a complex championship through people and conflict rather than technical regulations.

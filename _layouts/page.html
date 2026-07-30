@@ -2,4 +2,19 @@
 layout: default
 ---
 
-{{ content }}
+{% assign page_feature_enabled = true %}
+{% if page.feature and site.features[page.feature] != true %}
+  {% assign page_feature_enabled = false %}
+{% endif %}
+
+{% if page_feature_enabled %}
+  {{ content }}
+{% else %}
+  {% assign current_lang = page.lang | default: site.default_lang | default: 'ru' %}
+  {% assign t = site.data.i18n[current_lang] | default: site.data.i18n.ru %}
+  <section class="section redirect-page">
+    <h1 class="section-title">{{ t.error.title }}</h1>
+    <p class="redirect-page__text">{{ t.error.description }}</p>
+    <a class="redirect-page__link" href="{{ '/' | append: current_lang | append: '/' | relative_url }}">{{ t.error.home }} →</a>
+  </section>
+{% endif %}

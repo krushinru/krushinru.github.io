@@ -5,7 +5,7 @@ locale: en_US
 translation_key: project-clubstat
 permalink: /en/projects/clubstat/
 title: ClubStat
-description: The world's first Clubhouse rankings and analytics service
+description: The world's first Clubhouse analytics service
 image: /images/projects/clubstat-screenshot.png
 url_link: https://clubstat.org
 featured_order: 2

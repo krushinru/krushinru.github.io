@@ -2,6 +2,11 @@
   padding: 0;
 }
 
+.home-profile,
+.home-content {
+  min-width: 0;
+}
+
 .main-block h1 {
   font-family: var(--font-family-heading);
   font-weight: 400;
@@ -14,9 +19,13 @@
 }
 
 .main-block img.face {
+  display: block;
+  width: 400px;
+  aspect-ratio: 1;
   border-radius: var(--r-circle);
   max-width: 60vw;
   margin-bottom: var(--space-md);
+  object-fit: cover;
 }
 
 .main-block .lead {
@@ -27,25 +36,64 @@
   max-width: 720px;
 }
 
-.main-links {
-  margin: var(--space-lg) 0 var(--space-sm);
+.profile-contacts {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-lg);
-  font-size: var(--text-lg);
-  font-weight: 500;
-}
-
-.main-contact {
+  align-items: center;
+  gap: var(--space-md);
   margin-top: var(--space-lg);
-  font-size: var(--text-lg);
-  color: var(--text-secondary);
-  font-weight: 400;
 }
 
-.main-contact a {
+.profile-contact {
+  display: inline-grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  color: var(--text-secondary);
+  border-bottom: 0;
+  font-size: 1.35rem;
+  line-height: 1;
+  transition: color var(--t-fast) ease, transform var(--t-fast) ease;
+}
+
+.profile-contact:hover {
   color: var(--text-primary);
-  font-weight: 500;
-  padding: 1px 2px;
-  transition: var(--t-fast);
+  border-bottom: 0;
+  transform: translateY(-1px);
+}
+
+.profile-contact:focus-visible {
+  border-bottom: 0;
+}
+
+@media (min-width: 1560px) {
+  .home-layout {
+    position: relative;
+  }
+
+  .home-profile {
+    position: fixed;
+    top: calc(44px + var(--space-xl));
+    left: max(16px, calc((100vw - var(--max-width)) / 2 - 400px));
+    width: min(400px, calc((100vw - var(--max-width)) / 2 - 20px));
+  }
+
+  .home-content > .section--compact-top:first-child {
+    margin-top: 0;
+  }
+
+  .main-block img.face {
+    width: clamp(170px, 14vw, 210px);
+    max-width: 100%;
+    margin-bottom: var(--space-lg);
+  }
+
+  .main-block h1 {
+    font-size: clamp(2.25rem, 2.4vw, 3rem);
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .main-block .lead {
+    max-width: 420px;
+  }
 }

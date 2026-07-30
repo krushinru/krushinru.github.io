@@ -1,0 +1,31 @@
+<section class="incident-letters js-incident-letters" aria-labelledby="incident-letters-title">
+  <header class="incident-letters__header">
+    <span class="incident-kicker">24–28 июля 2026</span>
+    <h2 id="incident-letters-title">Два письма — две задачи</h2>
+    <p>Через несколько дней после инцидента вышли два открытых письма об ИИ. В первом NVIDIA, Microsoft, Meta, Hugging Face и другие компании выступили в защиту моделей с открытыми весами. Во втором сотрудники OpenAI, Anthropic, Google DeepMind, Meta и других лабораторий предложили договориться об общем замедлении разработок. Авторы не связывали письма со взломом, но оба текста отвечают на вопросы, которые он поставил.</p>
+  </header>
+
+  <nav class="incident-letters__questions" aria-label="Вопрос для сравнения">
+    <button class="is-active" type="button" data-letters-question="problem" aria-pressed="true">В чём проблема?</button>
+    <button type="button" data-letters-question="proposal" aria-pressed="false">Что предлагают?</button>
+    <button type="button" data-letters-question="incident" aria-pressed="false">Как связано с атакой?</button>
+  </nav>
+
+  <div class="incident-letters__comparison" aria-live="polite">
+    <article>
+      <time datetime="2026-07-24">24 июля</time>
+      <h3><a href="https://www.microsoft.com/en-us/corporate-responsibility/topics/open-weight/">Open Weights and American AI Leadership</a></h3>
+      <p class="incident-letters__authors">NVIDIA, Microsoft, Meta, Hugging Face и другие компании</p>
+      <p class="incident-letters__answer js-letters-open-answer">Сильные коммерческие модели могут отказаться разбирать настоящую атаку, а чувствительные журналы нельзя без риска отправить во внешний сервис.</p>
+    </article>
+
+    <article>
+      <time datetime="2026-07-28">28 июля</time>
+      <h3><a href="https://www.pacingthefrontier.com/">Pacing the Frontier</a></h3>
+      <p class="incident-letters__authors">К 30 июля — 1 293 сотрудника OpenAI, Anthropic, Google DeepMind, Meta и других компаний</p>
+      <p class="incident-letters__answer js-letters-pacing-answer">Отдельной лаборатории или стране невыгодно замедляться первой: конкуренты продолжат гонку и получат преимущество.</p>
+    </article>
+  </div>
+
+  <p class="incident-letters__takeaway js-letters-takeaway" aria-live="polite">Письма описывают разные риски: нехватку инструментов у защитников и конкуренцию, которая мешает лабораториям тормозить.</p>
+</section>

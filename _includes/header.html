@@ -20,9 +20,15 @@
     <div class="nav-menu" id="siteNavMenu">
       <ul class="navbar-nav ms-auto gap-2">
         {% for item in t.navigation %}
+        {% assign show_navigation_item = true %}
+        {% if item.feature and site.features[item.feature] != true %}
+          {% assign show_navigation_item = false %}
+        {% endif %}
+        {% if show_navigation_item %}
         <li class="nav-item">
           <a class="nav-link" href="{{ item.url | relative_url }}">{{ item.title }}</a>
         </li>
+        {% endif %}
         {% endfor %}
         <li class="nav-item nav-language" aria-label="{{ t.header.language_label }}">
           {% for lang_code in site.languages %}

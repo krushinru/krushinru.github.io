@@ -1,0 +1,82 @@
+<section class="incident-timeline js-incident-timeline" aria-labelledby="incident-timeline-title">
+  <header class="incident-timeline__header">
+    <div>
+      <span class="incident-kicker">July 9–21, 2026</span>
+      <h2 id="incident-timeline-title">How an internal test became a real intrusion</h2>
+    </div>
+    <div class="incident-timeline__controls" aria-label="Timeline controls">
+      <button class="incident-control js-timeline-back" type="button" aria-label="Previous event" title="Previous event" disabled>
+        <i class="fa-solid fa-backward-step" aria-hidden="true"></i>
+      </button>
+      <button class="incident-control incident-control--play js-timeline-play" type="button" aria-label="Pause" title="Pause" aria-pressed="true">
+        <i class="fa-solid fa-pause js-timeline-play-icon" aria-hidden="true"></i>
+      </button>
+      <button class="incident-control incident-control--primary js-timeline-next" type="button" aria-label="Next event" title="Next event">
+        <i class="fa-solid fa-forward-step" aria-hidden="true"></i>
+      </button>
+    </div>
+  </header>
+
+  <div class="incident-timeline__navigation">
+    <input class="incident-range js-timeline-range" type="range" min="0" max="11" value="0" step="1" aria-label="Timeline event">
+    <div class="incident-timeline__stepmarks" aria-hidden="true">
+      <span class="is-current"></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="incident-timeline__dates" aria-hidden="true">
+      <span>07/09</span>
+      <span>07/11</span>
+      <span>07/13</span>
+      <span>07/16</span>
+      <span>07/21</span>
+    </div>
+  </div>
+
+  <div class="incident-timeline__stage" aria-live="polite">
+    <div class="incident-timeline__meta">
+      <span class="js-timeline-step">Event 1 of 12</span>
+      <time class="js-timeline-time">July 9 · 02:28 UTC</time>
+    </div>
+
+    <article class="incident-timeline__story">
+      <h3 class="js-timeline-title">OpenAI starts a test for its cyber agent</h3>
+      <p class="js-timeline-summary">The models receive 898 tasks based on real vulnerabilities. To pass, the agent must find a flaw, write an exploit, and prove that it works.</p>
+    </article>
+
+    <aside class="incident-timeline__technical">
+      <span>Technical detail</span>
+      <p class="js-timeline-detail">Safety restrictions were relaxed because the test was designed to measure dangerous capabilities. The agent ran in a sandbox with no direct internet access.</p>
+    </aside>
+  </div>
+
+  <figure class="incident-timeline__photo">
+    <img src="{{ '/images/notes/openai-hf-agent-incident/server-racks.jpg' | relative_url }}" alt="Server racks with network cables" width="1600" height="898" loading="lazy">
+  </figure>
+
+  <noscript>
+    <ol class="incident-noscript">
+      <li>On July 9, OpenAI starts a test for its cyber agent.</li>
+      <li>The agent exploits flaws in a service gateway and reaches the internet.</li>
+      <li>It gains administrative access to a third-party server.</li>
+      <li>On July 11, it makes a Hugging Face processor read system files.</li>
+      <li>It gains the ability to run commands on a production server.</li>
+      <li>It finds a vault containing 136 service credentials.</li>
+      <li>On July 12, it registers 181 devices on the internal network.</li>
+      <li>It gains write access to some private repositories.</li>
+      <li>On July 13, Hugging Face cuts off access.</li>
+      <li>On July 16, Hugging Face discloses the incident.</li>
+      <li>On July 21, OpenAI links the attack to its experiment.</li>
+      <li>The open GLM-5.2 model helps reconstruct the timeline.</li>
+    </ol>
+  </noscript>
+</section>

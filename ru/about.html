@@ -1,0 +1,112 @@
+---
+layout: page
+lang: ru
+locale: ru_RU
+translation_key: about
+feature: about
+title: Обо мне
+description: Александр Крушин — Head of Growth и создатель цифровых продуктов
+permalink: /ru/about/
+---
+
+{% assign t = site.data.i18n[page.lang] %}
+<article class="about-page">
+  <header class="about-hero">
+    <p class="about-hero__eyebrow">{{ t.about.eyebrow }}</p>
+    <h1>{{ t.about.title }}</h1>
+    <p class="about-hero__intro">Развиваю цифровые продукты на стыке маркетинга, контента и технологий. Руководил маркетингом «Рамблера» и цифровыми продуктами «Афиши», создавал сервисы с аудиторией до 6 млн человек в месяц. Сейчас работаю с ИИ и LLM.</p>
+  </header>
+
+  <section class="about-section" aria-labelledby="about-stats">
+    <h2 id="about-stats">{{ t.about.stats_title }}</h2>
+    <dl class="about-stats">
+      <div>
+        <dt>12+</dt>
+        <dd>лет в цифровых продуктах</dd>
+      </div>
+      <div>
+        <dt>6 млн</dt>
+        <dd>пользователей T‑Do в месяц на пике</dd>
+      </div>
+      <div>
+        <dt>+40%</dt>
+        <dd>к глубине просмотра и времени на «Рамблере»</dd>
+      </div>
+      <div>
+        <dt>1 400+</dt>
+        <dd>ИИ-инструментов в YourAgents на четырёх языках</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="about-section" aria-labelledby="about-experience">
+    <h2 id="about-experience">{{ t.about.experience_title }}</h2>
+    <ol class="career">
+      <li class="career-item">
+        <div class="career-item__period">Декабрь 2023 — сейчас</div>
+        <div class="career-item__body">
+          <h3>Независимая практика</h3>
+          <p class="career-item__role">Директор по развитию ИИ- и цифровых продуктов</p>
+          <p>Запустил каталог ИИ-инструментов YourAgents, каталог публичных API POAPI, онлайн-блокнот Konspekto и подкаст-сервис PodTube. Консультирую команды по внедрению ИИ и LLM в маркетинг и продукты.</p>
+        </div>
+      </li>
+      <li class="career-item">
+        <div class="career-item__period">Сентябрь 2021–декабрь 2023</div>
+        <div class="career-item__body">
+          <h3>Рамблер</h3>
+          <p class="career-item__role">Директор по маркетингу</p>
+          <p>Руководил маркетингом портфеля сервисов и командой из семи человек. Увеличил среднемесячную аудиторию новостного агрегатора на 28% год к году, а глубину просмотра и время на сайте — более чем на 40%.</p>
+        </div>
+      </li>
+      <li class="career-item">
+        <div class="career-item__period">Февраль–сентябрь 2021</div>
+        <div class="career-item__body">
+          <h3>ClubStat</h3>
+          <p class="career-item__role">Основатель и директор по развитию</p>
+          <p>За 72 часа запустил сервис аналитики Clubhouse для рекламных агентств. ClubStat проиндексировал более 400 000 профилей и 10 000 комнат, привлёк платящих клиентов и внимание инвесторов.</p>
+        </div>
+      </li>
+      <li class="career-item">
+        <div class="career-item__period">Апрель 2018–сентябрь 2021</div>
+        <div class="career-item__body">
+          <h3>T‑Do</h3>
+          <p class="career-item__role">Основатель и директор по развитию</p>
+          <p>Вырастил сервис доступа к Telegram до 6 млн пользователей в месяц. Запустил версии для трёх международных рынков и собственную рекламную сеть.</p>
+        </div>
+      </li>
+      <li class="career-item">
+        <div class="career-item__period">Сентябрь 2018–март 2019</div>
+        <div class="career-item__body">
+          <h3>Афиша</h3>
+          <p class="career-item__role">Директор по развитию / диджитал-директор</p>
+          <p>Развивал билетный сервис Afisha.ru и медиа «Афиша Daily»: пересобрал продуктовые и маркетинговые приоритеты, развивал партнёрства для роста транзакционной выручки.</p>
+        </div>
+      </li>
+      <li class="career-item">
+        <div class="career-item__period">Май–сентябрь 2018</div>
+        <div class="career-item__body">
+          <h3>Sports.ru</h3>
+          <p class="career-item__role">Менеджер по развитию продуктов</p>
+          <p>Развивал Cyber.Sports.ru и приложение Well Played. За два месяца вместе с Winstrike запустил клубное приложение с новостями, составами и статистикой матчей.</p>
+        </div>
+      </li>
+      <li class="career-item">
+        <div class="career-item__period">Май 2013–ноябрь 2017</div>
+        <div class="career-item__body">
+          <h3>Медиа и проектная работа</h3>
+          <p class="career-item__role">Маркетинг, редактура и продюсирование</p>
+          <p>Привлекал аудиторию для Hello.ru, BURO 24/7 и Interior.ru. Перезапустил раздел Life.ru и за три месяца удвоил его аудиторию. До этого создавал сайты, ютуб-каналы и подкасты, руководил авторами, редакторами и монтажёрами.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="about-section about-contact" aria-labelledby="about-focus">
+    <h2 id="about-focus">{{ t.about.focus_title }}</h2>
+    <p>{{ t.about.focus_text }}</p>
+    <div class="about-contact__actions">
+      <a href="mailto:{{ site.email }}">{{ t.about.contact }} →</a>
+      <a href="{{ site.calendar_url }}">{{ t.about.book_call }} →</a>
+    </div>
+  </section>
+</article>

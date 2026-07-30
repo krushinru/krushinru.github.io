@@ -1,0 +1,25 @@
+<div class="editorial-notes js-editorial-notes" hidden>
+  <div class="editorial-notes__backdrop js-editorial-note-close" aria-hidden="true"></div>
+  <aside
+    class="editorial-notes__panel"
+    id="editorial-notes-panel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="editorial-notes-title"
+    aria-describedby="editorial-notes-body"
+    tabindex="-1">
+    <div class="editorial-notes__topline">
+      <button class="editorial-notes__close js-editorial-note-close" type="button">
+        {{ include.close_label | default: "Закрыть" }} <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <h2 id="editorial-notes-title"></h2>
+    <div class="editorial-notes__body" id="editorial-notes-body"></div>
+  </aside>
+
+  {% for note in include.notes %}
+  <template data-editorial-note="{{ note.id | escape }}" data-title="{{ note.title | escape }}">
+    {{ note.body | markdownify }}
+  </template>
+  {% endfor %}
+</div>

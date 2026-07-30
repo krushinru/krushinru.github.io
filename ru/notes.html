@@ -4,7 +4,7 @@ lang: ru
 locale: ru_RU
 translation_key: notes
 title: Заметки
-description: Заметки Александра Крушина о медиа, проектах и технологиях
+description: Заметки Александра Крушина о медиа, проектах и технологиях
 permalink: /ru/notes/
 ---
 
@@ -18,14 +18,6 @@ permalink: /ru/notes/
     <h3 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
     {% if post.lead %}
     <div class="post-lead">{{ post.lead | markdownify }}</div>
-    {% endif %}
-
-    {% if post.image %}
-    <div class="post-image">
-      <img src="{{ post.image | relative_url }}"
-           alt="{{ post.title }}"
-           loading="lazy">
-    </div>
     {% endif %}
 
     <div class="post-tags">

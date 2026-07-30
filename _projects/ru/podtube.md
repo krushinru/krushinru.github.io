@@ -5,7 +5,7 @@ locale: ru_RU
 translation_key: project-podtube
 permalink: /ru/projects/podtube/
 title: PodTube
-description: Превращает YouTube-каналы в аудиоподкасты
+description: Превращает YouTube-каналы в аудиоподкасты
 image: /images/projects/podtube-screenshot.png
 url_link: https://podtube.ru
 featured_order: 5
