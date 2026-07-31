@@ -64,36 +64,3 @@
 .profile-contact:focus-visible {
   border-bottom: 0;
 }
-
-@media (min-width: 1560px) {
-  .home-layout {
-    position: relative;
-  }
-
-  .home-profile {
-    position: fixed;
-    top: calc(44px + var(--space-xl));
-    left: max(16px, calc((100vw - var(--max-width)) / 2 - 400px));
-    width: min(400px, calc((100vw - var(--max-width)) / 2 - 20px));
-  }
-
-  .home-content > .section--compact-top:first-child {
-    margin-top: 0;
-  }
-
-  .main-block img.face {
-    width: clamp(170px, 14vw, 210px);
-    max-width: 100%;
-    margin-bottom: var(--space-lg);
-  }
-
-  .main-block h1 {
-    font-size: clamp(2.25rem, 2.4vw, 3rem);
-    overflow-wrap: normal;
-    word-break: normal;
-  }
-
-  .main-block .lead {
-    max-width: 420px;
-  }
-}
