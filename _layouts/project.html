@@ -58,6 +58,10 @@ layout: default
       {% endif %}
     </div>
     {% endif %}
+
+    {% if page.version_switch %}
+    {% include project-version-switch.html %}
+    {% endif %}
   </header>
 
   <div class="post-body project-body editorial-body">

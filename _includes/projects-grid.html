@@ -62,8 +62,8 @@
       {% assign project_accent = "#1478ff" %}
     {% endif %}
 
-    <article class="project-bento-card project-bento-card--{{ card_variant }}{% if has_icon %} project-bento-card--has-icon{% endif %}{% unless has_icon %} project-bento-card--has-art{% endunless %}{% if has_facts %} project-bento-card--has-facts{% endif %}"
-             style="--project-bento-brand: {{ project_accent }};">
+    <article class="project-bento-card project-bento-card--{{ card_variant }}{% if has_icon %} project-bento-card--has-icon{% endif %}{% unless has_icon %} project-bento-card--has-art{% endunless %}{% if has_facts %} project-bento-card--has-facts{% endif %}{% if project.bento_bg %} project-bento-card--has-bg{% endif %}"
+             style="--project-bento-brand: {{ project_accent }};{% if project.bento_bg %} --project-bento-bg-image: url('{{ project.bento_bg | relative_url }}');{% endif %}">
       <a href="{{ project.url | relative_url }}" class="project-bento-card__link">
         {% case card_variant %}
         {% when "leaderboard" %}

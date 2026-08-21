@@ -1,0 +1,25 @@
+{% comment %}
+  Переключатель версий проекта (минималистичная строка).
+  Параметры (в front matter страницы):
+  - version_switch: true — включает блок;
+  - version_current: "2.0" — активная версия;
+  - version_urls: { "2.0": "/ru/projects/habithit/", "1.0": "/ru/projects/habithit/1.0/" }.
+{% endcomment %}
+
+{% assign vs_current = page.version_current | default: "" %}
+{% assign vs_items = page.version_urls %}
+{% if vs_items and vs_items.size > 0 %}
+<div class="project-versions" role="group" aria-label="{{ page.version_label | default: 'Версии проекта' }}">
+  {% if page.version_label %}<span class="project-versions__label">{{ page.version_label }}</span>{% endif %}
+  {% for item in vs_items %}
+    {% assign vs_label = item[0] %}
+    {% assign vs_url = item[1] %}
+    {% if vs_label == vs_current %}
+    <span class="project-versions__item project-versions__item--active" aria-current="true">{{ vs_label }}</span>
+    {% else %}
+    <a class="project-versions__item" href="{{ vs_url | relative_url }}">{{ vs_label }}</a>
+    {% endif %}
+    {% unless forloop.last %}<span class="project-versions__sep" aria-hidden="true">·</span>{% endunless %}
+  {% endfor %}
+</div>
+{% endif %}

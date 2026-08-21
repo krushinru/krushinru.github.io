@@ -859,6 +859,156 @@ footer {
   border-bottom-color: var(--text-primary);
 }
 
+.project-versions {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+  margin-top: var(--space-md);
+  font-size: var(--text-sm);
+  line-height: var(--lh-snug);
+  color: var(--text-muted);
+}
+
+.project-versions__label {
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.project-versions__item {
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+a.project-versions__item {
+  border-bottom: 1px solid var(--border-strong);
+  color: var(--text-primary);
+}
+
+a.project-versions__item:hover {
+  border-bottom-color: var(--text-primary);
+  color: var(--text-primary);
+}
+
+.project-versions__item--active {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.project-versions__sep {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+.habithit-shots {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-sm);
+  margin: 0 0 var(--space-2xl);
+}
+
+.habithit-shot {
+  margin: 0;
+  min-width: 0;
+}
+
+.habithit-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border-default);
+  border-radius: var(--r-md);
+  background: var(--gray-1);
+}
+
+.habithit-shot figcaption {
+  margin-top: var(--space-2xs);
+  font-size: var(--text-xs);
+  line-height: var(--lh-snug);
+  color: var(--text-caption);
+}
+
+@media (max-width: 768px) {
+  .habithit-shots {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-sm);
+  }
+}
+
+.habithit-mascots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  gap: var(--space-sm);
+  margin: var(--space-md) 0 var(--space-2xl);
+}
+
+.habithit-mascot {
+  margin: 0;
+  min-width: 0;
+}
+
+.habithit-mascot img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+.habithit-mascot figcaption {
+  margin-top: var(--space-2xs);
+  text-align: center;
+  font-size: var(--text-xs);
+  line-height: var(--lh-snug);
+  color: var(--text-caption);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.habithit-note {
+  float: right;
+  width: min(240px, 42%);
+  margin: var(--space-xs) 0 var(--space-md) var(--space-lg);
+}
+
+.habithit-note--world {
+  width: min(320px, 48%);
+}
+
+.habithit-note__figure {
+  margin: 0;
+}
+
+.habithit-note__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.habithit-note__figure figcaption {
+  margin-top: var(--space-xs);
+  font-size: var(--text-xs);
+  line-height: var(--lh-snug);
+  color: var(--text-muted);
+  max-width: 44rem;
+}
+
+@media (max-width: 768px) {
+  .habithit-note,
+  .habithit-note--world {
+    float: none;
+    width: 100%;
+    margin: var(--space-lg) 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .habithit-mascots {
+    grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+    gap: var(--space-xs);
+  }
+}
+
 .project-cover {
   margin: 0 0 var(--space-2xl);
   border: 1px solid var(--border-subtle);
@@ -2275,6 +2425,13 @@ footer {
   background: var(--project-bento-brand);
   border-color: rgba(255, 255, 255, 0.18);
   border-bottom-color: rgba(255, 255, 255, 0.18) !important;
+}
+
+.project-bento-card--has-bg .project-bento-card__link {
+  background:
+    linear-gradient(rgba(10, 10, 10, 0.45), rgba(10, 10, 10, 0.72)),
+    var(--project-bento-bg-image) center / cover no-repeat;
+  background-color: var(--project-bento-brand, #1478ff);
 }
 
 .project-bento-card--hero .project-bento-card__link {
