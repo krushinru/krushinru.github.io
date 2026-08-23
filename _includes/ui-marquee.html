@@ -6,6 +6,7 @@
   - aria_label: подпись блока
   - items: коллекция объектов (name/description/url)
   - name_key, desc_key, url_key: кастомные ключи (опционально)
+  - note: текст-примечание под лентой (опционально)
 {% endcomment %}
 
 {% assign marquee_items = include.items %}
@@ -43,5 +44,8 @@
         </div>
       </div>
     </div>
+    {% if include.note %}
+    <p class="accent-marquee__note">{{ include.note }}</p>
+    {% endif %}
   </div>
 {% endif %}

@@ -30,11 +30,6 @@ layout: default
   {% unless page.hide_meta %}
   <div class="post-tags">
     {% include relative-date.html date=page.date %}
-    {% if page.tags.size > 0 %}
-    {% for tag in page.tags %}
-    <a href="{{ tag }}" class="tag">{{ tag }}</a>
-    {% endfor %}
-    {% endif %}
   </div>
   {% endunless %}
 </article>
