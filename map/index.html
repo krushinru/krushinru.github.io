@@ -1,0 +1,19 @@
+---
+layout: default
+lang: ru
+title: Карта Москвы / Moscow map
+permalink: /map/
+robots: noindex,follow
+sitemap: false
+---
+<script>
+  (() => {
+    const language = (navigator.languages && navigator.languages[0]) || navigator.language || 'ru';
+    const locale = /^ru(?:-|$)/i.test(language) ? 'ru' : 'en';
+    window.location.replace('/' + locale + '/map/' + window.location.search + window.location.hash);
+  })();
+</script>
+<section class="section">
+  <h1 class="section-title">Москва / Moscow</h1>
+  <p><a href="/ru/map/" lang="ru">Открыть карту →</a> · <a href="/en/map/" lang="en">Open the map →</a></p>
+</section>

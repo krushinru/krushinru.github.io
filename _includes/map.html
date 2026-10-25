@@ -1,0 +1,31 @@
+{% assign m = site.data.map_ui[page.lang] %}
+<link rel="stylesheet" href="{{ '/assets/vendor/maplibre/maplibre-gl.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/map.css' | relative_url }}">
+<main class="section city-map" data-lang="{{ page.lang }}">
+  <div class="city-map__intro"><p class="city-map__eyebrow">{{ m.eyebrow }}</p><h1 class="section-title">{{ page.title }}</h1><p>{{ m.intro }}</p></div>
+  <div class="city-map__workspace">
+    <div class="city-map__toolbar">
+      <label class="city-map__search">{{ m.search }}<input type="search" id="place-search" placeholder="{{ m.placeholder }}" autocomplete="off"></label>
+      <button type="button" id="map-reset">{{ m.reset }}</button>
+      <button type="button" id="map-locate">{{ m.locate }}</button>
+    </div>
+    <div class="city-map__filters" role="group" aria-label="{{ m.filters }}">
+      <button type="button" data-category="all" aria-pressed="true">{{ m.all }}</button>
+      {% assign categories = 'coffee,restaurant,japanese,bar,beer,club' | split: ',' %}
+      {% for category in categories %}<button type="button" data-category="{{ category }}" aria-pressed="false"><img src="/assets/images/map/{{ category }}.png" alt="" width="28" height="28">{{ m.categories[category] }}</button>{% endfor %}
+    </div>
+    <p class="city-map__status" id="map-status" role="status" aria-live="polite">{{ m.loading }}</p>
+    <div class="city-map__body">
+      <aside class="city-map__sidebar" aria-label="{{ m.places }}"><p id="place-count" role="status"></p><div id="place-list"></div><p id="place-empty" hidden>{{ m.empty }}</p></aside>
+      <div class="city-map__canvas" id="city-map" role="region" aria-label="{{ m.mapLabel }}"></div>
+    </div>
+    <section id="place-detail" class="city-map__detail" tabindex="-1" aria-label="{{ m.details }}" hidden></section>
+  </div>
+  <p class="city-map__note">{{ m.note }}</p>
+  <noscript><p>{{ m.nojs }}</p><ul>{% for place in site.data.map_places %}<li><a href="https://www.openstreetmap.org/?mlat={{ place.lat }}&amp;mlon={{ place.lon }}#map=17/{{ place.lat }}/{{ place.lon }}">{{ place.name | escape }}</a> — {{ place.address | escape }}</li>{% endfor %}</ul></noscript>
+</main>
+<script type="application/json" id="map-places">{{ site.data.map_places | jsonify | replace: '</', '<\/' }}</script>
+<script type="application/json" id="map-translations">{{ site.data.map_places_en | jsonify | replace: '</', '<\/' }}</script>
+<script type="application/json" id="map-ui">{{ m | jsonify }}</script>
+<script src="{{ '/assets/vendor/maplibre/maplibre-gl.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/map.js' | relative_url }}" defer></script>
